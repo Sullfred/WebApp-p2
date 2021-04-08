@@ -12,6 +12,10 @@ body {
     margin: auto;
     overflow: hidden;
 }
+.container a {
+    text-decoration: none;
+    color: #fff;
+}
 
 #header {
     background-color: coral;
@@ -71,7 +75,7 @@ body {
     background-color: #f4f4f4;
 }
 
-#contactInfo {
+#News {
     float: right;
     width: 40%;
     background-color: #333;
@@ -80,8 +84,12 @@ body {
     box-sizing: border-box;
 }
 
-#contactInfo h2 {
+#News h2 {
     text-align: center;
+}
+
+#News p {
+    padding: 10px;
 }
 
 @media(max-width:1000px) {
@@ -90,7 +98,7 @@ body {
         float:none;
     }
 }
-    #contactInfo {
+    #News {
         width:100%;
         float: none;
 }
@@ -109,17 +117,5 @@ body {
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 250px;
-}
-
-.styled-table thead tr {
-    color: #fff;
-    text-align: left;
-}
-
-.styled-table th, .styled-table td {
-    padding: 5px 5px;
-}
-
-.styled-table tbody tr {
-    border-bottom: thin solid #dddddd;
+    
 }
