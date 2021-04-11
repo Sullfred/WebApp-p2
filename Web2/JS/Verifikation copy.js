@@ -1,5 +1,10 @@
-/* Indsætte forbindelse til database */
-
+let mysql = require('mysql')
+let con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'P2Users'
+})
 
 let enteredLogin //indtastet brugerid
 let enteredPassword  // indtastet password
@@ -24,6 +29,7 @@ function getUserId(enteredLogin){
 }
 
 function getUserPassword(userTableId){
+    //tilgå database
     // tilgå kolone basseret på parameterinput (tableID)
     let HashedPassword = //hashedpassword
     return hashedPassword
