@@ -27,7 +27,7 @@ body {
     color: #fff;
     margin-bottom: 0;
     padding-bottom: 0;
-    padding-left: 5px;
+    padding-left: 1%;
 }
 
 #nav-bar ul {
@@ -53,5 +53,55 @@ body {
 
 #nav-bar .log-ud {
     float: right;
-    padding-right: 5%;
+    padding-right: 1%;
+}
+
+#main-section {
+    float: left;
+    width: 70%;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+#side-box {
+    float: right;
+    width: 30%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 1050px;
+}
+
+@media(max-width:1000px) {
+    #main-section {
+        width:100%;
+        float:none;
+    }
+}
+    #side-box {
+        width:100%;
+        float: none;
+}
+
+img {
+    width: 104.5%;
+    height: 350px;
+    display: block;
+}
+
+img.homework-img:hover, img.homework-img.focus, 
+img.exercise-img:hover, img.exercise-img.focus,
+img.progress-img:hover, img.progress-img.focus{
+    width: 104%;
+    height: 345px;
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
 }
