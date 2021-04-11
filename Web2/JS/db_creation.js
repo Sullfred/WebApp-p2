@@ -1,6 +1,7 @@
 // download -> https://dev.mysql.com/downloads/mysql/
 // kør  -> npm install mysql <- i terminalen før brug
 
+const { Console } = require('console')
 let mysql = require('mysql')
 const ResultSet = require('mysql/lib/protocol/ResultSet')
 const { stringify } = require('querystring')
@@ -74,7 +75,7 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-setTimeout(login, 3000)
+setTimeout(login, 1500)
 function login(){
 let enteredUserLogin = 'ElevLogin30'
 let enteredUserPassword = "ElevPassword30"
@@ -85,10 +86,9 @@ function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
             if (result.length != 0){
-                console.log(result)
+                console.log(`The username "${enteredUserLogin}" was found in the database`)
                 let rowDataPacketToString = stringify(Object.assign({}, result[0]))
                 let hashedUserPassword = getValue(rowDataPacketToString)
-                console.log(hashedUserPassword)
                 con.query(`SELECT UserSalt FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function(err, result) {
                     if (err) throw err
                     let rowDataPacketToString = stringify(Object.assign({}, result[0]))
@@ -109,9 +109,9 @@ function getValue(result){
 function checkPassMatch (enteredUserPassword, hashedUserPassword, salt){
     unhashedPassAndSalt = enteredUserPassword + salt
     let hashedEnteredPassAndSalt = sha256(unhashedPassAndSalt)
-    console.log(`${hashedUserPassword}\n${hashedEnteredPassAndSalt}`)
     if (hashedEnteredPassAndSalt === hashedUserPassword)
-    console.log("Login Succesful")
+    console.log(`The hashed value of the entered user password concatinated with the salt matches the hash 
+found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
