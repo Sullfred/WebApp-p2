@@ -28,6 +28,7 @@ body {
     margin-bottom: 0;
     padding-bottom: 0;
     padding-left: 1%;
+    border-bottom: 5px solid gray;
 }
 
 #nav-bar ul {
@@ -61,6 +62,7 @@ body {
     width: 70%;
     box-sizing: border-box;
     background-color: #f4f4f4;
+    position: relative;
 }
 
 #side-box {
@@ -115,12 +117,12 @@ img.progress-img:hover, img.progress-img.focus{
 
 #side-box p{
     position: relative;
-    left: 50px;
+    left: 5%;
 }
 
 #side-box .mat-emner{
     position: relative;
-    left: 50px;
+    left: 5%;
 }
 
 .styled-table {
@@ -128,7 +130,7 @@ img.progress-img:hover, img.progress-img.focus{
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 320px;
+    min-width: 280px;
     color: white;
 }
 
