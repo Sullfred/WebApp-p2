@@ -1,6 +1,5 @@
 // download -> https://dev.mysql.com/downloads/mysql/
 // kør  -> npm install mysql <- i terminalen før brug
-// npm install crypto-js
 
 let mysql = require('mysql')
 const ResultSet = require('mysql/lib/protocol/ResultSet')
