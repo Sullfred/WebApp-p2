@@ -27,7 +27,7 @@ con.connect(function(err){
                 UserLogin VARCHAR(255),
                 UserPass VARCHAR(255),
                 UserSalt VARCHAR(255),
-                UserPassAndSaltHashed VARCHAR(256))`
+                UserPassAndSaltHashed VARCHAR(255))`
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Table created")
