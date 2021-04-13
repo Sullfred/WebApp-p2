@@ -19,47 +19,26 @@
     </header>
 
     <nav id="nav-bar">
-        <ul>
-            <li><a href="#">Forside</a></li>
-            <li><a href="index.html" class="log-ud">Log-ud</a></li>
-        </ul>
-    </nav>
-
-    <nav id="info">
-        <ul>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Klasser</a>
-                <div class="dropdown-content">
-                  <a href="#">1.A</a>
-                  <a href="#">2.B</a>
-                  <a href="#">3.C</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Tildel opgaver</a>
-                <div class="dropdown-content">
-                    <a href="#">Opret opgave</a>
-                    <a href="#">Opgave bibliotek</a>
-                </div>
-            </li>
-            <li><a href="#">Support</a></li>
-        </ul>
-    </nav>
-
-    <script>
-        function h1(text) {
-            var h1 = document.createElement('h1');
-            h1.appendChild(document.createTextNode("text"));
-            document.body.appendChild(h1);
-        }
-    </script>
-        
-    <form id="midten">
-        <ul>
-            <li><a href="#"></a>tildel lektier</li>
-            <li><a href="#"></a>Klasse oversigt</li>
-        </ul>
-    </form>
+        <div class="dropdown">
+          <button class="home"><a href="#">Forside</a></button>
+          <div class="klasser">
+            <button>Klasser</button>
+            <ul>
+              <li><a href="#">1.A</a></li>
+              <li><a href="#">2.B</a></li>
+              <li><a href="#">3.C</a></li>
+            </ul>
+          </div>
+          <div class="opgaver">
+            <button>Opgaver</button>
+            <ul>
+              <li><a href="#">Opret opgave</a></li>
+              <li><a href="#">Opgave bibliotek</a></li>
+            </ul>
+          </div>
+          <button class="log-ud"><a href="index.html">Log-ud</a></button>
+        </div>
+      </nav>
 
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
