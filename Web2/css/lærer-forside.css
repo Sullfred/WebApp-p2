@@ -1,0 +1,133 @@
+body {
+    background-color: #f4f4f4;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 0%;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.container a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#header {
+    background-color: tomato;
+    color: #fff;
+}
+
+#nav-bar {
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 1%;
+}
+
+#nav-bar ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+#nav-bar li {
+    display: inline;
+}
+
+#nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-right: 15px;
+}
+
+#nav-bar a:hover {
+    color: red;
+}
+
+#nav-bar a {
+    font-size: large;
+}
+
+#nav-bar .log-ud {
+    float: right;
+    padding-right: 1%;
+}
+
+#info {
+    float: right;
+    padding-top: 1%;
+    padding-right: 1%;
+}
+
+#info ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 2px solid;
+    width: max-content;
+    background-color: coral;
+    /* position: fixed; */
+    overflow: auto;
+}
+
+#info li a {
+    display: block;
+    color:black;
+    padding: 25px 16px;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+    border: solid 1px;
+}
+
+#info li a:hover{
+    background-color: gold;
+}
+
+.dropdown-content a {
+    color: black;
+    background-color:rgb(172, 171, 171);
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 199px;
+    top: 113px;
+    background-color: #f9f9f9;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 26.13%;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 250px;
+    
+}
