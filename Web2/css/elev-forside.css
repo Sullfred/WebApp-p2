@@ -59,7 +59,7 @@ body {
 
 #main-section {
     float: left;
-    width: 70%;
+    width: 76.5%;
     box-sizing: border-box;
     background-color: #f4f4f4;
     position: relative;
@@ -67,12 +67,12 @@ body {
 
 #side-box {
     float: right;
-    width: 30%;
+    width: 23.5%;
     background-color: #333;
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
-    height: 1050px;
+    height: 650px;
 }
 
 @media(max-width:1000px) {
@@ -87,16 +87,27 @@ body {
 }
 
 img {
-    width: 104.5%;
-    height: 350px;
+    width: 50%;
+    height: 50%;
     display: block;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 img.homework-img:hover, img.homework-img.focus, 
 img.exercise-img:hover, img.exercise-img.focus,
-img.progress-img:hover, img.progress-img.focus{
-    width: 104%;
-    height: 345px;
+img.progress-img:hover, img.progress-img.focus,
+img.diverse-img:hover, img.diverse-img.focus{
+    width: 48%;
+    height: 48%;
 }
 
 #side-box .character {
@@ -117,12 +128,12 @@ img.progress-img:hover, img.progress-img.focus{
 
 #side-box p{
     position: relative;
-    left: 5%;
+    left: 2%;
 }
 
 #side-box .mat-emner{
     position: relative;
-    left: 5%;
+    left: 2%;
 }
 
 .styled-table {
@@ -130,7 +141,7 @@ img.progress-img:hover, img.progress-img.focus{
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 280px;
+    min-width: 230px;
     color: white;
 }
 
