@@ -4,7 +4,7 @@ let Name = "Jens Jensen";
 addname(Name);
 
 function addname(Name) {
-    let helloUser = document.querySelector("#side-box h3.character");
+    let helloUser = document.getElementById('helloUser');
     helloUser.innerHTML += ` ${Name}`;
-    console.log(helloUser);
+    
 }
