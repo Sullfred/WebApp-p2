@@ -1,8 +1,10 @@
 //const {Name} = require('../json/user.json');
 
-let userText = addname;
+let Name = "Jens Jensen";
+addname(Name);
 
-function addname(name) {
-    let helloUser = document.querySelector("h3.character");
-    console.log(helloUser)
+function addname(Name) {
+    let helloUser = document.querySelector("#side-box h3.character");
+    helloUser.innerHTML += ` ${Name}`;
+    console.log(helloUser);
 }
