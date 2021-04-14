@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
+  <head>
+      <title>toBeAdded</title>
+      <link rel="stylesheet" type="text/css" href="/Web2/css/lærer-forside.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Test page for P2 project">
+      <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+      <meta name="author" content="Daniel Vang Kleist, mm">
+      <meta charset="UTF-8">
+      <script src="../JS/lærer.js"></script>
+  </head>
 
-<head>
-    <title>toBeAdded</title>
-    <link rel="stylesheet" type="text/css" href="/Web2/css/lærer-forside.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Test page for P2 project">
-    <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
-    <meta name="author" content="Daniel Vang Kleist, mm">
-    <meta charset="UTF-8">
-</head>
-
-<body>
+  <body>
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -22,17 +22,15 @@
         <div class="dropdown">
           <button class="home"><a href="#">Forside</a></button>
           <div class="klasser">
-            <button>Klasser</button>
-            <ul>
-              <li><a href="#">1.A</a></li>
-              <li><a href="#">2.B</a></li>
-              <li><a href="#">3.C</a></li>
+            <button onclick="tilfoj()">Klasser</button>
+            <ul id="list">
+              <!-- <li><a onclick="klasse()">NAVN</a></li> -->
             </ul>
           </div>
           <div class="opgaver">
             <button>Opgaver</button>
             <ul>
-              <li><a href="#">Opret opgave</a></li>
+              <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Opret opgave</a></li>
               <li><a href="#">Opgave bibliotek</a></li>
             </ul>
           </div>
@@ -40,10 +38,17 @@
         </div>
       </nav>
 
+      <div id="selectedKlasse">
+        <h1 id="skovl"></h1>
+        <p>Hej</p>
+        <p>med</p>
+        <p>dig!</p>
+      </div>
+
+
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
     </footer>
-
-</body>
-
+      
+  </body>
 </html>
