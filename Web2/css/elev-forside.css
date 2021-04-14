@@ -59,7 +59,7 @@ body {
 
 #main-section {
     float: left;
-    width: 76.5%;
+    width: 75vw;
     box-sizing: border-box;
     background-color: #f4f4f4;
     position: relative;
@@ -67,12 +67,12 @@ body {
 
 #side-box {
     float: right;
-    width: 23.5%;
+    width: 25vw;
     background-color: #333;
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
-    height: 975px;
+    height: 75vh;
 }
 
 @media(max-width:1000px) {
@@ -87,8 +87,8 @@ body {
 }
 
 img {
-    width: 50%;
-    height: 50%;
+    width: 37.5vw;
+    height: 37.5vh;
     display: block;
     float: left;
     text-align: center;
@@ -102,12 +102,17 @@ img {
     transform: translate(-50%, -50%);
 }
 
+/*
 img.homework-img:hover, img.homework-img.focus, 
 img.exercise-img:hover, img.exercise-img.focus,
 img.progress-img:hover, img.progress-img.focus,
 img.diverse-img:hover, img.diverse-img.focus{
-    width: 49.5%;
-    height: 49.5%;
+    opacity: 0.6;
+}
+*/
+
+img:hover {
+    opacity: 0.6;
 }
 
 #side-box .character {
