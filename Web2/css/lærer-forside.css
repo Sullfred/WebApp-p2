@@ -151,8 +151,10 @@ body {
   top: 100px;
 }
 
-
-
+#selectedKlasse p{
+  font-size: 50px;
+  margin-left: 100px;
+}
 
 #footer {
     background-color: #333;
