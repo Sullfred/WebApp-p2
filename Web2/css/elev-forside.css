@@ -102,31 +102,18 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-
-img.homework-img:hover, img.homework-img.focus, 
-img.exercise-img:hover, img.exercise-img.focus,
-img.progress-img:hover, img.progress-img.focus,
-img.diverse-img:hover, img.diverse-img.focus{
-    opacity: 0.6;
-}
 */
 
 img:hover {
     opacity: 0.6;
 }
 
-#side-box .character {
-    border-bottom: 3px solid grey;
-}
-
-#side-box .statistics {
-    border-bottom: 3px solid grey;
-}
-
+#side-box .character,
+#side-box .statistics,
 #side-box .homework-todo {
     border-bottom: 3px solid grey;
 }
+
 
 #side-box h3{
     text-align: center;
@@ -134,7 +121,7 @@ img:hover {
 
 #side-box p,
 #side-box .mat-emner{
-    text-align: left;
+    text-align: center;
 }
 
 .styled-table {
