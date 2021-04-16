@@ -11,7 +11,7 @@
       <script src="../JS/lærer.js"></script>
   </head>
 
-  <body>
+  <body onload = tilfoj()>
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -22,14 +22,14 @@
       <div class="dropdown">
         <button class="home"><a href="#">Forside</a></button>
         <div class="klasser">
-          <button onclick="tilfoj()">Klasser</button>
-          <ul id="list">          
+          <button>Klasser</button>
+          <ul id="klasselist">          
           </ul>
         </div>
         <div class="opgaver">
           <button>Opgaver</button>
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Opret opgave</a></li>
+            <li><a href="#">Opret opgave</a></li>
             <li><a href="#">Opgave bibliotek</a></li>
           </ul>
         </div>
@@ -37,12 +37,18 @@
       </div>
     </nav>
 
-      <div id="selectedKlasse">
-        <h1 id="skovl"></h1>
-        <p>Hej</p>
-        <p>med</p>
-        <p>dig!</p>
-      </div>
+    <div id="klasseboks">
+      <h1 id="klassevalg"></h1>
+      <p>Hej</p>
+      <p>med</p>
+      <p>dig!</p>
+    </div>
+
+    <div class="elever">
+      <Button>Elever</Button>
+      <ul id="elevlist">
+      </ul>
+    </div>
 
 
     <footer id="footer">
