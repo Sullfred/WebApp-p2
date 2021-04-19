@@ -4,8 +4,8 @@ function klasse(a) {
     elever();
 }
 
-let klasseliste = ["1.A", "2.B", "3.C", "4.D"];
-let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor"];
+let klasseliste = ["1.A", "2.B", "3.C", "4.D", "5.E"];
+let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor", "Mikkel"];
 
 function tilfoj() {
     klasseliste.forEach(i => {    
