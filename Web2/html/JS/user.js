@@ -11,8 +11,9 @@ let user = {
 addname(user.Name);
 addlevel(user.currentLevel);
 addHomework(lektier);
-solvedAssignments("compplus")
+solvedAssignments("compPlus")
 leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
+xpView(user.currentXp, user.requiredXp)
 
 function addname(Name) {
     let helloUser = document.getElementById('helloUser');
@@ -59,5 +60,9 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
         console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
         return newXp;
     }
+}
 
+function xpView(currentXp, requiredXp){
+    xpObject = document.querySelector('#xp')
+    xpObject.innerHTML = `${currentXp}/${requiredXp}`
 }
