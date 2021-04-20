@@ -1,12 +1,16 @@
+let klasseliste = ["1.A", "2.B", "3.C", "4.D", "5.E"];
+let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor", "Mikkel", "Nathan Kiks"];
+
 function klasse(a) {
-    document.getElementById("klassevalg").innerHTML = "Klasse: " + a;
+    document.getElementById("klassevalg").innerHTML ="Klasse: " + a;
     document.getElementById("elevlist").innerHTML = '';
     elever();
 }
 
-let klasseliste = ["1.A", "2.B", "3.C", "4.D", "5.E"];
-let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor", "Mikkel"];
-
+function elevinfo(a) {
+    document.getElementById("elevinformation").innerHTML = "Elev: " + a;
+}
+ 
 function tilfoj() {
     klasseliste.forEach(i => {    
         let completelist= document.getElementById("klasselist");        
@@ -16,7 +20,7 @@ function tilfoj() {
 
 function elever(){
     elevliste.forEach(i => {
-    let completelist= document.getElementById("elevlist");        
-    completelist.innerHTML += "<li><a href=" + "https://www.youtube.com/watch?v=dQw4w9WgXcQ>" + i + "</a></li>";
+        let completelist= document.getElementById("elevlist");        
+        completelist.innerHTML += "<li><a onclick=elevinfo('" + i + "')>" + i + "</a></li>";
     });
 }
