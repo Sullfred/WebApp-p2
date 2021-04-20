@@ -1,15 +1,18 @@
 //const {Name} = require('../json/user.json');
 
-let Name = "Jens Jensen";
-let level = "69";
-let lektier = 1;
-let xp = 0
+let user = {
+    Name: "Jens Jensen",
+    currentLevel: 0,
+    lektier: 1,
+    currentXp: 0,
+    requiredXp: 15,
+};
 
-addname(Name);
-addlevel(level);
+addname(user.Name);
+addlevel(user.currentLevel);
 addHomework(lektier);
 solvedAssignments("compplus")
-leveling(4, 2, 2, 5)
+leveling(user.currentXp, user.currentLevel, 127, user.requiredXp)
 
 function addname(Name) {
     let helloUser = document.getElementById('helloUser');
@@ -42,12 +45,12 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
     if (newXp >= requiredXp){
         currentLevel++
         currentXp = newXp%requiredXp
-        requiredXp = requiredXp*1.25
-        console.log(`${currentXp} ${currentLevel} ${newXp} ${requiredXp}`)
+        requiredXp = Math.floor(requiredXp*1.25)
+        console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
         return currentLevel, currentXp, requiredXp
     }
     else{
-        console.log(`${currentXp} ${currentLevel} ${newXp} ${requiredXp}`)
+        console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
         return newXp
     }
 
