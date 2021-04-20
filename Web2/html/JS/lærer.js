@@ -13,7 +13,7 @@ function elevinfo(a) {
     console.log(string);
     string.replace(/\./g, "-");
 }
- 
+
 function tilfoj() {
     klasseliste.forEach(i => {    
         let completelist= document.getElementById("klasselist");        
