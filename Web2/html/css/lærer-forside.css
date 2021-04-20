@@ -1,5 +1,5 @@
 body {
-    background-color: #f4f4f4;
+    background-color: crimson;
     color: #555;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -154,18 +154,42 @@ body {
 }
 
 .elever button {
-  margin-top: 4%;
+  margin-top: 9%;
   margin-left: 80%;
-  width: 15%;
+  width: 10%;
   font-size: 18px;
   position: relative;
-  background-color: #333;
+  background-color: #555;
   color: #fff;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   border: none;
   z-index: 2;
+}
+
+.elever ul {
+  padding: 0;
+  margin: 1px;
+  position: relative;
+  margin-top: 0px;
+  margin-left: 80%;
+  width: 10%;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: max-content;
+  background: #555;
+  list-style: none;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 400px;
 }
 
 .elever a {
@@ -183,29 +207,8 @@ body {
   z-index: 2;
 }
 
-.elever ul {
-  padding: 0;
-  margin: 1px;
-  position: relative;
-  margin-top: 0px;
-  margin-left: 80%;
-  width: 15%;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: max-content;
-  background: #555;
-  list-style: none;
-  border-radius: 5px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition: all 0.4s ease;
-}
-
 #klasseboks {
+  background-color: whitesmoke;
   border: 1px solid black;
   width: 25%;
   height: 50%;
@@ -214,17 +217,24 @@ body {
   margin-top: 7%;
 }
 
-#klasseboks h1 {
+#klasseboks h1,
+#elevboks h1{
+  padding: 20px;
+  width: max-content;
+  margin-left: 5%;
   font-size: 55px;
   text-align: center;
 }
 
-#klasseboks p {
+#klasseboks p,
+#elevboks p {
+  width: max-content;
   font-size: 20px;
   margin-left: 5%;
 }
 
 #elevboks {
+  background-color:whitesmoke;
   border: 1px solid black;
   width: 55%;
   height: 50%;
@@ -234,9 +244,9 @@ body {
 }
 
 #footer {
-    background-color: #333;
+    background-color:#333;
     color: #fff;
     text-align: center;
     padding: 20px;
-    margin-top: 40%;
+    margin-top: 30%;
 }

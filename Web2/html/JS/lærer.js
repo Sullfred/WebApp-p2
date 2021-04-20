@@ -1,5 +1,5 @@
 let klasseliste = ["1.A", "2.B", "3.C", "4.D", "5.E"];
-let elevliste = ["DJonny", "Jimmi", "Brian", "Din.mor", "Mikkel", "Nathan.Kiks"];
+let elevliste = ["Esben.N", "Rune.F", "Jimmi", "Brian", "Nathan.R"];
 
 function klasse(a) {
     document.getElementById("klassevalg").innerHTML ="Klasse: " + a;
@@ -8,10 +8,8 @@ function klasse(a) {
 }
 
 function elevinfo(a) {
-    let string = a;
     document.getElementById("elevinformation").innerHTML = "Elev: " + a;
-    console.log(string);
-    string.replace(/\./g, "-");
+    document.getElementById("elevinformation").innerHTML = "Elev: " + a;
 }
 
 function tilfoj() {
