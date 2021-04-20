@@ -12,7 +12,7 @@ addname(user.Name);
 addlevel(user.currentLevel);
 addHomework(lektier);
 solvedAssignments("compplus")
-leveling(user.currentXp, user.currentLevel, 127, user.requiredXp)
+leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
 
 function addname(Name) {
     let helloUser = document.getElementById('helloUser');
@@ -43,15 +43,21 @@ function solvedAssignments(assignmentType){
 function leveling(currentXp, currentLevel, earnedXp, requiredXp){
     let newXp = currentXp + earnedXp
     if (newXp >= requiredXp){
-        currentLevel++
-        currentXp = newXp%requiredXp
-        requiredXp = Math.floor(requiredXp*1.25)
-        console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
-        return currentLevel, currentXp, requiredXp
+        currentLevel++;
+        currentXp = newXp-requiredXp;
+        requiredXp = Math.floor(requiredXp*1.2);
+        if(currentXp >= requiredXp){
+            console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+            leveling(currentXp, currentLevel, 0, requiredXp);
+        }
+        else{
+            console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+            return currentLevel, currentXp, requiredXp;
+        }
     }
     else{
         console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
-        return newXp
+        return newXp;
     }
 
 }
