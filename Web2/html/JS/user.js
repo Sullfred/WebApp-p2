@@ -7,7 +7,7 @@ let lektier = 1;
 addname(Name);
 addlevel(level);
 addHomework(lektier);
-solvedAssignments(compplus)
+solvedAssignments("compplus")
 
 function addname(Name) {
     let helloUser = document.getElementById('helloUser');
@@ -30,7 +30,7 @@ function addHomework(lektier) {
 }
 
 function solvedAssignments(assignmentType){
-    test = 
     let solved = document.querySelector(`#${assignmentType}`)
     console.log(solved)
+    solved.innerHTML++
 }
