@@ -9,7 +9,7 @@ addname(Name);
 addlevel(level);
 addHomework(lektier);
 solvedAssignments("compplus")
-leveling(3, 2, 2, 5)
+leveling(4, 2, 2, 5)
 
 function addname(Name) {
     let helloUser = document.getElementById('helloUser');
@@ -43,10 +43,11 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
         currentLevel++
         currentXp = newXp%requiredXp
         requiredXp = requiredXp*1.25
-        console.log(`${currentXp} ${currentLevel} ${newXp} ${requiredXp} `)
+        console.log(`${currentXp} ${currentLevel} ${newXp} ${requiredXp}`)
         return currentLevel, currentXp, requiredXp
     }
     else{
+        console.log(`${currentXp} ${currentLevel} ${newXp} ${requiredXp}`)
         return newXp
     }
 
