@@ -60,6 +60,7 @@ body {
 #main-section {
     float: left;
     width: 75vw;
+    height: 75vh;
     box-sizing: border-box;
     background-color: #f4f4f4;
     position: relative;
