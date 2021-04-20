@@ -136,6 +136,7 @@ body {
   transform: translateY(0px);
   pointer-events:all;
   opacity: 1;
+  z-index: 2;
 }
 
 .klasser ul:hover,
@@ -144,6 +145,7 @@ body {
   transform: translateY(0px);
   pointer-events:all;
   opacity: 1;
+  z-index: 2;
 }
 
 .klasser a,
@@ -163,6 +165,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   border: none;
+  z-index: 2;
 }
 
 .elever a {
@@ -177,6 +180,7 @@ body {
 .elever a:hover {
   color:red;
   text-decoration: none;
+  z-index: 2;
 }
 
 .elever ul {
