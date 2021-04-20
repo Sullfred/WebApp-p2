@@ -1,5 +1,5 @@
 let klasseliste = ["1.A", "2.B", "3.C", "4.D", "5.E"];
-let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor", "Mikkel", "Nathan Kiks"];
+let elevliste = ["DJonny", "Jimmi", "Brian", "Din mor", "Mikkel", "Nathan.Kiks"];
 
 function klasse(a) {
     document.getElementById("klassevalg").innerHTML ="Klasse: " + a;
