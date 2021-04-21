@@ -77,7 +77,7 @@ function saltGenerator(){
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
 //setTimeout(login, 1500)
-document.querySelector("submitbutton").addEventListener("click", login)
+document.querySelector("#submitbutton").addEventListener("click", login)
 function login(){
     let enteredUserLogin = document.querySelector("#username").value + ""
     let enteredUserPassword = document.querySelector("#password").value + ""
