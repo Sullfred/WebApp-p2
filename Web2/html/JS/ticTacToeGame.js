@@ -1,8 +1,8 @@
+import '../css/ticTacToe.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 
-const e = React.createElement;
+//const e = React.createElement;
 
 
 function Square(props) {
@@ -126,5 +126,5 @@ function Square(props) {
   // ========================================
   
   const domContainer = document.querySelector('#ticTacToeGame')
-  ReactDOM.render(e(<Game />), domContainer);
+  ReactDOM.render(<Game />, domContainer);
   
