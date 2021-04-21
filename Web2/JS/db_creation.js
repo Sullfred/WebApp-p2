@@ -11,6 +11,11 @@ let con = mysql.createConnection({
     user: 'root',
     password: 'password',
     database: 'P2Users'
+/*  host: 'localhost',
+    user: 'dat2c2-4',
+    password: 't95oqnsuoqLpR27r',
+    database: 'dat2c2_4'
+*/
 })
 
 con.connect(function(err){
