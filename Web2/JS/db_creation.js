@@ -7,24 +7,23 @@ const ResultSet = require('mysql/lib/protocol/ResultSet')
 const { stringify } = require('querystring')
 const { isNull } = require('util')
 let con = mysql.createConnection({
-    host: 'localhost',
+/*  host: 'localhost',
     user: 'root',
     password: 'password',
     database: 'P2Users'
-/*  host: 'localhost',
+*/  host: 'localhost',
     user: 'dat2c2-4',
     password: 't95oqnsuoqLpR27r',
     database: 'dat2c2_4'
-*/
 })
 
 con.connect(function(err){
     if (err) throw err
     console.log("Connected!")
-    con.query("CREATE DATABASE IF NOT EXISTS P2Users", function (err, result){
-        if (err) throw err
-        console.log("Database available")
-    })
+    //con.query("CREATE DATABASE IF NOT EXISTS P2Users", function (err, result){
+    //    if (err) throw err
+    //    console.log("Database available")
+    //})
     con.query("DROP TABLE IF EXISTS Users")
     let sql = `CREATE TABLE Users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
