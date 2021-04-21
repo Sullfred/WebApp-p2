@@ -2,16 +2,16 @@
 <html>
   <head>
       <title>MatemaTikTok</title>
-      <link rel="stylesheet" type="text/css" href="css/lærer-forside.css">
+      <link rel="stylesheet" type="text/css" href="css/teacher-page.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="description" content="Test page for P2 project">
       <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
       <meta name="author" content="Daniel Vang Kleist, mm">
       <meta charset="UTF-8">
-      <script src="JS/lærer.js"></script>
+      <script src="JS/teacher-page.js"></script>
   </head>
 
-  <body onload = "tilfoj()">
+  <body onload = "addclass()">
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -21,30 +21,30 @@
     <nav id="nav-bar">
       <div class="dropdown">
         <button class="home"><a href="#">Forside</a></button>
-        <div class="klasser">
+        <div class="classes">
           <button>Klasser</button>
-          <ul id="klasselist">
+          <ul id="classlist">
           </ul>
         </div>
-        <div class="opgaver">
+        <div class="homework">
           <button>Opgaver</button>
           <ul>
             <li><a href="#">Opret opgave</a></li>
             <li><a href="#">Opgave bibliotek</a></li>
           </ul>
         </div>
-        <button class="log-ud"><a href="index.html">Log-ud</a></button>
+        <button class="logout"><a href="index.html">Log-ud</a></button>
       </div>
     </nav>
 
-    <div id="klasseboks">
-      <h1 id="klassevalg">Klasse: </h1>
+    <div id="classbox">
+      <h1 id="classchoice">Klasse: </h1>
       <p>Igangværende lektier:</p>
       <p>Progress bar</p>
     </div>
 
-    <div id="elevboks">
-      <h1 id="elevinformation">Elev: </h1>
+    <div id="studentbox">
+      <h1 id="studentinformation">Elev: </h1>
       <p>Level: </p>
       <p>Lektier gennemført: 10/20</p>
       <p>Antal rigtige</p>
@@ -52,9 +52,9 @@
       <p>Øvrige opgaver</p>
     </div>
 
-    <div class="elever">
+    <div class="students">
       <button>Elever</button>
-      <ul id="elevlist">
+      <ul id="studentlist">
       </ul>
     </div>
 

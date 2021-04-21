@@ -42,8 +42,8 @@ body {
 }
 
 #nav-bar a:hover,
-.klasser button:hover,
-.opgaver button:hover {
+.classes button:hover,
+.homework button:hover {
     color: red;
 }
 
@@ -52,17 +52,17 @@ body {
     align-items: center;
 }
 
-.log-ud {
+.logout {
     position: absolute;
     right: 1%;
 }
 
-.klasser,
-.opgaver, .home {
+.classes,
+.homework, .home {
     position: relative;
 }
 
-.klasser ul {
+.classes ul {
   margin-top: 10px;
   position: absolute;
   display: flex;
@@ -82,7 +82,7 @@ body {
   transition: all 0.4s ease;
 }
 
-.opgaver ul {
+.homework ul {
   margin-top: 10px;
   position: absolute;
   display: flex;
@@ -102,9 +102,9 @@ body {
   transition: all 0.4s ease;
 }
 
-.klasser li,
-.opgaver li,
-.elever li {
+.classes li,
+.homework li,
+.students li {
   width: 100%;
   height: 100%;
   display: flex;
@@ -112,9 +112,9 @@ body {
   align-items: center;
 }
 
-.klasser li:hover,
-.opgaver li:hover,
-.elever li:hover {
+.classes li:hover,
+.homework li:hover,
+.students li:hover {
   background-color: rgb(70, 70, 70);
   border-radius: 5px;
   cursor: pointer;
@@ -130,30 +130,30 @@ body {
   cursor: pointer;
 }
 
-.klasser button:focus + ul,
-.opgaver button:focus + ul,
-.elever button:focus + ul {
+.classes button:focus + ul,
+.homework button:focus + ul,
+.students button:focus + ul {
   transform: translateY(0px);
   pointer-events:all;
   opacity: 1;
   z-index: 2;
 }
 
-.klasser ul:hover,
-.opgaver ul:hover,
-.elever ul:hover {
+.classes ul:hover,
+.homework ul:hover,
+.students ul:hover {
   transform: translateY(0px);
   pointer-events:all;
   opacity: 1;
   z-index: 2;
 }
 
-.klasser a,
-.opgaver a {
+.classes a,
+.homework a {
   width: 100%;
 }
 
-.elever button {
+.students button {
   margin-top: 9%;
   margin-left: 80%;
   width: 10%;
@@ -168,7 +168,7 @@ body {
   z-index: 2;
 }
 
-.elever ul {
+.students ul {
   padding: 0;
   margin: 1px;
   position: relative;
@@ -192,7 +192,7 @@ body {
   max-height: 400px;
 }
 
-.elever a {
+.students a {
   color: #fff;
   width: 100%;
   font-size: 18px;
@@ -200,14 +200,14 @@ body {
   text-decoration: none;
 }
 
-.elever button:hover,
-.elever a:hover {
+.students button:hover,
+.students a:hover {
   color:red;
   text-decoration: none;
   z-index: 2;
 }
 
-#klasseboks {
+#classbox {
   background-color: whitesmoke;
   border: 1px solid black;
   width: 25%;
@@ -217,8 +217,8 @@ body {
   margin-top: 7%;
 }
 
-#klasseboks h1,
-#elevboks h1{
+#classbox h1,
+#studentbox h1{
   padding: 20px;
   width: max-content;
   margin-left: 5%;
@@ -226,14 +226,14 @@ body {
   text-align: center;
 }
 
-#klasseboks p,
-#elevboks p {
+#classbox p,
+#studentbox p {
   width: max-content;
   font-size: 20px;
   margin-left: 5%;
 }
 
-#elevboks {
+#studentbox {
   background-color:whitesmoke;
   border: 1px solid black;
   width: 55%;
