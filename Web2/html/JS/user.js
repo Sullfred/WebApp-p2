@@ -8,20 +8,23 @@ let user = {
     requiredXp: 15,
 };
 
-addname(user.Name);
-addlevel(user.currentLevel);
+addName(user.Name);
+addLevel(user.currentLevel);
 addHomework(lektier);
 solvedAssignments("compPlus")
 leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
 xpView(user.currentXp, user.requiredXp)
 
-function addname(Name) {
-    let helloUser = document.getElementById('helloUser');
+
+/* ----------------------- */
+
+function addName(Name) {
+    let helloUser = document.getElementById('helloUser')
     helloUser.innerHTML += ` ${Name}`;
 }
 
 
-function addlevel(level){
+function addLevel(level){
     let userlevel = document.getElementById('level');
     userlevel.innerHTML += ` ${level}`;
 }
@@ -34,6 +37,7 @@ function addHomework(lektier) {
     else
     homework.innerHTML = "Du har ikke lektier for";
 }
+
 
 function solvedAssignments(assignmentType){
     let solved = document.querySelector(`#${assignmentType}`)
