@@ -9,7 +9,6 @@ function headerclass(a) {
 
 function studentinfo(a) {
     document.getElementById("studentinformation").innerHTML = "Elev: " + a;
-    document.getElementById("studentinformation").innerHTML = "Elev: " + a;
 }
 
 function addclass() {
