@@ -17,6 +17,19 @@ con.connect(function(err){
     //    if (err) throw err
     //    console.log("Database available")
     //})
+
+/*
+    con.query("SELECT * FROM Users", function (err, result, fields){
+        if (err) throw err
+        console.log(result)
+    })
+*/
+//    con.end()
+createUsers()
+createUserData()
+})
+
+function createUsers(){
     con.query("DROP TABLE IF EXISTS Users")
     let sql = `CREATE TABLE Users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,13 +70,8 @@ con.connect(function(err){
             if (err) throw err
         }
     }
-/*
-    con.query("SELECT * FROM Users", function (err, result, fields){
-        if (err) throw err
-        console.log(result)
-    })
-*/
-//    con.end()
+}
+function createUserData(){
     con.query("DROP TABLE IF EXISTS UserData")
     let sql = `CREATE TABLE UserData (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,7 +85,7 @@ con.connect(function(err){
         if (err) throw err;
         console.log("Table created")
     })
-})
+}
 
 function saltGenerator(){
     salt = Math.floor(Math.random()*100000)
