@@ -4,11 +4,7 @@ const ResultSet = require('mysql/lib/protocol/ResultSet')
 const { stringify } = require('querystring')
 const { isNull } = require('util')
 let con = mysql.createConnection({
-/*  host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'P2Users'
-*/  host: 'localhost',
+    host: 'localhost',
     user: 'dat2c2-4',
     password: 't95oqnsuoqLpR27r',
     database: 'dat2c2_4'
@@ -28,7 +24,8 @@ con.connect(function(err){
                 UserLogin VARCHAR(255),
                 UserPass VARCHAR(255),
                 UserSalt VARCHAR(255),
-                UserPassAndSaltHashed VARCHAR(255))`
+                UserPassAndSaltHashed VARCHAR(255)
+            )`
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Table created")
@@ -60,11 +57,26 @@ con.connect(function(err){
             if (err) throw err
         }
     }
+/*
     con.query("SELECT * FROM Users", function (err, result, fields){
         if (err) throw err
         console.log(result)
     })
+*/
 //    con.end()
+    con.query("DROP TABLE IF EXISTS UserData")
+    let sql = `CREATE TABLE UserData (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                UserName VARCHAR(255),
+                Level INT DEFAULT "0",
+                CurrentXp INT DEFAULT "0",
+                RequiredXp INT DEFAULT "15",
+                Homework BOOL DEFAULT "0"
+            )`
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Table created")
+    })
 })
 
 function saltGenerator(){
@@ -76,14 +88,8 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-//setTimeout(login, 1500)
-document.querySelector("submitbutton").addEventListener("click", login)
-function login(){
-    let enteredUserLogin = document.querySelector("#username").value + ""
-    let enteredUserPassword = document.querySelector("#password").value + ""
-    getUserData(enteredUserLogin, enteredUserPassword)
-}
 
+/*
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
@@ -117,7 +123,7 @@ found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
-
+*/
 
 
 /*https://stackoverflow.com/a/65237583*/
