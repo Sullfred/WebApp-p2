@@ -96,7 +96,6 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-
 /*
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
