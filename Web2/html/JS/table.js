@@ -70,8 +70,7 @@ function createUserData(){
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
-                Homework BOOL DEFAULT "1",
-                FOREIGN KEY (UserLoginId) REFERENCES Users(UserLoginId)
+                Homework BOOL DEFAULT "1"
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
@@ -92,7 +91,7 @@ function randClass(){
     let classroom = Math.round(Math.random()*3+1)
     let suffix = ["a", "b", "c"]
     if(classroom != 0){
-        return "classroom"+"."+`${suffix[Math.round(Math.random()*3)]}`
+        return `${classroom}`+"."+`${suffix[Math.round(Math.random()*3)]}`
     }
     else
     randClass()
@@ -102,7 +101,7 @@ function randName(){
     let lastNames = ["Petty", "Webster", "Campbell", "Gilbert", "Benjamin", "Turner", "Gates", "Alvarado", "Murphy", "Chung", "Byrd", "Schneider", "Aguilar", "Stanton", "Burns", "Norton", "Macdonald", "Hancock", "Conrad", "Ramos", "Gill", "Savage", "Mccann", "Montes", "French", "Figueroa", "Guerra", "Mayo", "Nichols", "Zamora", "Meyer", "Mathis", "James", "Terrell", "Graham", "Hickman", "Paul", "Mcpherson", "Pineda", "Novak"]
         let randomFirstName = firstNames[Math.round(Math.random()*40)]
         let randomLastName = lastNames[Math.round(Math.random()*40)]
-    return `${randomFirstName}+" "+${randomLastName}`
+    return `${randomFirstName}`+" "+`${randomLastName}`
 }
 
 function Homework(){
