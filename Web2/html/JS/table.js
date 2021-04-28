@@ -90,7 +90,7 @@ function createUserData(){
 function randClass(){
     let classroom = Math.floor(Math.random()*3)
     let suffixes = ["a", "b", "c"]
-    let chosenSufix = suffixes[Math.floor(Math.random())*2]
+    let chosenSufix = suffixes[Math.round(Math.random())*2]
         return `${classroom}`+"."+ chosenSufix
 }
 function randName(){
