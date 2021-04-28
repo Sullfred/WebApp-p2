@@ -91,7 +91,7 @@ function randClass(){
     let classroom = Math.floor(Math.random()*4);
     let suffix = ["a", "b", "c"];
 
-    return classroom + "." + `${suffix[Math.floor(Math.random()*2)]}`
+    return classroom + "." + `${suffix[Math.round(Math.random()*2)]}`
 }
 function randName(){
     let firstNames = ["Nigel", "Clement", "Jamal", "Bert", "Olen", "Noel", "Emerson", "Leo", "Kelvin", "Albert", "Harland", "Jerrod", "Kevin","Brain", "Tim", "Isaiah", "Augustine", "Grover", "Beau", "Tyrone", "Casie", "Kizzie", "Joann", "Charmain", "Kiara", "Beckie", "Ammiez", "Thu", "Vernell", "Lurlene", "Katelyn", "Johna", "Christeen", "Darleen", "Cathrine", "Shavonne", "Yevette", "Myrta", "Collette", "Roxane"]
