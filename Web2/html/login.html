@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
     <head>
+        <title>MatemaTikTok</title>
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="log in page for P2 project">
@@ -18,19 +19,19 @@
                 <form action="" method="POST" class="login-form">
                     <div class="username">
                         <div><label>Brugernavn: </label></div>
-                        <input type="text" name="brugernavn" placeholder="indtast brugernavn">
+                        <input type="text" id="username" name="brugernavn" placeholder="indtast brugernavn">
                     </div>
 
                     <div class="password">
                         <div><label>Adgangskode: </label></div>
-                        <input type="password" name="kodeord" placeholder="indtast Adgangskode">
+                        <input type="password" id="password" name="kodeord" placeholder="indtast Adgangskode">
                     </div>
                 </form>
             </div>
 
             <div class="buttons-wrapper">
                 <form action="" method="POST">
-                    <button type="submit" class="login">Log på</button>
+                    <button type="submit" id="submitbutton" class="login">Log på</button>
                     <input type="button" class="cancel" value="Annuller" onclick="location.href='index.html'">
                 </form>
 
@@ -48,4 +49,6 @@
         </div>
 
     </body>
+    <script type="text/javascript" src="table.js"></script>
+
 </html>
