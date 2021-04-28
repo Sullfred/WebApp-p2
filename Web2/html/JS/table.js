@@ -124,7 +124,7 @@ function Homework(){
 
 function saltGenerator(){
     salt = Math.floor(Math.random()*100000)
-    if (salt < 100000)
+    if (salt < 10000)
         return saltGenerator()
     else
     return salt
