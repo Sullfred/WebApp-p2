@@ -88,9 +88,9 @@ function createUserData(){
 
 }
 function randClass(){
-    let classroom = Math.round(Math.random()*3+1)
+    let classroom = Math.floor(Math.random()*3)
     let suffix = ["a", "b", "c"]
-    if(classroom != 0){
+    if(classroom !== 0){
         return `${classroom}`+"."+`${suffix[Math.round(Math.random()*3)]}`
     }
     else
