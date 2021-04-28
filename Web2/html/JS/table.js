@@ -64,13 +64,15 @@ function createUsers(){
 function createUserData(){
     con.query("DROP TABLE IF EXISTS UserData")
     let sql = `CREATE TABLE UserData (
-                id INT AUTO_INCREMENT PRIMARY KEY,
+                PersonId INT AUTO_INCREMENT PRIMARY KEY,
                 UserName VARCHAR(255),
                 UserClassroom VARCHAR(255),
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
-                Homework BOOL DEFAULT "1"
+                Homework BOOL DEFAULT "1",
+                UserLoginId INT AUTO_INCREMENT,
+                FOREIGN KEY (UserLoginId) REFERENCES Users(UserLoginId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
