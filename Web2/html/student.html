@@ -1,13 +1,118 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Student page</title>
+        <title>MatemaTikTok</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/student.css">
         <meta name="description" content="Test page for P2 project">
         <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
         <meta name="author" content="Daniel Vang Kleist">
         <meta charset="UTF-8">
     </head>
     <body>
+        <header id="header">
+            <div class="container">
+                <h1><a href="#">MatemaTikTok</a></h1>
+            </div>
+        </header>
+
+        <nav id="nav-bar">
+            <ul>
+                <li><a href="#">Hjem</a></li>
+                <li><a href="StudentPages/homework.html">Lektier</a></li>
+                <li><a href="StudentPages/Exercises.html">Flere opgaver</a></li>
+                <li><a href="#">Fremskridt</a></li>
+                <li><a href="index.html" class="log-ud">Log ud</a></li>
+            </ul>
+        </nav>
+
+        <section id="main-section">
+            <div>
+                <a href="StudentPages/Homework.html"><img class="homework-img" src="img/Resized-photos/hoework-edit.jpg" alt="Lektier"></a>
+                <div class="img-text-1"><a href="StudentPages/Homework.html">Lektier</a></div>
+            </div>
+            <div>
+                <a href="StudentPages/Exercises.html"><img class="exercise-img" src="img/Resized-photos/fler-opg.jpg" alt="Flere opgaver"></a>
+                <div class="img-text-2"><a href="StudentPages/Exercises.html">Flere opgaver</a></div>
+            </div>
+            <div>
+                <a href="StudentPages/Progress.html"><img class="progress-img" src="img/Resized-photos/fremskridt-placeholder.jpg" alt="Fremskridt"></a>
+                <div class="img-text-3"><a href="StudentPages/Progress.html">Fremskridt</a></div>
+            </div>
+            <div>
+                <a href="#"><img class="diverse-img" src="img//Resized-photos/photo-1524578271613-d550eacf6090.jpg" alt="Diverse"></a>
+                <div class="img-text-4"><a href="#">Diverse</a></div>
+            </div>
+        </section>
+
+        <aside id="side-box">
+            <div class="character">
+                <h3 id="helloUser">Hej</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="thing">Level</td>
+                            <td id="level"></td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Xp</td>
+                            <td id = "xp">0/0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="statistics">
+                <h3>Opgaver</h3>
+                <div class="mat-emner">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Emne</th>
+                                <th>Antal løste opgaver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="thing">Plus</td>
+                                <td id="compPlus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Minus</td>
+                                <td id="compMinus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Gange</td>
+                                <td id="compGange">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Dividere</td>
+                                <td id="compDiv">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Blandet</td>
+                                <td id="compBlandet">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="homework-todo">
+                <h3>Lektier</h3>
+                <p id="lektier">Lektier</p>
+            </div>
+        </aside>
+
+        <footer id="footer">
+            <p>Copyright &copy; 2021 MatemaTikTok</p>
+        </footer>
+
+
+        <script src="JS/user.js"></script>
     </body>
 </html>
