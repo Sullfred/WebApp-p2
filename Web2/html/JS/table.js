@@ -13,18 +13,6 @@ let con = mysql.createConnection({
 con.connect(function(err){
     if (err) throw err
     console.log("Connected!")
-    //con.query("CREATE DATABASE IF NOT EXISTS P2Users", function (err, result){
-    //    if (err) throw err
-    //    console.log("Database available")
-    //})
-
-/*
-    con.query("SELECT * FROM Users", function (err, result, fields){
-        if (err) throw err
-        console.log(result)
-    })
-*/
-//    con.end()
 createUsers()
 createUserData()
 })
@@ -32,7 +20,7 @@ createUserData()
 function createUsers(){
     con.query("DROP TABLE IF EXISTS Users")
     let sql = `CREATE TABLE Users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
+                UserLoginId INT AUTO_INCREMENT PRIMARY KEY,
                 UserType VARCHAR(255),
                 UserLogin VARCHAR(255),
                 UserPass VARCHAR(255),
@@ -41,7 +29,7 @@ function createUsers(){
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Table created")
+        console.log("Table created!")
     })
     for (let index = 1; index !== 31; index++) {
         let userType = "Elev"
@@ -55,13 +43,15 @@ function createUsers(){
                     '${salt}', '${userPassAndSaltHashed}')`
         con.query(sql, function(err, result){
             if (err) throw err
+/*
             single= "record"
             if(index > 1){single+="s"}
             console.log(`${index} ${single} have been created`)
+*/
         })
     }
     let userHashTest = 1
-    if (userHashTest = 1){
+    if (userHashTest === 1){
         let hash = sha256("ElevPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
         VALUES ('Elev', 'ElevLogin31', 'ElevPassword31',
@@ -76,10 +66,55 @@ function createUserData(){
     let sql = `CREATE TABLE UserData (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 UserName VARCHAR(255),
+                UserClassroom VARCHAR(255),
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
-                Homework BOOL DEFAULT "0"
+                Homework BOOL DEFAULT "1",
+                FOREIGN KEY (UserLoginId) REFERENCES Users(UserLoginId)
+            )`
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Table created")
+    })
+    for (let index = 0; index < 31; index++) {
+        let name = randName();
+        let classroom = randClass()
+        let sql = `INSERT INTO UserData (UserName, UserClassRoom)
+                    VALUES ('${name}', '${classroom}')`
+        con.query(sql, function (err, result){
+            if (err) throw err;
+        })
+    }
+
+}
+function randClass(){
+    let classroom = Math.round(Math.random()*3+1)
+    let suffix = ["a", "b", "c"]
+    if(classroom != 0){
+        return "classroom"+"."+`${suffix[Math.round(Math.random()*3)]}`
+    }
+    else
+    randClass()
+}
+function randName(){
+    let firstNames = ["Nigel", "Clement", "Jamal", "Bert", "Olen", "Noel", "Emerson", "Leo", "Kelvin", "Albert", "Harland", "Jerrod", "Kevin","Brain", "Tim", "Isaiah", "Augustine", "Grover", "Beau", "Tyrone", "Casie", "Kizzie", "Joann", "Charmain", "Kiara", "Beckie", "Ammiez", "Thu", "Vernell", "Lurlene", "Katelyn", "Johna", "Christeen", "Darleen", "Cathrine", "Shavonne", "Yevette", "Myrta", "Collette", "Roxane"]
+    let lastNames = ["Petty", "Webster", "Campbell", "Gilbert", "Benjamin", "Turner", "Gates", "Alvarado", "Murphy", "Chung", "Byrd", "Schneider", "Aguilar", "Stanton", "Burns", "Norton", "Macdonald", "Hancock", "Conrad", "Ramos", "Gill", "Savage", "Mccann", "Montes", "French", "Figueroa", "Guerra", "Mayo", "Nichols", "Zamora", "Meyer", "Mathis", "James", "Terrell", "Graham", "Hickman", "Paul", "Mcpherson", "Pineda", "Novak"]
+        let randomFirstName = firstNames[Math.round(Math.Random()*40)]
+        let randomFirstName = lastNames[Math.round(Math.Random()*40)]
+    return `${randomFirstName}+" "+${randomLastName}`
+}
+
+function Homework(){
+    con.query("DROP TABLE IF EXISTS UserData")
+    let sql = `CREATE TABLE UserData (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                Creator VARCHAR(255),
+                AssignmentType VARCHAR(255),
+                Difficulty INT DEFAULT "0",
+                XpAmount INT DEFAULT "0",
+                Assignment VARCHAR(255) DEFAULT "2+2",
+                Answer INT DEFAULT "4"
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
@@ -89,14 +124,14 @@ function createUserData(){
 
 function saltGenerator(){
     salt = Math.floor(Math.random()*100000)
-    if (salt < 10000)
+    if (salt < 100000)
         return saltGenerator()
     else
     return salt
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-/*
+
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
@@ -125,12 +160,12 @@ function checkPassMatch (enteredUserPassword, hashedUserPassword, salt){
     unhashedPassAndSalt = enteredUserPassword + salt
     let hashedEnteredPassAndSalt = sha256(unhashedPassAndSalt)
     if (hashedEnteredPassAndSalt === hashedUserPassword)
-    console.log(`The hashed value of the entered user password concatinated with the salt matches the hash 
+    console.log(`The hashed value of the entered user password concatinated with the salt matches the hash
 found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
-*/
+
 
 
 /*https://stackoverflow.com/a/65237583*/
@@ -196,7 +231,7 @@ function sha256(ascii) {
         for (i = 0; i < 64; i++) {
             var i2 = i + j;
             // Expand the message into 64 words
-            // Used below if 
+            // Used below if
             var w15 = w[i - 15], w2 = w[i - 2];
 
             // Iterate
