@@ -88,7 +88,7 @@ function createUserData(){
 
 }
 function randClass(){
-    let classroom = Math.round(Math.random()*3+1)
+    let classroom = Math.round(Math.random()*3)
     let suffix = ["a", "b", "c"]
     if(classroom != 0){
         return classroom + "." + `${suffix[Math.round(Math.random()*3)]}`
@@ -99,8 +99,8 @@ function randClass(){
 function randName(){
     let firstNames = ["Nigel", "Clement", "Jamal", "Bert", "Olen", "Noel", "Emerson", "Leo", "Kelvin", "Albert", "Harland", "Jerrod", "Kevin","Brain", "Tim", "Isaiah", "Augustine", "Grover", "Beau", "Tyrone", "Casie", "Kizzie", "Joann", "Charmain", "Kiara", "Beckie", "Ammiez", "Thu", "Vernell", "Lurlene", "Katelyn", "Johna", "Christeen", "Darleen", "Cathrine", "Shavonne", "Yevette", "Myrta", "Collette", "Roxane"]
     let lastNames = ["Petty", "Webster", "Campbell", "Gilbert", "Benjamin", "Turner", "Gates", "Alvarado", "Murphy", "Chung", "Byrd", "Schneider", "Aguilar", "Stanton", "Burns", "Norton", "Macdonald", "Hancock", "Conrad", "Ramos", "Gill", "Savage", "Mccann", "Montes", "French", "Figueroa", "Guerra", "Mayo", "Nichols", "Zamora", "Meyer", "Mathis", "James", "Terrell", "Graham", "Hickman", "Paul", "Mcpherson", "Pineda", "Novak"]
-        let randomFirstName = firstNames[Math.round(Math.random()*40)]
-        let randomLastName = lastNames[Math.round(Math.random()*40)]
+        let randomFirstName = firstNames[Math.round(Math.random()*39)]
+        let randomLastName = lastNames[Math.round(Math.random()*39)]
     return randomFirstName + " " + randomLastName;
 }
 
