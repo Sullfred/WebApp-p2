@@ -71,7 +71,6 @@ function createUserData(){
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
                 Homework BOOL DEFAULT "1",
-                FOREIGN KEY (UserLoginId) REFERENCES Users(UserLoginId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
