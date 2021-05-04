@@ -15,7 +15,7 @@ con.connect(function(err){
     console.log("Connected!")
 createUsers()
 createUserData()
-Homework()
+CreateHomework()
 })
 
 function createUsers(){
@@ -78,6 +78,7 @@ function createUserData(){
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
                 Divison INT DEFAULT "0",
+                Mixed INT DEFAULT "0",
                 FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
             )`
     con.query(sql, function (err, result) {
@@ -108,7 +109,7 @@ function randName(){
     return randomFirstName + " " + randomLastName;
 }
 
-function Homework(){
+function CreateHomework(){
     con.query("DROP TABLE IF EXISTS Homework")
     let sql = `CREATE TABLE Homework (
                 AssignmentId INT PRIMARY KEY,
