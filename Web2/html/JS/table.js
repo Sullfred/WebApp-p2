@@ -109,13 +109,14 @@ function randName(){
 function Homework(){
     con.query("DROP TABLE IF EXISTS Homework")
     let sql = `CREATE TABLE Homework (
-                assignmentId INT AUTO_INCREMENT PRIMARY KEY,
+                AssignmentId INT PRIMARY KEY,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
                 XpAmount INT DEFAULT "0",
                 Assignment VARCHAR(255) DEFAULT "2+2",
                 Answer INT DEFAULT "4"
+                FOREIGN KEY (AssignmentId) REFERENCES UserData(PersonId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
