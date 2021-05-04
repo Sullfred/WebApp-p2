@@ -15,6 +15,7 @@ con.connect(function(err){
     console.log("Connected!")
 createUsers()
 createUserData()
+Homework()
 })
 
 function createUsers(){
@@ -71,6 +72,10 @@ function createUserData(){
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
                 Homework BOOL DEFAULT "1",
+                Addition INT DEFAULT "0",
+                Subtraction INT DEFAULT "0",
+                Multiplication INT DEFAULT "0",
+                Divison INT DEFAULT "0",
                 FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
             )`
     con.query(sql, function (err, result) {
@@ -86,7 +91,6 @@ function createUserData(){
             if (err) throw err;
         })
     }
-
 }
 function randClass(){
     let classroom = Math.floor(Math.random()*3)
@@ -103,15 +107,16 @@ function randName(){
 }
 
 function Homework(){
-    con.query("DROP TABLE IF EXISTS UserData")
+    con.query("DROP TABLE IF EXISTS Homework")
     let sql = `CREATE TABLE UserData (
-                id INT AUTO_INCREMENT PRIMARY KEY,
+                assignmentId INT AUTO_INCREMENT PRIMARY KEY,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
                 XpAmount INT DEFAULT "0",
                 Assignment VARCHAR(255) DEFAULT "2+2",
                 Answer INT DEFAULT "4"
+                FOREIGN KEY (assignmentId) REFERENCES Users(PersonId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
