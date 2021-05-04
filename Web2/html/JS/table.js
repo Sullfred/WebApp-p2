@@ -30,7 +30,7 @@ function createUsers(){
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Table created!")
+        console.log("Users table created!")
     })
     for (let index = 1; index !== 31; index++) {
         let userType = "Elev"
@@ -80,7 +80,7 @@ function createUserData(){
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Table created")
+        console.log("UserData table created")
     })
     for (let index = 0; index < 31; index++) {
         let name = randName();
@@ -108,7 +108,7 @@ function randName(){
 
 function Homework(){
     con.query("DROP TABLE IF EXISTS Homework")
-    let sql = `CREATE TABLE UserData (
+    let sql = `CREATE TABLE Homework (
                 assignmentId INT AUTO_INCREMENT PRIMARY KEY,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
@@ -120,7 +120,7 @@ function Homework(){
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Table created")
+        console.log("Homework table created")
     })
 }
 
