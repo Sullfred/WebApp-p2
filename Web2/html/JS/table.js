@@ -19,7 +19,9 @@ Homework()
 })
 
 function createUsers(){
-    con.query("DROP TABLE IF EXISTS Users")
+    con.query(`SET FOREIGN_KEY_CHECKS = 0`)
+    con.query(`DROP TABLE IF EXISTS Users`)
+    con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     let sql = `CREATE TABLE Users (
                 UserLoginId INT AUTO_INCREMENT PRIMARY KEY,
                 UserType VARCHAR(255),
@@ -115,7 +117,7 @@ function Homework(){
                 Difficulty INT DEFAULT "0",
                 XpAmount INT DEFAULT "0",
                 Assignment VARCHAR(255) DEFAULT "2+2",
-                Answer INT DEFAULT "4"
+                Answer INT DEFAULT "4",
                 FOREIGN KEY (AssignmentId) REFERENCES UserData(PersonId)
             )`
     con.query(sql, function (err, result) {
