@@ -116,7 +116,6 @@ function Homework(){
                 XpAmount INT DEFAULT "0",
                 Assignment VARCHAR(255) DEFAULT "2+2",
                 Answer INT DEFAULT "4"
-                FOREIGN KEY (assignmentId) REFERENCES Users(PersonId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
