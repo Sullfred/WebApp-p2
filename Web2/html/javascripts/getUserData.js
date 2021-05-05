@@ -9,7 +9,7 @@ let con = mysql.createConnection({
 
   con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT * FROM UserData", function (err, result, fields) {
+    con.query("SELECT * FROM UserData WHERE PersonId = '3'", function (err, result, fields) {
       if (err) throw err;
       console.log(result);
     });
