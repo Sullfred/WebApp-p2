@@ -16,30 +16,19 @@
             <h1>Login</h1>
 
             <div id="log-in">
-                <form action="" method="POST" class="login-form">
+                <form action="./login" method="POST" class="login-form">
                     <div class="username">
                         <div><label>Brugernavn: </label></div>
-                        <input type="text" id="username" name="brugernavn" placeholder="indtast brugernavn">
+                        <input type="text" id="username" name="username" placeholder="indtast brugernavn">
                     </div>
 
                     <div class="password">
                         <div><label>Adgangskode: </label></div>
-                        <input type="password" id="password" name="kodeord" placeholder="indtast Adgangskode">
+                        <input type="password" id="password" name="password" placeholder="indtast Adgangskode">
                     </div>
-                </form>
-            </div>
-
-            <div class="buttons-wrapper">
-                <form action="" method="POST">
                     <button type="submit" id="submitbutton" class="login">Log på</button>
                     <input type="button" class="cancel" value="Annuller" onclick="location.href='index.html'">
                 </form>
-
-                <!--
-                <form action="index.html">
-                    <button type="submit" class="cancel">Annuller</button>
-                </form>
-                -->
             </div>
 
             <div class="forgot-password">
@@ -47,7 +36,6 @@
             </div>
 
         </div>
-
     </body>
 
 </html>

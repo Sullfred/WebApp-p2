@@ -65,7 +65,9 @@ function createUsers(){
     }
 }
 function createUserData(){
+    con.query(`SET FOREIGN_KEY_CHECKS = 0`)
     con.query("DROP TABLE IF EXISTS UserData")
+    con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     let sql = `CREATE TABLE UserData (
                 PersonId INT AUTO_INCREMENT PRIMARY KEY,
                 UserName VARCHAR(255),
@@ -136,7 +138,8 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-
+let enteredUserLogin = "ElevLogin31", enteredUserPassword = "ElevPassword31"
+getUserData(enteredUserLogin,enteredUserPassword)
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
