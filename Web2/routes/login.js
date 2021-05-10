@@ -84,17 +84,22 @@ router.post('/', function(req, res){
       if (err) throw err;
       let rowDataPacketToString = stringify(Object.assign({}, result[0]))
       let userType = getValue(rowDataPacketToString)
+      con.query(`SELECT UserLoginId FROM Users WHERE UserPassAndSaltHashed ="${UserPassAndSaltHashed}"`, function (err, result) {
+        if (err) throw err;
+        let rowDataPacketToString = stringify(Object.assign({}, result[0]))
+        let userLoginId = getValue(rowDataPacketToString)
       if(userType === "Elev"){
         console.log("typen er elev")
-        app.get('/student', function(req, res, next) {
-          res.send('../public/student.html');
-        });
+        return res.redirect('/student.html')
       }
       else if(userType === "Lærer"){
-        router.get('/teacher', function(req, res, next) {
-          res.send('../public/teacher.html');
-        });
+        console.log("typen er lærer")
+        return res.redirect('/teacher.html')
       }
+      else{
+        //lav en fejlkode at sende
+      }
+      })
     })
   }
 
