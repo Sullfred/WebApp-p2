@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var app = express();
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
+
 var multer = require('multer');
 var upload = multer();
 
@@ -20,11 +21,8 @@ app.use(express.static('public'));
 /* GET users listing. */
 router.get('/student', function(req, res, next) {
   res.send('../public/student.html');
+  console.log("test test test test test")
+  next()
 });
-
-app.get('/student/?userLoginId', function(req, res){
-  const UserLoginId = req.params['userLoginId']+req.params[0]
-  console.log(`${UserLoginId}`)
-})
 
 module.exports = router;
