@@ -35,9 +35,9 @@ function createUsers(){
         console.log("Users table created!")
     })
     for (let index = 1; index !== 31; index++) {
-        let userType = "Elev"
+        let userType = "Student"
         if (10%index===0){
-            userType = "Lærer"
+            userType = "Teacher"
         }
         let salt = saltGenerator()
         let userPassAndSaltHashed = sha256(userType+"Password"+index+salt)
@@ -57,7 +57,7 @@ function createUsers(){
     if (userHashTest === 1){
         let hash = sha256("ElevPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
-        VALUES ('Elev', 'ElevLogin31', 'ElevPassword31',
+        VALUES ('Student', 'StudentLogin31', 'StudentPassword31',
         '55555', '${hash}')`
         con.query(sql), function(err, result){
             if (err) throw err
@@ -138,7 +138,6 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-let enteredUserLogin = "ElevLogin31", enteredUserPassword = "ElevPassword31"
 getUserData(enteredUserLogin,enteredUserPassword)
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {

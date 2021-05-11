@@ -1,0 +1,136 @@
+body {
+    background-color: #f4f4f4;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 0%;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.container a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#header {
+    background-color: coral;
+    color: #fff;
+}
+
+#nav-bar {
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 1%;
+}
+
+#nav-bar ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+#nav-bar li {
+    display: inline;
+}
+
+#nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-right: 15px;
+}
+
+#nav-bar a:hover {
+    color: red;
+}
+
+.logout {
+    position: absolute;
+    right: 1%;
+}
+
+.username {
+    position: absolute;
+    right: 7%;
+}
+
+#navigation {
+    width: 75%;
+    height: 58vh;
+    margin: auto;
+    margin-top: 5%;
+    display: block;
+    box-sizing: border-box;
+    background-color: #555;
+    border: solid 2px black;
+}
+
+img {
+    width: 33vw;
+    height: 46vh;
+    display: block;
+    float: left;
+    text-align: center;
+    position: relative;
+    border: solid 4px black;
+}
+ 
+img:hover {
+    opacity: 0.6;
+}
+
+.homework-page,
+.class-page {
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.image-text {
+    position: absolute;
+    top: 52%;
+    left: 32%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    transform: translate(-50%, -50%);
+}
+
+.image-text2 {
+    position: absolute;
+    top: 52%;
+    left: 68%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    transform: translate(-50%, -50%);
+}
+
+.image-text a,
+.image-text2 a {
+    text-decoration: none;
+    color: rgb(250, 246, 27);
+    text-shadow: 0px 0px 3px black;
+}
+
+.image-text a:hover,
+.image-text2 a:hover {
+    opacity: 0.9;
+}
+
+
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 100%;
+}
+ 
