@@ -18,11 +18,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+router.post('/', function(req, res, next){
+  let id = req.body.userId
+  console.log(id)
+})
+
 /* GET users listing. */
 router.get('/student', function(req, res, next) {
   res.send('../public/student.html');
   console.log("test test test test test")
   next()
 });
+
+
 
 module.exports = router;
