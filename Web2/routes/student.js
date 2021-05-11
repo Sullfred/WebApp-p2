@@ -20,10 +20,10 @@ app.use(express.static('public'));
 
 /* GET users listing. */
 router.get('/student', function(req, res, next) {
+  let id = req.query.id;
+  console.log(id);
   res.send('../public/student.html');
   
-  const id = req.query.id
-  console.log(id);
 });
 
 module.exports = router;
