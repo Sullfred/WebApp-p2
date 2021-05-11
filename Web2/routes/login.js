@@ -91,7 +91,7 @@ router.post('/', function(req, res){
         let userLoginId = getValue(rowDataPacketToString)
         if(userType === "Student"){
         console.log("typen er elev")
-        return res.redirect('/student.html?'+'id=31')
+        return redirect()//res.redirect('/student.html?' + `id=${userLoginId}`)
       }
       else if(userType === "Teacher"){
         console.log("typen er lærer")
@@ -101,6 +101,13 @@ router.post('/', function(req, res){
         //lav en fejlkode at sende
       }
       })
+    })
+  }
+
+  function redirect(){
+    app.get('/login', function(req, res, next){
+      console.log("test redirect")
+      res.send("../public/student")
     })
   }
 

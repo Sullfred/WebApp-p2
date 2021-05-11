@@ -55,7 +55,7 @@ function createUsers(){
     }
     let userHashTest = 1
     if (userHashTest === 1){
-        let hash = sha256("ElevPassword3155555")
+        let hash = sha256("StudentPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
         VALUES ('Student', 'StudentLogin31', 'StudentPassword31',
         '55555', '${hash}')`
@@ -138,7 +138,7 @@ function saltGenerator(){
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
-getUserData(enteredUserLogin,enteredUserPassword)
+
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
