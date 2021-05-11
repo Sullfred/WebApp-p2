@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var app = express();
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
+
 var multer = require('multer');
 var upload = multer();
 
@@ -84,17 +85,22 @@ router.post('/', function(req, res){
       if (err) throw err;
       let rowDataPacketToString = stringify(Object.assign({}, result[0]))
       let userType = getValue(rowDataPacketToString)
-      if(userType === "Elev"){
+      con.query(`SELECT UserLoginId FROM Users WHERE UserPassAndSaltHashed ="${UserPassAndSaltHashed}"`, function (err, result) {
+        if (err) throw err;
+        let rowDataPacketToString = stringify(Object.assign({}, result[0]))
+        let userLoginId = getValue(rowDataPacketToString)
+        if(userType === "Student"){
         console.log("typen er elev")
-        app.get('/student', function(req, res, next) {
-          res.send('../public/student.html');
-        });
+        return res.redirect('/student.html?'+'id=31')
       }
-      else if(userType === "Lærer"){
-        router.get('/teacher', function(req, res, next) {
-          res.send('../public/teacher.html');
-        });
+      else if(userType === "Teacher"){
+        console.log("typen er lærer")
+        return res.redirect('/teacher.html')
       }
+      else{
+        //lav en fejlkode at sende
+      }
+      })
     })
   }
 
