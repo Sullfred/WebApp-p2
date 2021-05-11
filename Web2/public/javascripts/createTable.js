@@ -137,7 +137,7 @@ function saltGenerator(){
     return salt
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
-
+/*
 getUserData(enteredUserLogin,enteredUserPassword)
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
@@ -172,8 +172,7 @@ found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
-
-
+*/
 
 /*https://stackoverflow.com/a/65237583*/
 function sha256(ascii) {
@@ -276,4 +275,5 @@ function sha256(ascii) {
     }
     return result;
 };
+
 /*https://stackoverflow.com/a/65237583*/
