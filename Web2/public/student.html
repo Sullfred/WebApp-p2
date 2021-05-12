@@ -8,6 +8,7 @@
         <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
         <meta name="author" content="Daniel Vang Kleist">
         <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header id="header">
@@ -112,11 +113,22 @@
             <p>Copyright &copy; 2021 MatemaTikTok</p>
         </footer>
 
-
         <script src="javascripts/user.js"></script>
-        <script>
+        <div id="log-in" style="display: none;">
+            <form name="query" id="query" action="./student" method="POST" class="login-form">
+                <input type="text" id="id" name="id" value="">
+                <input type="text" id="test" name="test" value="test">
+            </form>
+        </div>
+        <script type="text/javascript">
             const queryString = window.location.search;
-            console.log(queryString);
+            document.querySelector("#id").value = queryString
+            document.querySelector("#test").value = "blah"
+            if(queryString.substr(0,4) === "?id="){
+                window.onload = function(){
+                document.forms['query'].submit()
+                }
+            }
         </script>
     </body>
 </html>

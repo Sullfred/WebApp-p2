@@ -4,7 +4,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('../public/exercises.html');
+  let query = req.query
+  res.redirect("../public/Exercises.html" + query);
 });
 
 module.exports = router;

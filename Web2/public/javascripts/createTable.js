@@ -16,6 +16,7 @@ con.connect(function(err){
 createUsers()
 createUserData()
 CreateHomework()
+
 })
 
 function createUsers(){
@@ -79,7 +80,7 @@ function createUserData(){
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
-                Divison INT DEFAULT "0",
+                Division INT DEFAULT "0",
                 Mixed INT DEFAULT "0",
                 FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
             )`
@@ -126,6 +127,7 @@ function CreateHomework(){
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Homework table created")
+        getUserData(31)
     })
 }
 
@@ -139,7 +141,7 @@ function saltGenerator(){
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
 
 
-function getUserData(enteredUserLogin, enteredUserPassword){
+function getUsers(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
             if (result.length != 0){
@@ -173,6 +175,52 @@ found in the database\nLogin Succesful`)
     console.log("Login unsuccesful")
 }
 
+function getUserData(userId){
+    let user = {
+        PersionId: "",
+        UserName: "",
+        UserClassroom: "",
+        Level: 0,
+        CurrentXp: 0,
+        RequiredXp: 0,
+        Homework: 0,
+        Addition: 0,
+        Subtraction: 0,
+        Multiplication: 0,
+        Division: 0,
+        Mixed: 0
+    }
+    let userFields = ["PersonId", "UserName", "UserClassroom", "Level", "CurrentXp",
+                    "RequiredXp", "Homework", "Addition", "Subtraction", "Multiplication",
+                    "Division", "Mixed"]
+    let userFieldsValues = new Array(12)
+    for (let index = 0; index < userFields.length; index++) {
+        con.query(`SELECT ${userFields[index]} FROM UserData WHERE PersonId = "${userId}"`, function (err, result) {
+            if (err) throw err;
+            if (result.length != 0){
+                let rowDataPacketToString = stringify(Object.assign({}, result[0]))
+                userFieldsValues[index] = getValue(rowDataPacketToString)
+            }
+            if(index === 11){
+                user.PersionId = userFieldsValues[0]
+                user.UserName  = userFieldsValues[1]
+                user.UserClassroom = userFieldsValues[2]
+                user.Level = userFieldsValues[3]
+                user.CurrentXp = userFieldsValues[4]
+                user.RequiredXp = userFieldsValues[5]
+                user.Homework = userFieldsValues[6]
+                user.Addition = userFieldsValues[7]
+                user.Subtraction = userFieldsValues[8]
+                user.Multiplication = userFieldsValues[9]
+                user.Division = userFieldsValues[10]
+                user.Mixed = userFieldsValues[11]
+                console.log("UserData retrieved")
+                console.log(user)
+                return user
+            }
+        })
+    }
+}
 
 
 /*https://stackoverflow.com/a/65237583*/
