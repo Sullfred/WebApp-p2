@@ -106,6 +106,46 @@ function randomMultiplicationProblem () {
     
 }
 
+function randomdivisionProblem () {
+    let amountDifficulty = 2;
+    let numbers = [];
+    n = 10
+
+    for (i=0; i < amountDifficulty; i++){
+        numbers[i] = Math.ceil(Math.random()*n*10);
+        n = 1
+    }
+    console.log(numbers)
+
+    numbers.sort((a, b) => {
+        if (a > b)
+            return -1;
+        if (a < b)
+            return 1;
+        return 0;
+    });
+
+    if (numbers[0]%numbers[1]){
+        randomdivisionProblem();
+    }
+    else {
+        let answer = numbers[0];
+        for(i=1; i < numbers.length; i++){
+            answer = answer / numbers[i];
+        }
+
+        for(let i=0; i < amountDifficulty-1; i++){
+            numbers[i] = numbers[i]+"/";
+        }
+
+        let problem = numbers.join('');
+
+        console.log(problem+"="+answer);
+    }
+    
+}
+
 randomAdditionProblem();
 randomSubtractionProblem();
 randomMultiplicationProblem();
+randomdivisionProblem();
