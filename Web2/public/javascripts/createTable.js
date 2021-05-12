@@ -77,6 +77,7 @@ function createUserData(){
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
                 Homework BOOL DEFAULT "1",
+                AssignedHomework VARCHAR(255) DEFAULT "",
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
@@ -99,9 +100,9 @@ function createUserData(){
     }
 }
 function randClass(){
-    let classroom = Math.floor(Math.random()*3)
-    let suffixes = ["a", "b", "c"]
-    let chosenSufix = suffixes[Math.round(Math.random())*2]
+    let classroom = Math.floor(Math.random()*2+1)
+    let suffixes = ["a", "b"]
+    let chosenSufix = suffixes[Math.round(Math.random())]
         return classroom+"."+chosenSufix
 }
 function randName(){
