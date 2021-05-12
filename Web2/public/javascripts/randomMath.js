@@ -15,13 +15,13 @@ function CalculateXp (amountDifficulty, answerDifficulty) {
 
     switch(true){
         case (difficultyLevel < 30):
-            console.log("difficultyLevel = low");
+            //console.log("difficultyLevel = low");
             return earnableXp;
         case (difficultyLevel >= 30 && difficultyLevel < 50):
-            console.log("difficultyLevel = medium");
+            //console.log("difficultyLevel = medium");
             return earnableXp+3;
         case (difficultyLevel >= 50):
-            console.log("difficultyLevel = high");
+            //console.log("difficultyLevel = high");
             return earnableXp+6;
     }
 }
@@ -43,10 +43,9 @@ function randomAdditionProblem () {
     }
 
     let problem = numbers.join('');
-
-    console.log(problem+"="+answer);
     let earnableXp = CalculateXp(amountDifficulty, answer);
-    console.log(`Earnable xp = ${earnableXp}`);
+
+    return [problem, answer, earnableXp]
 
 }
 
@@ -79,9 +78,9 @@ function randomSubtractionProblem () {
 
     let problem = numbers.join('');
 
-    console.log(problem+"="+answer);
     let earnableXp = CalculateXp(amountDifficulty*3, difference*2)
-    console.log(`Earnable xp = ${earnableXp}`);
+
+    return [problem, answer, earnableXp]
 }
 
 
@@ -104,10 +103,9 @@ function randomMultiplicationProblem () {
 
     let problem = numbers.join('');
 
-    console.log(problem+"="+answer);
     let earnableXp = CalculateXp(amountDifficulty*2, answer);
-    console.log(`Earnable xp = ${earnableXp}`);
 
+    return [problem, answer, earnableXp]
     
 }
 
@@ -146,14 +144,39 @@ function randomdivisionProblem () {
 
         let problem = numbers.join('');
 
-        console.log(problem+"="+answer);
         let earnableXp = CalculateXp(amountDifficulty*2, difference*2);
-        console.log(`Earnable xp = ${earnableXp}`);
+       
+        return [problem, answer, earnableXp]
     }
     
 }
 
-randomAdditionProblem();
-randomSubtractionProblem();
-randomMultiplicationProblem();
-randomdivisionProblem();
+
+function createExercise(n){
+
+    let problem, answer, earnableXp;
+
+    switch(n){
+        case 1:
+            [problem, answer, earnableXp] = randomAdditionProblem();
+            break;
+        case 2:
+            [problem, answer, earnableXp] = randomSubtractionProblem();
+            break;
+        case 3:
+            [problem, answer, earnableXp] = randomAdditionProblem()
+            break;
+        case 4:
+            [problem, answer, earnableXp] = randomAdditionProblem()
+            break;
+    }
+
+    console.log(problem+"="+answer);
+    console.log(`Earnable xp = ${earnableXp}`);
+
+}
+
+createExercise(1);
+createExercise(2);
+createExercise(3);
+createExercise(4);
