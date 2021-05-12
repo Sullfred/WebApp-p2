@@ -9,7 +9,7 @@ function numberDifficulty () {
     return numberDifficulty;
 }
 
-function CalculateXpAddMult (amountDifficulty, answerDifficulty) {
+function CalculateXp (amountDifficulty, answerDifficulty) {
     let difficultyLevel = amountDifficulty*answerDifficulty/5;
     let earnableXp = 5;
 
@@ -45,7 +45,7 @@ function randomAdditionProblem () {
     let problem = numbers.join('');
 
     console.log(problem+"="+answer);
-    let earnableXp = CalculateXpAddMult(amountDifficulty, answer);
+    let earnableXp = CalculateXp(amountDifficulty, answer);
     console.log(`Earnable xp = ${earnableXp}`);
 
 }
@@ -71,6 +71,8 @@ function randomSubtractionProblem () {
         answer = answer - numbers[i]
     }
 
+    let difference = numbers[0] - Math.abs(answer);
+
     for(let i=0; i <= amountDifficulty-1; i++){
         numbers[i] = numbers[i]+"-";
     }
@@ -78,7 +80,7 @@ function randomSubtractionProblem () {
     let problem = numbers.join('');
 
     console.log(problem+"="+answer);
-    let earnableXp = "boop"
+    let earnableXp = CalculateXp(amountDifficulty*3, difference*2)
     console.log(`Earnable xp = ${earnableXp}`);
 }
 
@@ -103,6 +105,9 @@ function randomMultiplicationProblem () {
     let problem = numbers.join('');
 
     console.log(problem+"="+answer);
+    let earnableXp = CalculateXp(amountDifficulty*2, answer);
+    console.log(`Earnable xp = ${earnableXp}`);
+
     
 }
 
@@ -115,7 +120,6 @@ function randomdivisionProblem () {
         numbers[i] = Math.ceil(Math.random()*n*10);
         n = 1
     }
-    console.log(numbers)
 
     numbers.sort((a, b) => {
         if (a > b)
@@ -134,6 +138,8 @@ function randomdivisionProblem () {
             answer = answer / numbers[i];
         }
 
+        let difference = numbers[0] - numbers[1];
+
         for(let i=0; i < amountDifficulty-1; i++){
             numbers[i] = numbers[i]+"/";
         }
@@ -141,6 +147,8 @@ function randomdivisionProblem () {
         let problem = numbers.join('');
 
         console.log(problem+"="+answer);
+        let earnableXp = CalculateXp(amountDifficulty*2, difference*2);
+        console.log(`Earnable xp = ${earnableXp}`);
     }
     
 }
