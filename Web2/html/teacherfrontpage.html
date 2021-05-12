@@ -3,18 +3,18 @@
 
 <head>
     <title>toBeAdded</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/teacher.css">
+    <link rel="stylesheet" type="text/css" href="css/teacherfrontpage.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Test page for P2 project">
     <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
     <meta name="author" content="Daniel Vang Kleist, mm">
     <meta charset="UTF-8">
-    <script src="javascripts/teacher.js"></script>
+    <script src="JS/teacherfrontpage.js"></script>
 
 </head>
 
 <body onload = "navuser()">
-
+    
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -24,19 +24,19 @@
     <nav id="nav-bar">
         <ul id="user">
             <li><a href="#">Forside</a></li>
-            <li><a class="logout" href="index.html">Log-ud</a></li>
-
+            <li><a class="logout" href="logout.html">Log-ud</a></li>
+            
         </ul>
     </nav>
-
+    
     <div id="navigation">
+        <div> 
+            <a href="teacher.html" title="Tilgå klasse & elevoversigt"><img class="class-page" src="img/klasse.jpeg" alt="Klasse"></a>
+            <div class="image-text"><a href="teacher.html">Klasser</a></div>
+        </div> 
         <div>
-            <a href="class.html" title="Tilgå klasse & elevoversigt"><img class="class-page" src="images/klasse.jpeg" alt="Klasse"></a>
-            <div class="image-text"><a href="class.html">Klasser</a></div>
-        </div>
-        <div>
-            <a href="homeworkcreator.html" title="Tilgå lektie & opgavesiden"><img class="homework-page" src="images/Opgaver.jpeg" alt="Opgave"></a>
-            <div class="image-text2"><a href="homeworkcreator.html">Opgaver</a></div>
+            <a href="teacher.html" title="Tilgå lektie & opgavesiden"><img class="homework-page" src="img/Opgaver.jpeg" alt="Opgave"></a>
+            <div class="image-text2"><a href="teacher.html">Opgaver</a></div>
         </div>
     </div>
 
@@ -48,4 +48,4 @@
 
 </body>
 
-</html>
+</html> 
