@@ -115,15 +115,13 @@
 
         <script src="javascripts/user.js"></script>
         <div id="log-in" style="display: none;">
-            <form name="query" id="query" action="./student" method="POST" class="login-form">
+            <form name="query" id="query" action="./student" method="POST">
                 <input type="text" id="id" name="id" value="">
-                <input type="text" id="test" name="test" value="test">
             </form>
         </div>
         <script type="text/javascript">
             const queryString = window.location.search;
             document.querySelector("#id").value = queryString
-            document.querySelector("#test").value = "blah"
             if(queryString.substr(0,4) === "?id="){
                 window.onload = function(){
                 document.forms['query'].submit()

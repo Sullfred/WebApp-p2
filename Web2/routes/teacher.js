@@ -1,11 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/teacher', function(req, res, next) {
-  res.send('../public/teacher.html');
-});
-
 router.post('/', function(req, res, next){
   let userId = req.body.id
   let test = req.body.test
@@ -84,5 +79,10 @@ router.post('/', function(req, res, next){
     }
   user = getUserData(cleanUserId)
 })
+
+/* GET users listing. */
+router.get('/teacher', function(req, res, next) {
+  res.send('../public/teacher.html');
+});
 
 module.exports = router;
