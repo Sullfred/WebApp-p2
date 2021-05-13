@@ -95,7 +95,7 @@ router.post('/', function(req, res, next){
         }
         else if(userType === "Teacher"){
           console.log("typen er lærer")
-          return res.redirect('/teacher.html')
+          return res.redirect('/teacher.html?' + `id=${userLoginId}`)
         }
         else{
           //lav en fejlkode at sende

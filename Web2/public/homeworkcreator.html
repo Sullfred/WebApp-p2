@@ -28,10 +28,10 @@
         </nav>
 
         <div class="homework">
-            <form id="homeworkcreate" onsubmit="saveopg()">
+            <form action="./homeworkcreator" method="POST" id="homeworkcreate">
                 <h2>Opgaver</h2>
-                <input id="task" type="text" name="fname" placeholder="Indtast Opgave">
-                <input class="answer" type="text" name="fname" placeholder="Indtast Svar">
+                <input id="task" type="text" name="task" placeholder="Indtast Opgave">
+                <input class="answer" type="text" name="answer" placeholder="Indtast Svar">
                 <input class="homeworkbutton" type="submit" value="Tilføj">
                 <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
             </form>
