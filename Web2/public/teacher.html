@@ -46,6 +46,15 @@
 
 
 
+    <script type="text/javascript">
+        const queryString = window.location.search;
+        document.querySelector("#id").value = queryString
+        if(queryString.substr(0,4) === "?id="){
+            window.onload = function(){
+            document.forms['query'].submit()
+            }
+        }
+    </script>
 </body>
 
 </html>
