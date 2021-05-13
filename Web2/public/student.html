@@ -28,22 +28,7 @@
         </nav>
 
         <section id="main-section">
-            <div>
-                <a href="Homework.html"><img class="homework-img" src="images/Resized-photos/hoework-edit.jpg" alt="Lektier"></a>
-                <div class="img-text-1"><a href="Homework.html">Lektier</a></div>
-            </div>
-            <div>
-                <a href="Exercises.html"><img class="exercise-img" src="images/Resized-photos/fler-opg.jpg" alt="Flere opgaver"></a>
-                <div class="img-text-2"><a href="Exercises.html">Flere opgaver</a></div>
-            </div>
-            <div>
-                <a href="Progress.html"><img class="progress-img" src="images/Resized-photos/fremskridt-placeholder.jpg" alt="Fremskridt"></a>
-                <div class="img-text-3"><a href="Progress.html">Fremskridt</a></div>
-            </div>
-            <div>
-                <a href="#"><img class="diverse-img" src="images/Resized-photos/photo-1524578271613-d550eacf6090.jpg" alt="Diverse"></a>
-                <div class="img-text-4"><a href="#">Diverse</a></div>
-            </div>
+
         </section>
 
         <aside id="side-box">
@@ -131,6 +116,23 @@
             for (let index = 0; index < sites.length; index++) {
                 document.querySelector(`#${sites[index][0]}`).innerHTML = `<li><a href='${sites[index][0]}.html${queryString}'>${sites[index][1]}</a></li>`
             }
+            document.querySelector("#main-section").innerHTML = `
+            <div>
+                <a href="Homework.html${queryString}"><img class="homework-img" src="images/Resized-photos/hoework-edit.jpg" alt="Lektier"></a>
+                <div class="img-text-1"><a href="Homework.html${queryString}">Lektier</a></div>
+            </div>
+            <div>
+                <a href="Exercises.html${queryString}"><img class="exercise-img" src="images/Resized-photos/fler-opg.jpg" alt="Flere opgaver"></a>
+                <div class="img-text-2"><a href="Exercises.html${queryString}">Flere opgaver</a></div>
+            </div>
+            <div>
+                <a href="Progress.html${queryString}"><img class="progress-img" src="images/Resized-photos/fremskridt-placeholder.jpg" alt="Fremskridt"></a>
+                <div class="img-text-3"><a href="Progress.html${queryString}">Fremskridt</a></div>
+            </div>
+            <div>
+                <a href="#"><img class="diverse-img" src="images/Resized-photos/photo-1524578271613-d550eacf6090.jpg" alt="Diverse"></a>
+                <div class="img-text-4"><a href="#">Diverse</a></div>
+            </div>`
         </script>
     </body>
 </html>

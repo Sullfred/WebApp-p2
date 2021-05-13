@@ -22,3 +22,5 @@ app.use(express.static('public'));
 router.get('/assignmentlibrary', function(req, res, next) {
   res.send('../public/assignmentlibrary.html');
 });
+
+module.exports = router
