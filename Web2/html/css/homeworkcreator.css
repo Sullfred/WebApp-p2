@@ -43,11 +43,28 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    padding-right: 15px;
 }
 
 #nav-bar a:hover {
     color: red;
+}
+
+#logud {
+    position: absolute; 
+    right: 0.5%;
+}
+
+.navbutton {
+    border: none;
+    background: #333;
+    pointer-events: all;
+}
+.navbutton a {
+    font-size: 18px;
+}
+
+#fieldset {
+    border: solid 2px;
 }
 
 .homework {
@@ -63,7 +80,7 @@ body {
     text-align: center;
 }
 
-#homeworkbutton {
+.homeworkbutton {
     font-size: 25px;
     margin-top: 5%;
     display: inline-block;
@@ -92,7 +109,7 @@ body {
     justify-content: center;
 }
 
-#knap {
+.knap {
     background: none;
     border: solid black;
     font-size: 70px;
