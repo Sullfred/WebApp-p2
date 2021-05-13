@@ -89,6 +89,7 @@ router.post('/', function(req, res, next){
         if (err) throw err;
         let rowDataPacketToString = stringify(Object.assign({}, result[0]))
         let userLoginId = getValue(rowDataPacketToString)
+        let passedString = encodeURIComponent(userLoginId);
         if(userType === "Student"){
           console.log("typen er elev")
           return res.redirect('/student.html?' + `id=${userLoginId}`)
@@ -100,6 +101,7 @@ router.post('/', function(req, res, next){
         else{
           //lav en fejlkode at sende
         }
+
       })
     })
   }
