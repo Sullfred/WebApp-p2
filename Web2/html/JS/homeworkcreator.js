@@ -1,14 +1,7 @@
 
 function reset() {
-  document.getElementById("task").reset();
+  document.getElementById("homeworkcreate").reset();
 }
-
-
-
-
-function saveopg() {
-}
-
 
 function addop(a) {
     document.getElementById("task").value += a;

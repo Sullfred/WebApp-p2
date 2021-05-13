@@ -26,7 +26,8 @@ router.get('/homeworkCreator', function(req, res, next) {
 router.post('/', function(req, res, next){
   let task = req.body.task
   let answer = req.body.answer
-  console.log(typeof task, answer)
+  let difficulty =req.body.difficulty
+  console.log(typeof task, answer, difficulty)
 //  let cleanUserId = userId.replace(`?id=`,"" )
 //  console.log(cleanUserId + " " + test)
 
