@@ -1,0 +1,59 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 0%;
+}
+
+.main-area {
+    width:250px;
+    height:300px;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+
+.main-area h1 {
+    text-decoration: underline;
+}
+
+.username {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.password {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login, .cancel {
+    display: inline-block;
+    margin-right: 5mm;
+}
+
+.login:hover {
+    font-weight: bold;
+}
+
+
+.cancel:hover {
+    font-weight: bold;
+}
+
+.forgot-password a {
+    position: relative;
+    bottom: -70px;
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: red;
+}

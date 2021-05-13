@@ -1,19 +1,47 @@
 //const {Name} = require('../json/user.json');
 
-let user = {
-    Name: "Jens Jensen",
-    currentLevel: 0,
-    lektier: 1,
-    currentXp: 0,
-    requiredXp: 15,
-};
+const userDataQueryString = window.location.search
+let firstCleanUDQS = userDataQueryString.split("&")
+//console.log(firstCleanUDQS + " " + "Den nåede herind!")
 
-addName(user.Name);
-addLevel(user.currentLevel);
-addHomework(lektier);
+let secondCleanUDQS=[]
+
+for (let index = 0; index < firstCleanUDQS.length; index++) {
+    secondCleanUDQS[index] = firstCleanUDQS[index].split("=")
+}
+//console.log("SCUDQS er " + secondCleanUDQS)
+let finalCleanUDQS=[]
+let innerIndex = 1
+for (let index = 0; index < secondCleanUDQS.length; index++) {
+    if (index === 2){
+        secondCleanUDQS[index][innerIndex] = secondCleanUDQS[index][innerIndex].replace("%20", " ")
+    }
+    finalCleanUDQS[index] = secondCleanUDQS[index][innerIndex]
+}
+//console.log("Den helt rensede query er " + finalCleanUDQS)
+
+let user = {
+    UserLoaded: finalCleanUDQS[0],
+    PersionId: finalCleanUDQS[1],
+    UserName: finalCleanUDQS[2],
+    UserClassroom: finalCleanUDQS[3],
+    Level: finalCleanUDQS[4],
+    CurrentXp: finalCleanUDQS[5],
+    RequiredXp: finalCleanUDQS[6],
+    Homework: finalCleanUDQS[7],
+    Addition: finalCleanUDQS[8],
+    Subtraction: finalCleanUDQS[9],
+    Multiplication: finalCleanUDQS[10],
+    Division: finalCleanUDQS[11],
+    Mixed: finalCleanUDQS[12]
+}
+
+addName(user.UserName);
+addLevel(user.Level);
+addHomework(user.Homework);
 solvedAssignments("compPlus")
-leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
-xpView(user.currentXp, user.requiredXp)
+leveling(user.CurrentXp, user.CurrentLevel, 1197, user.RequiredXp)
+xpView(user.CurrentXp, user.RequiredXp)
 
 
 /* ----------------------- */
@@ -41,11 +69,33 @@ function addHomework(lektier) {
 
 function solvedAssignments(assignmentType){
     let solved = document.querySelector(`#${assignmentType}`)
-    console.log(solved)
+//    console.log(solved)
     solved.innerHTML++
 }
 
 function xpView(currentXp, requiredXp){
     xpObject = document.querySelector('#xp')
     xpObject.innerHTML = `${currentXp}/${requiredXp}`
+}
+
+function leveling(currentXp, currentLevel, earnedXp, requiredXp){
+    let newXp = currentXp + earnedXp
+    if (newXp >= requiredXp){
+        currentLevel++;
+        currentXp = newXp-requiredXp;
+        requiredXp = Math.floor(requiredXp*1.2);
+        if(currentXp >= requiredXp){
+//            console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+            leveling(currentXp, currentLevel, 0, requiredXp);
+        }
+        else{
+//            console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+            return currentLevel, currentXp, requiredXp;
+        }
+    }
+    else{
+//        console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
+        return newXp;
+    }
+
 }

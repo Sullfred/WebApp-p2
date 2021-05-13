@@ -15,14 +15,10 @@ con.connect(function(err){
     console.log("Connected!")
 createUsers()
 createUserData()
-CreateHomework()
-
 })
 
 function createUsers(){
-    con.query(`SET FOREIGN_KEY_CHECKS = 0`)
-    con.query(`DROP TABLE IF EXISTS Users`)
-    con.query(`SET FOREIGN_KEY_CHECKS = 1`)
+    con.query("DROP TABLE IF EXISTS Users")
     let sql = `CREATE TABLE Users (
                 UserLoginId INT AUTO_INCREMENT PRIMARY KEY,
                 UserType VARCHAR(255),
@@ -33,12 +29,12 @@ function createUsers(){
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Users table created!")
+        console.log("Table created!")
     })
     for (let index = 1; index !== 31; index++) {
-        let userType = "Student"
+        let userType = "Elev"
         if (10%index===0){
-            userType = "Teacher"
+            userType = "Lærer"
         }
         let salt = saltGenerator()
         let userPassAndSaltHashed = sha256(userType+"Password"+index+salt)
@@ -56,9 +52,9 @@ function createUsers(){
     }
     let userHashTest = 1
     if (userHashTest === 1){
-        let hash = sha256("StudentPassword3155555")
+        let hash = sha256("ElevPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
-        VALUES ('Student', 'StudentLogin31', 'StudentPassword31',
+        VALUES ('Elev', 'ElevLogin31', 'ElevPassword31',
         '55555', '${hash}')`
         con.query(sql), function(err, result){
             if (err) throw err
@@ -66,28 +62,20 @@ function createUsers(){
     }
 }
 function createUserData(){
-    con.query(`SET FOREIGN_KEY_CHECKS = 0`)
     con.query("DROP TABLE IF EXISTS UserData")
-    con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     let sql = `CREATE TABLE UserData (
-                PersonId INT AUTO_INCREMENT PRIMARY KEY,
+                id INT AUTO_INCREMENT PRIMARY KEY,
                 UserName VARCHAR(255),
                 UserClassroom VARCHAR(255),
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
                 Homework BOOL DEFAULT "1",
-                AssignedHomework VARCHAR(255) DEFAULT "",
-                Addition INT DEFAULT "0",
-                Subtraction INT DEFAULT "0",
-                Multiplication INT DEFAULT "0",
-                Division INT DEFAULT "0",
-                Mixed INT DEFAULT "0",
-                FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
+                FOREIGN KEY (UserLoginId) REFERENCES Users(UserLoginId)
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("UserData table created")
+        console.log("Table created")
     })
     for (let index = 0; index < 31; index++) {
         let name = randName();
@@ -98,50 +86,53 @@ function createUserData(){
             if (err) throw err;
         })
     }
+
 }
 function randClass(){
-    let classroom = Math.floor(Math.random()*2+1)
-    let suffixes = ["a", "b"]
-    let chosenSufix = suffixes[Math.round(Math.random())]
-        return classroom+"."+chosenSufix
+    let classroom = Math.round(Math.random()*3+1)
+    let suffix = ["a", "b", "c"]
+    if(classroom != 0){
+        return "classroom"+"."+`${suffix[Math.round(Math.random()*3)]}`
+    }
+    else
+    randClass()
 }
 function randName(){
     let firstNames = ["Nigel", "Clement", "Jamal", "Bert", "Olen", "Noel", "Emerson", "Leo", "Kelvin", "Albert", "Harland", "Jerrod", "Kevin","Brain", "Tim", "Isaiah", "Augustine", "Grover", "Beau", "Tyrone", "Casie", "Kizzie", "Joann", "Charmain", "Kiara", "Beckie", "Ammiez", "Thu", "Vernell", "Lurlene", "Katelyn", "Johna", "Christeen", "Darleen", "Cathrine", "Shavonne", "Yevette", "Myrta", "Collette", "Roxane"]
     let lastNames = ["Petty", "Webster", "Campbell", "Gilbert", "Benjamin", "Turner", "Gates", "Alvarado", "Murphy", "Chung", "Byrd", "Schneider", "Aguilar", "Stanton", "Burns", "Norton", "Macdonald", "Hancock", "Conrad", "Ramos", "Gill", "Savage", "Mccann", "Montes", "French", "Figueroa", "Guerra", "Mayo", "Nichols", "Zamora", "Meyer", "Mathis", "James", "Terrell", "Graham", "Hickman", "Paul", "Mcpherson", "Pineda", "Novak"]
-        let randomFirstName = firstNames[Math.floor(Math.random()*40)]
-        let randomLastName = lastNames[Math.floor(Math.random()*40)]
-    return randomFirstName + " " + randomLastName;
+        let randomFirstName = firstNames[Math.round(Math.Random()*40)]
+        let randomFirstName = lastNames[Math.round(Math.Random()*40)]
+    return `${randomFirstName}+" "+${randomLastName}`
 }
 
-function CreateHomework(){
-    con.query("DROP TABLE IF EXISTS Homework")
-    let sql = `CREATE TABLE Homework (
-                AssignmentId INT AUTO_INCREMENT PRIMARY KEY,
+function Homework(){
+    con.query("DROP TABLE IF EXISTS UserData")
+    let sql = `CREATE TABLE UserData (
+                id INT AUTO_INCREMENT PRIMARY KEY,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
                 XpAmount INT DEFAULT "0",
                 Assignment VARCHAR(255) DEFAULT "2+2",
-                Answer INT DEFAULT "4",
-                FOREIGN KEY (AssignmentId) REFERENCES UserData(PersonId)
+                Answer INT DEFAULT "4"
             )`
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Homework table created")
-        getUserData(31)
+        console.log("Table created")
     })
 }
 
 function saltGenerator(){
     salt = Math.floor(Math.random()*100000)
-    if (salt < 10000)
+    if (salt < 100000)
         return saltGenerator()
     else
     return salt
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
-function getUsers(enteredUserLogin, enteredUserPassword){
 
+
+function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
             if (result.length != 0){
@@ -175,52 +166,6 @@ found in the database\nLogin Succesful`)
     console.log("Login unsuccesful")
 }
 
-function getUserData(userId){
-    let user = {
-        PersionId: "",
-        UserName: "",
-        UserClassroom: "",
-        Level: 0,
-        CurrentXp: 0,
-        RequiredXp: 0,
-        Homework: 0,
-        Addition: 0,
-        Subtraction: 0,
-        Multiplication: 0,
-        Division: 0,
-        Mixed: 0
-    }
-    let userFields = ["PersonId", "UserName", "UserClassroom", "Level", "CurrentXp",
-                    "RequiredXp", "Homework", "Addition", "Subtraction", "Multiplication",
-                    "Division", "Mixed"]
-    let userFieldsValues = new Array(12)
-    for (let index = 0; index < userFields.length; index++) {
-        con.query(`SELECT ${userFields[index]} FROM UserData WHERE PersonId = "${userId}"`, function (err, result) {
-            if (err) throw err;
-            if (result.length != 0){
-                let rowDataPacketToString = stringify(Object.assign({}, result[0]))
-                userFieldsValues[index] = getValue(rowDataPacketToString)
-            }
-            if(index === 11){
-                user.PersionId = userFieldsValues[0]
-                user.UserName  = userFieldsValues[1]
-                user.UserClassroom = userFieldsValues[2]
-                user.Level = userFieldsValues[3]
-                user.CurrentXp = userFieldsValues[4]
-                user.RequiredXp = userFieldsValues[5]
-                user.Homework = userFieldsValues[6]
-                user.Addition = userFieldsValues[7]
-                user.Subtraction = userFieldsValues[8]
-                user.Multiplication = userFieldsValues[9]
-                user.Division = userFieldsValues[10]
-                user.Mixed = userFieldsValues[11]
-                console.log("UserData retrieved")
-                console.log(user)
-                return user
-            }
-        })
-    }
-}
 
 
 /*https://stackoverflow.com/a/65237583*/
@@ -324,5 +269,4 @@ function sha256(ascii) {
     }
     return result;
 };
-
 /*https://stackoverflow.com/a/65237583*/

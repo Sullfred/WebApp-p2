@@ -8,6 +8,7 @@
         <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
         <meta name="author" content="Daniel Vang Kleist">
         <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header id="header">
@@ -17,12 +18,12 @@
         </header>
 
         <nav id="nav-bar">
-            <ul>
-                <li><a href="#">Hjem</a></li>
-                <li><a href="homework.html">Lektier</a></li>
-                <li><a href="Exercises.html">Flere opgaver</a></li>
-                <li><a href="#">Fremskridt</a></li>
-                <li><a href="index.html" class="log-ud">Log ud</a></li>
+            <ul id = "navbar">
+                <li><a id="student" href="student.html">Hjem</a></li>
+                <li><a id="homework" href="homework.html">Lektier</a></li>
+                <li><a id="exercises" href="exercises.html">Flere opgaver</a></li>
+                <li><a id="progress" href="progress.html">Fremskridt</a></li>
+                <li><a id="index" href="index.html" class="log-ud">Log ud</a></li>
             </ul>
         </nav>
 
@@ -112,7 +113,24 @@
             <p>Copyright &copy; 2021 MatemaTikTok</p>
         </footer>
 
-
         <script src="javascripts/user.js"></script>
+        <div id="log-in" style="display: none;">
+            <form name="query" id="query" action="./student" method="POST">
+                <input type="text" id="id" name="id" value="">
+            </form>
+        </div>
+        <script type="text/javascript">
+            const queryString = window.location.search;
+            document.querySelector("#id").value = queryString
+            if(queryString.substr(0,4) === "?id="){
+                window.onload = function(){
+                document.forms['query'].submit()
+                }
+            }
+            let sites = [["student","Hjem"],["homework", "Lektier"],["exercises", "Flere opgaver"],["progress", "Fremskridt"]]
+            for (let index = 0; index < sites.length; index++) {
+                document.querySelector(`#${sites[index][0]}`).innerHTML = `<li><a href='${sites[index][0]}.html${queryString}'>${sites[index][1]}</a></li>`
+            }
+        </script>
     </body>
 </html>

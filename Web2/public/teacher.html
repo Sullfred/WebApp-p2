@@ -24,7 +24,7 @@
     <nav id="nav-bar">
         <ul id="user">
             <li><a href="#">Forside</a></li>
-            <li><a class="logout" href="logout.html">Log-ud</a></li>
+            <li><a class="logout" href="index.html">Log-ud</a></li>
 
         </ul>
     </nav>
@@ -45,7 +45,23 @@
     </footer>
 
 
+    <script src="javascripts/user.js"></script>
+    <div id="log-in" style="display: none;">
+        <form name="query" id="query" action="./teacher" method="POST">
+            <input type="text" id="id" name="id" value="">
+        </form>
+    </div>
 
+    
+    <script type="text/javascript">
+        const queryString = window.location.search;
+        document.querySelector("#id").value = queryString
+        if(queryString.substr(0,4) === "?id="){
+            window.onload = function(){
+            document.forms['query'].submit()
+            }
+        }
+    </script>
 </body>
 
 </html>
