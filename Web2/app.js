@@ -13,6 +13,8 @@ var progressRouter = require('./routes/progress');
 var exercisesRouter = require('./routes/exercises');
 var homeworkCreatorRouter = require('./routes/homeworkCreator');
 var classRouter = require('./routes/class');
+var assignmentlibraryRouter = require('./routes/assignmentlibrary');
+
 
 
 var app = express();
@@ -36,6 +38,8 @@ app.use('/progress', progressRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/homeworkCreator', homeworkCreatorRouter);
 app.use('/class', classRouter);
+app.use('/assignmentlibrary', assignmentlibraryRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
