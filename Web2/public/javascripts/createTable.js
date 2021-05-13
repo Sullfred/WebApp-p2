@@ -128,7 +128,6 @@ function CreateHomework(){
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Homework table created")
-        getUserData(31)
     })
 }
 

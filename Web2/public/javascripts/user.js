@@ -35,7 +35,7 @@ let user = {
     Division: finalCleanUDQS[11],
     Mixed: finalCleanUDQS[12]
 }
-
+/*
 addName(user.UserName);
 addLevel(user.Level);
 addHomework(user.Homework);
@@ -43,7 +43,7 @@ solvedAssignments("compPlus")
 leveling(user.CurrentXp, user.CurrentLevel, 1197, user.RequiredXp)
 xpView(user.CurrentXp, user.RequiredXp)
 xpBar(user.CurrentXp, user.RequiredXp)
-
+*/
 
 /* ----------------------- */
 

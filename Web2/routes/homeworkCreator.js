@@ -27,10 +27,7 @@ router.post('/', function(req, res, next){
   let task = req.body.task
   let answer = req.body.answer
   let difficulty =req.body.difficulty
-  console.log(task, answer, difficulty)
-//  let cleanUserId = userId.replace(`?id=`,"" )
-//  console.log(cleanUserId + " " + test)
-
+  let queryString = JSON.stringify(req.body.fullquery)
   const { Console } = require('console')
   let mysql = require('mysql')
   const ResultSet = require('mysql/lib/protocol/ResultSet')
@@ -41,21 +38,28 @@ router.post('/', function(req, res, next){
       user: 'dat2c2-4',
       password: 't95oqnsuoqLpR27r',
       database: 'dat2c2_4'
-    });
+  });
 
     con.connect(function(err) {
       if (err) throw err;
       console.log("Connected to database")
     });
-  function putAssignment(difficulty, task, answer){
+
+  let cleanQueryString =" "
+  for (let index = 6; index < queryString.length-2; index++) {
+    cleanQueryString += queryString[index]
+  }
+  cleanQueryString = cleanQueryString.replace("%20", "")
+
+  function putAssignment(difficulty, task, answer, cleanQueryString){
     let fields = ["Creator","AssignmentType","Difficulty"
                   ,"XpAmount", "Assignment","Answer",]
     con.query(`SET FOREIGN_KEY_CHECKS = 0`)
     con.query(`INSERT INTO Homework (Difficulty, Assignment, Answer) VALUES (${difficulty},'${task}', ${answer})`)
     con.query(`SET FOREIGN_KEY_CHECKS = 1`)
-    res.redirect('/homeworkcreator.html')
+    res.redirect('/homeworkcreator.html?'+`${cleanQueryString}`)
   }
-  putAssignment(difficulty, task, answer)
+  putAssignment(difficulty, task, answer, cleanQueryString)
 })
 
 module.exports = router;

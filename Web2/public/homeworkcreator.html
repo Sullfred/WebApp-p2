@@ -22,9 +22,9 @@
 
         <nav id="nav-bar">
             <ul>
-                <li><button class="navbutton"><a href="teacher.html">Forside</a></button></li>
-                <li><button class="navbutton"><a href="class.html">Klasser</a></button></li>
-                <li><button class="navbutton"><a href="homeworkcreator.html">Opgaver</a></button></li>
+                <li><button class="navbutton"><a id="teacher" href="teacher.html">Forside</a></button></li>
+                <li><button class="navbutton"><a id="class" href="class.html">Klasser</a></button></li>
+                <li><button class="navbutton"><a id="homeworkcreator" href="homeworkcreator.html">Opgaver</a></button></li>
                 <li><button class="navbutton" id="logud"><a href="index.html">Log-ud</a></button></li>
             </ul>
         </nav>
@@ -39,6 +39,7 @@
                 <input type="radio" id="easy" name="difficulty" value="1"><label for="nem">Nem</label>
                 <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
                 <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
+                <input id="fullquery" type="text" name = "fullquery" value ="" style="display: none;">
             </fieldset>
                 <input class="homeworkbutton" type="submit" value="Tilføj">
                 <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
@@ -57,6 +58,21 @@
         <footer id="footer">
             <p>Copyright &copy; 2021 toBeAdded</p>
         </footer>
+        <script src="javascripts/user.js"></script>
+
+        <script type="text/javascript">
+            const queryString = window.location.search;
+            if(queryString.substr(0,4) === "?id="){
+                window.onload = function(){
+                document.forms['query'].submit()
+                }
+            }
+            let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "opgaver"]]
+            for (let index = 0; index < navsites.length; index++) {
+                document.querySelector(`#${navsites[index][0]}`).innerHTML = `<li><a href='${navsites[index][0]}.html${queryString}'>${navsites[index][1]}</a></li>`
+            }
+            document.querySelector("#fullquery").innerHTML = `<input id="fullquery" name = "fullquery" value ="${queryString}" style="display: none;">`
+        </script>
 
     </body>
 
