@@ -22,16 +22,24 @@
 
         <nav id="nav-bar">
             <ul>
-                <li><a href="#">Forside</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><button class="navbutton"><a href="teacher.html">Forside</a></button></li>
+                <li><button class="navbutton"><a href="class.html">Klasser</a></button></li>
+                <li><button class="navbutton"><a href="homeworkcreator.html">Opgaver</a></button></li>
+                <li><button class="navbutton" id="logud"><a href="index.html">Log-ud</a></button></li>
             </ul>
         </nav>
 
         <div class="homework">
             <form action="./homeworkcreator" method="POST" id="homeworkcreate">
                 <h2>Opgaver</h2>
+            <fieldset id="fieldset">
+                <legend id="legend">Indtast Opgave</legend>
                 <input id="task" type="text" name="task" placeholder="Indtast Opgave">
-                <input class="answer" type="text" name="answer" placeholder="Indtast Svar">
+                <input id="answer" type="text" name="answer" placeholder="Indtast Svar">
+                <input type="radio" id="easy" name="difficulty" value="1"><label for="nem">Nem</label>
+                <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
+                <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
+            </fieldset>
                 <input class="homeworkbutton" type="submit" value="Tilføj">
                 <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
             </form>

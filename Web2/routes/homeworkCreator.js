@@ -26,7 +26,8 @@ router.get('/homeworkCreator', function(req, res, next) {
 router.post('/', function(req, res, next){
   let task = req.body.task
   let answer = req.body.answer
-  console.log(typeof task, answer)
+  let difficulty =req.body.difficulty
+  console.log(task, answer, difficulty)
 //  let cleanUserId = userId.replace(`?id=`,"" )
 //  console.log(cleanUserId + " " + test)
 
@@ -46,15 +47,15 @@ router.post('/', function(req, res, next){
       if (err) throw err;
       console.log("Connected to database")
     });
-  function putAssignment(task, answer){
+  function putAssignment(difficulty, task, answer){
     let fields = ["Creator","AssignmentType","Difficulty"
                   ,"XpAmount", "Assignment","Answer",]
     con.query(`SET FOREIGN_KEY_CHECKS = 0`)
-    con.query(`INSERT INTO Homework (Assignment, Answer) VALUES ('${task}', ${answer})`)
+    con.query(`INSERT INTO Homework (Difficulty, Assignment, Answer) VALUES (${difficulty},'${task}', ${answer})`)
     con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     res.redirect('/homeworkcreator.html')
   }
-  putAssignment(task, answer)
+  putAssignment(difficulty, task, answer)
 })
 
 module.exports = router;

@@ -1,11 +1,6 @@
 
 function reset() {
-  document.getElementById("task").reset();
-}
-
-function saveopg() {
-    const opgave=document.getElementById("task");
-    alert(opgave.value);
+  document.getElementById("homeworkcreate").reset();
 }
 
 function addop(a) {
