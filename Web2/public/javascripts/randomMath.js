@@ -109,7 +109,7 @@ function randomMultiplicationProblem () {
     
 }
 
-function randomdivisionProblem () {
+function randomDivisionProblem () {
     let amountDifficulty = 2;
     let numbers = [];
     n = 10
@@ -128,13 +128,10 @@ function randomdivisionProblem () {
     });
 
     if (numbers[0]%numbers[1]){
-        randomdivisionProblem();
+        randomDivisionProblem();
     }
     else {
-        let answer = numbers[0];
-        for(i=1; i < numbers.length; i++){
-            answer = answer / numbers[i];
-        }
+        let answer = numbers[0] / numbers[1];
 
         let difference = numbers[0] - numbers[1];
 
@@ -164,19 +161,39 @@ function createExercise(n){
             [problem, answer, earnableXp] = randomSubtractionProblem();
             break;
         case 3:
-            [problem, answer, earnableXp] = randomAdditionProblem()
+            [problem, answer, earnableXp] = randomMultiplicationProblem();
             break;
         case 4:
-            [problem, answer, earnableXp] = randomAdditionProblem()
+            [problem, answer, earnableXp] = randomDivisionProblem();
             break;
     }
 
     console.log(problem+"="+answer);
     console.log(`Earnable xp = ${earnableXp}`);
 
+    insertText(problem);
+
 }
 
-createExercise(1);
-createExercise(2);
-createExercise(3);
-createExercise(4);
+function insertText(text) {
+    document.querySelector("#mathProblem").value = text;
+}
+
+
+document.querySelector("#plus").addEventListener('click', (event) => {
+    createExercise(1); 
+});
+
+document.querySelector("#minus").addEventListener('click', (event) => {
+    createExercise(2); 
+});
+
+document.querySelector("#gange").addEventListener('click', (event) => {
+    createExercise(3);
+});
+
+
+document.querySelector("#dividere").addEventListener('click', (event) => {
+    createExercise(4);
+});
+

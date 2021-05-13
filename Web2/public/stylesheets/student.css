@@ -227,8 +227,17 @@ img:hover {
     justify-content: center;
 }
 
-/* Natalia Reshetnikova; https://webdeasy.de/en/top-css-buttons-en/ */
+.moreExercises button {
+    border: none;
+    background: none;
+    font-weight: 550;
+    font-size: medium;
+    cursor: pointer;
+    display: block;
+    padding: 16px 31.3px;
+}
 
+/* Natalia Reshetnikova; https://webdeasy.de/en/top-css-buttons-en/ */
 div[class*=box] {
     height: 33.33%;
     width: 50%; 
@@ -249,7 +258,7 @@ div[class*=box] {
     text-align: center;
     width: 250px;
     cursor: pointer;
-    font-weight: 550;
+    pointer-events: all;
   }
 
 .btn-one {
@@ -261,7 +270,7 @@ div[class*=box] {
   transition: all 0.3s;
 }
 .btn-one::before {
-  content: '';
+  /*content: '';*/
   position: absolute;
   bottom: 0;
   left: 0;
@@ -300,5 +309,27 @@ div[class*=box] {
   opacity: 0; 
   transform: scale(0.1, 1);
 }
-
 /* Natalia Reshetnikova; https://webdeasy.de/en/top-css-buttons-en/ */
+
+
+.problem {
+    display: inline-block;
+    outline: none;
+    border: none;
+    background-color: #f4f4f4;
+    font-size: 22px;
+}
+
+input[type=text]{
+    font-size: 20px;
+}
+
+.svar {
+    display: inline-block;
+    font-size: 22px;
+}
+
+.break {
+    display: block;
+    margin-top: -1.5em;
+ }

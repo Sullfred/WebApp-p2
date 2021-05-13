@@ -12,7 +12,7 @@ addName(user.Name);
 addLevel(user.currentLevel);
 addHomework(lektier);
 solvedAssignments("compPlus")
-leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
+//leveling(user.currentXp, user.currentLevel, 197, user.requiredXp)
 xpView(user.currentXp, user.requiredXp)
 
 

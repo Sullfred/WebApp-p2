@@ -30,20 +30,33 @@
         <div class="moreExercises">
             <h2>Vælg opgavetype</h2>
             <div class="box">
-                <div class="btn btn-one">
-                  <span>PLUS</span>
+                <div class="btn btn-one"> 
+                    <label>  
+                        <button id="plus">PLUS</button>
+                    </label>
                 </div>
                 <div class="btn btn-one">
-                    <span>MINUS</span>
+                        <button id="minus">MINUS</button>
                   </div>
                   <div class="btn btn-one">
-                    <span>GANGE</span>
+                        <button id="gange">GANGE</button>
                   </div>
                   <div class="btn btn-one">
-                    <span>DIVIDERE</span>
+                        <button id="dividere">DIVIDERE</button>
+                  </div>
+              </div>
+              <div class="Opgave">
+                  <div>
+                      <h3 class="problem">Opgave:</h3>
+                      <input type="text" id="mathProblem" readonly class="problem">
+                  </div>
+                  <div class="break">
+                      <h3 class="svar">Svar:</h3>
+                      <input type="text" id="answer" class="svar">
                   </div>
               </div>
         </div>
+        <script src="./javascripts/randomMath.js"></script>
     </section>
 
     <aside id="side-box">
