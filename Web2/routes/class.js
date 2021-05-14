@@ -40,16 +40,42 @@ router.post('/', function(req, res, next){
         if (err) throw err;
         console.log("Connected to database")
     });
-    let classr = req.body.classpost
-    console.log(classr)
-    let classRoom = "2.b"
+    let classroom = req.body.classid
 
-    function getStudents(classRoom){
-        students = con.query(`SELECT * FROM UserData WHERE UserClassroom = "${classRoom}"`)
-        console.log(students)
-        res.redirect("class.html")
+
+    function getStudents(classroom){
+
+
+    let sql = `SELECT * FROM UserData WHERE UserClassroom = "${classroom}"`
+    con.query(sql, function(err, result){
+        if (err) throw err
+        console.log(typeof result[0].UserName)
+        let test = result
+        console.log(test)
+        let studentArray = []
+        let inner =[]
+        for (let index2 = 0; index2 <= 5; index2++) {
+            studentArray[index2] = inner
+                inner[0]=result[0].PersonId
+                inner[1]=result[1].UserName
+                inner[2]=result[2].UserClassroom
+                inner[3]=result[3].Level
+                inner[4]=result[4].CurrentXp
+                inner[5]=result[5].RequiredXp
+                inner[6]=result[6].Homework
+                inner[7]=result[7].Addition
+                inner[9]=result[8].Subtraction
+                inner[10]=result[9].Multiplication
+                inner[11]=result[10].Division
+                inner[12]=result[11].SquareRoot
+                inner[13]=result[12].Potens
+                inner[14]=result[13].Mixed
+        }
+        console.log(inner)
+        res.redirect("class.html" + "http://localhost:3000/class.html?ld=1&pid=1&un=Emerson%20Guerra&uc=2.b&ul=0&ucxp=0&urxp=15&uhmw=1&uadd=0&usubt=0&umult=0&udiv=0&umix=0")
+    })
     }
-
+    getStudents(classroom)
 })
 
 module.exports = router;

@@ -38,8 +38,8 @@ let students = ["Esben.N", "Rune.F", "Jimmi", "Brian", "Nathan.R"];
 function headerclass(a) {
     document.getElementById("classchoice").innerHTML ="Klasse: " + a;
     document.getElementById("studentlist").innerHTML = '';
+    document.querySelector("#classid").value = a
     document.forms['class'].submit()
-
     elever();
 }
 
