@@ -27,6 +27,7 @@ function CalculateXp (amountDifficulty, answerDifficulty) {
 }
 
 function randomAdditionProblem () {
+    let type = 1;
     let amountDifficulty = randomDifficulty();
     let numbers = [];
     
@@ -45,11 +46,12 @@ function randomAdditionProblem () {
     let problem = numbers.join('');
     let earnableXp = CalculateXp(amountDifficulty, answer);
 
-    return [problem, answer, earnableXp]
+    return [problem, answer, earnableXp, type]
 
 }
 
 function randomSubtractionProblem () {
+    let type = 2;
     let amountDifficulty = randomDifficulty();
     let numbers = [];
     
@@ -80,11 +82,12 @@ function randomSubtractionProblem () {
 
     let earnableXp = CalculateXp(amountDifficulty*3, difference*2)
 
-    return [problem, answer, earnableXp]
+    return [problem, answer, earnableXp, type]
 }
 
 
 function randomMultiplicationProblem () {
+    let type = 3;
     let amountDifficulty = 2;
     let numbers = [];
 
@@ -105,11 +108,12 @@ function randomMultiplicationProblem () {
 
     let earnableXp = CalculateXp(amountDifficulty*2, answer);
 
-    return [problem, answer, earnableXp]
+    return [problem, answer, earnableXp, type]
     
 }
 
 function randomDivisionProblem () {
+    let type = 4;
     let amountDifficulty = 2;
     let numbers = [];
     n = 10
@@ -143,7 +147,7 @@ function randomDivisionProblem () {
 
         let earnableXp = CalculateXp(amountDifficulty*2, difference*2);
        
-        return [problem, answer, earnableXp]
+        return [problem, answer, earnableXp, type]
     }
     
 }
@@ -155,45 +159,95 @@ function createExercise(n){
 
     switch(n){
         case 1:
-            [problem, answer, earnableXp] = randomAdditionProblem();
+            [problem, answer, earnableXp, type] = randomAdditionProblem();
             break;
         case 2:
-            [problem, answer, earnableXp] = randomSubtractionProblem();
+            [problem, answer, earnableXp, type] = randomSubtractionProblem();
             break;
         case 3:
-            [problem, answer, earnableXp] = randomMultiplicationProblem();
+            [problem, answer, earnableXp, type] = randomMultiplicationProblem();
             break;
         case 4:
-            [problem, answer, earnableXp] = randomDivisionProblem();
+            [problem, answer, earnableXp, type] = randomDivisionProblem();
             break;
+        default:
+            console.log("Der skete en fejl")
     }
 
-    console.log(problem+"="+answer);
+    //console.log(problem+"="+answer);
     console.log(`Earnable xp = ${earnableXp}`);
 
     insertText(problem);
-
+    return [answer, earnableXp, type]
 }
 
 function insertText(text) {
     document.querySelector("#mathProblem").value = text;
 }
 
+function listen () {
+    let answer, earnableXp;
+    let type = 0;
+    let tries = 0;
 
-document.querySelector("#plus").addEventListener('click', (event) => {
-    createExercise(1); 
-});
+    document.querySelector("#plus").addEventListener('click', (event) => {
+        [answer, earnableXp, type] = createExercise(1);
+    });
 
-document.querySelector("#minus").addEventListener('click', (event) => {
-    createExercise(2); 
-});
+    document.querySelector("#minus").addEventListener('click', (event) => {
+        [answer, earnableXp, type] = createExercise(2); 
+    });
 
-document.querySelector("#gange").addEventListener('click', (event) => {
-    createExercise(3);
-});
+    document.querySelector("#gange").addEventListener('click', (event) => {
+        [answer, earnableXp, type] = createExercise(3);
+    });
 
+    document.querySelector("#dividere").addEventListener('click', (event) => {
+        [answer, earnableXp, type] = createExercise(4);
+    });
 
-document.querySelector("#dividere").addEventListener('click', (event) => {
-    createExercise(4);
-});
+    document.querySelector("#answer").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            let userAnswer = document.querySelector("#answer").value;
+            if(userAnswer == answer) {
+                //console.log(userAnswer + " " + answer)
+                console.log("correct");
+                document.querySelector(".notCorrect").innerHTML = "";
+                switch(type){
+                    case 1:
+                        document.querySelector(".solvedPlus").innerHTML++;
+                        break;
+                    case 2:
+                        document.querySelector(".solvedMinus").innerHTML++;
+                        break;
+                    case 3:
+                        document.querySelector(".solvedGange").innerHTML++;
+                        break;
+                    case 4:
+                        document.querySelector(".solvedDividere").innerHTML++;
+                        break;
+                    default:
+                        console.log("SHALOM SHALOM. Something went wrong");
+                        break;
+                }
+                [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*3));
+                document.querySelector("#answer").value = "";
+            }
+            else{
+                document.querySelector(".notCorrect").innerHTML = "Desværre ikke korrekt";
+                tries++;
+                console.log("forsøg: "+tries);
+                console.log(userAnswer + " " + answer);
+                document.querySelector("#answer").value = "";
+            }
+            if (tries > 2){
+                document.querySelector(".notCorrect").innerHTML = "Du har desværre brugt alle dine forsøg. Prøv igen";
+                tries = 0;
+                [answer, earnableXp, type] = createExercise(type);
+                document.querySelector("#answer").value = "";
+            }
+        }
+    });
+}
 
+listen();

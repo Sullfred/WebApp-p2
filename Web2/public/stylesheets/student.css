@@ -333,3 +333,9 @@ input[type=text]{
     display: block;
     margin-top: -1.5em;
  }
+
+ .notCorrect {
+    margin-top: -1em;
+    text-decoration: underline;
+    color:#DE354C
+ }

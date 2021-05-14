@@ -7,4 +7,6 @@ router.get('/', function(req, res, next) {
   res.send('../public/exercises.html');
 });
 
+
+
 module.exports = router;
