@@ -215,22 +215,23 @@ function listen () {
                 document.querySelector(".notCorrect").innerHTML = "";
                 switch(type){
                     case 1:
-                        document.querySelector(".solvedPlus").innerHTML++;
+                        document.querySelector("#solvedPlus").innerHTML++;
                         break;
                     case 2:
-                        document.querySelector(".solvedMinus").innerHTML++;
+                        document.querySelector("#solvedMinus").innerHTML++;
                         break;
                     case 3:
-                        document.querySelector(".solvedGange").innerHTML++;
+                        document.querySelector("#solvedGange").innerHTML++;
                         break;
                     case 4:
-                        document.querySelector(".solvedDividere").innerHTML++;
+                        document.querySelector("#solvedDividere").innerHTML++;
                         break;
                     default:
                         console.log("SHALOM SHALOM. Something went wrong");
                         break;
                 }
                 [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*3));
+                
                 document.querySelector("#answer").value = "";
             }
             else{
