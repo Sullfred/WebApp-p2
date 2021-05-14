@@ -82,6 +82,8 @@ function createUserData(){
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
                 Division INT DEFAULT "0",
+                SquareRoot INT DEFAULT "0",
+                Potens INT DEFAULT "0",
                 Mixed INT DEFAULT "0",
                 FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
             )`

@@ -11,7 +11,7 @@
       <script src="javascripts/class.js"></script>
   </head>
 
-  <body onload = "addclass()">
+  <body onload = "addclass(user.UserClassroom)">
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -61,10 +61,14 @@
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
     </footer>
-    <script src="javascripts/user.js"></script>
-    <div id="log-in" style="display: none;">
-        <form name="query" id="query" action="./teacher" method="POST">
-            <input type="text" id="id" name="id" value="">
+    <div id="classdiv" style="display: none;">
+      <form name="class" id="class" action="./class" method="POST">
+          <input type="text" id="id" name="id" value="">
+      </form>
+  </div>
+    <div id="querydiv" style="display: none;">
+        <form name="query" id="queryform" action="./class" method="POST">
+            <input type="text" id="queryid" name="id" value="">
         </form>
     </div>
     <script type="text/javascript">
