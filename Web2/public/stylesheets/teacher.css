@@ -27,7 +27,6 @@ body {
     color: #fff;
     margin-bottom: 0;
     padding-bottom: 0;
-    padding-left: 1%;
 }
 
 #nav-bar ul {
@@ -44,16 +43,24 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    padding-right: 15px;
 }
 
 #nav-bar a:hover {
     color: red;
 }
 
-.logout {
-    position: absolute;
-    right: 1%;
+#logud {
+    position: absolute; 
+    right: 0.5%;
+}
+
+.navbutton {
+    border: none;
+    background: #333;
+    pointer-events: all;
+}
+.navbutton a {
+    font-size: 18px;
 }
 
 .username {

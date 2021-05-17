@@ -367,3 +367,32 @@ input[type=text]{
  .textInline {
      color: black;
  }
+}
+
+/* Progress page css */
+
+#nuværendeXp{
+    text-align: center;
+}
+
+/* Make sure that padding behaves as expected */
+* {box-sizing:border-box}
+
+/* Container for skill bars */
+.xpContainer {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+}
+
+.bar {
+    text-align: right; /* Right-align text */
+    padding-top: 10px; /* Add top padding */
+    padding-bottom: 10px; /* Add bottom padding */
+    color: white; /* White text color */
+}
+
+.xp {
+    width: 90%;
+    background-color: #04AA6D;
+    text-align: center;
+}
