@@ -32,18 +32,64 @@ let user = {
     Mixed: finalCleanUDQS[12]
 }
 
+//
+var req = new XMLHttpRequest();
+var url = '/class';
+
+req.open('GET',url,true); // set this to POST if you would like
+req.addEventListener('load',onLoad);
+req.addEventListener('error',onError);
+req.send();
+
+function onLoad() {
+    var response = this.responseText;
+    var parsedResponse = JSON.parse(response);
+    console.log(parsedResponse)
+    // access your data newly received data here and update your DOM with appendChild(), findElementById(), etc...
+
+    // append child (with text value of messageToDisplay for instance) here or do some more stuff
+}
+
+function onError() {
+    // handle error here, print message perhaps
+    console.log('error receiving async AJAX call');
+}
+//
+
 let classes = ["1.A", "2.B", "3.C", "4.D", "5.E"];
 let students = ["Esben.N", "Rune.F", "Jimmi", "Brian", "Nathan.R"];
 
-function headerclass(a) {
-    document.getElementById("classchoice").innerHTML ="Klasse: " + a;
-    document.getElementById("studentlist").innerHTML = '';
-    document.querySelector("#classid").value = a
-    document.forms['class'].submit()
-    elever();
+addClass(user.userClassroom, parsedResponse)
+
+
+function addClass(classroom, parsedResponse) {
+    console.log(classroom)
+    let completelist= document.getElementById("classlist");
+    completelist.innerHTML = "<li><a onclick=headerClass('" + `${classroom, parsedResponse}` + "')>" + classroom + "</a></li>";
 }
 
-function studentinfo(a) {
+function headerClass(classroom, parsedResponse) {
+    document.getElementById("classchoice").innerHTML ="Klasse: " + classroom;
+    document.getElementById("studentlist").innerHTML = '';
+//    document.querySelector("#classid").value = a
+//    document.forms['class'].submit()
+    addStudents(parsedResponse);
+}
+
+function addStudents(parsedResponse){
+    students.forEach(i => {
+        let completelist= document.getElementById("studentlist");
+        completelist.innerHTML += "<li><a onclick=studentinfo('" + i + "')>" + i + "</a></li>";
+    });
+    for (let index = 0; index < parsedResponse.length; index++) {
+        let completelist= document.getElementById("studentlist");
+        let name = parsedResponse[index].UserName
+        completelist.innerHTML += "<li><a onclick=studentinfo('" + name + "')>" + name + "</a></li>";
+    }
+}
+
+
+function addStudentInfo(a) {
     document.getElementById("studentinformation").innerHTML = "Elev: " + a;
 }
 
@@ -54,16 +100,6 @@ function studentinfo(a) {
     });
 }*/
 
-function addclass(classroom) {
-    console.log(classroom)
-    let completelist= document.getElementById("classlist");
-    completelist.innerHTML = "<li><a onclick=headerclass('" + `${classroom}` + "')>" + classroom + "</a></li>";
 
-}
 
-function elever(){
-    students.forEach(i => {
-        let completelist= document.getElementById("studentlist");
-        completelist.innerHTML += "<li><a onclick=studentinfo('" + i + "')>" + i + "</a></li>";
-    });
-}
+

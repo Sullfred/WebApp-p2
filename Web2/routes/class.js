@@ -23,7 +23,15 @@ router.get('/class', function(req, res, next) {
     res.send('../public/class.html');
 });
 
-router.post('/', function(req, res, next){
+router.get('/', function(req,res) {
+    // make some calls to database, fetch some data, information, check state, etc...
+
+    let test= req.body.test
+    console.log(test)
+    test2 = req.query.un
+    console.log(test2)
+    console.log(typeof test, typeof test2)
+
     const { Console } = require('console')
     let mysql = require('mysql')
     const ResultSet = require('mysql/lib/protocol/ResultSet')
@@ -40,42 +48,21 @@ router.post('/', function(req, res, next){
         if (err) throw err;
         console.log("Connected to database")
     });
-    let classroom = req.body.classid
 
-
-    function getStudents(classroom){
-
-
+    /////////////////////
+    let classroom = "2.b"
+    /////////////////////
     let sql = `SELECT * FROM UserData WHERE UserClassroom = "${classroom}"`
     con.query(sql, function(err, result){
         if (err) throw err
-        console.log(typeof result[0].UserName)
-        let test = result
-        console.log(test)
-        let studentArray = []
-        let inner =[]
-        for (let index2 = 0; index2 <= 5; index2++) {
-            studentArray[index2] = inner
-                inner[0]=result[0].PersonId
-                inner[1]=result[1].UserName
-                inner[2]=result[2].UserClassroom
-                inner[3]=result[3].Level
-                inner[4]=result[4].CurrentXp
-                inner[5]=result[5].RequiredXp
-                inner[6]=result[6].Homework
-                inner[7]=result[7].Addition
-                inner[9]=result[8].Subtraction
-                inner[10]=result[9].Multiplication
-                inner[11]=result[10].Division
-                inner[12]=result[11].SquareRoot
-                inner[13]=result[12].Potens
-                inner[14]=result[13].Mixed
-        }
-        console.log(inner)
-        res.redirect("class.html" + "http://localhost:3000/class.html?ld=1&pid=1&un=Emerson%20Guerra&uc=2.b&ul=0&ucxp=0&urxp=15&uhmw=1&uadd=0&usubt=0&umult=0&udiv=0&umix=0")
+
+    var dataToSendToClient = result
+    // convert whatever we want to send (preferably should be an object) to JSON
+    var JSONdata = JSON.stringify(dataToSendToClient)
+    con.end
+    res.send(JSONdata)
     })
-    }
-    getStudents(classroom)
 })
+
 
 module.exports = router;

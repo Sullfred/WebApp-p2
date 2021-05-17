@@ -8,10 +8,11 @@
       <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
       <meta name="author" content="Daniel Vang Kleist, mm">
       <meta charset="UTF-8">
-      <script src="javascripts/class.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
-  <body onload = "addclass(user.UserClassroom)">
+  <body>
+    <input name="test" id="test" value="test" type="text" style=" display: none">
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -57,6 +58,9 @@
       <ul id="studentlist">
       </ul>
     </div>
+    <script>
+
+    </script>
 
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
@@ -73,14 +77,9 @@
     </div>
     <script type="text/javascript">
         const queryString = window.location.search;
-        document.querySelector("#id").value = queryString
-        if(queryString.substr(0,4) === "?id="){
-            window.onload = function(){
-            document.forms['query'].submit()
-            }
-        }
         document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher.html${queryString}">Forside</a></button>`
         document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator.html${queryString}">Opret opgave</a></li>`
     </script>
+      <script src="javascripts/class2.js"></script>
   </body>
 </html>
