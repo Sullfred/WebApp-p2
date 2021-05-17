@@ -76,7 +76,7 @@ function createUserData(){
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
-                Homework BOOL DEFAULT "1",
+                Homework BOOL DEFAULT "0",
                 AssignedHomework VARCHAR(255) DEFAULT "",
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
