@@ -12,6 +12,7 @@ body {
     margin: auto;
     overflow: hidden;
 }
+
 .container a {
     text-decoration: none;
     color: #fff;
@@ -59,6 +60,7 @@ body {
     background: #333;
     pointer-events: all;
 }
+
 .navbutton a {
     font-size: 18px;
 }
@@ -71,9 +73,27 @@ body {
     border: solid black;
     width: 600px;
     height: 460px;
-    position: absolute;
-    margin-left: 25%;
-    top: 25%;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.operator {
+    border: solid black;
+    width: 300px;
+    height: 460px;
+    text-align: center;
+    display: inline-block;
+}
+
+#main-section {
+    width: 100vw;
+    height: 80vh;
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
 }
 
 #homeworkcreate {
@@ -97,18 +117,6 @@ body {
     font-size: 50px;
 }
 
-.operator {
-    border: solid black;
-    width: 300px;
-    height: 460px;
-    position: absolute;
-    margin-left: 70%;
-    top: 25% ;
-    text-align: center;
-    display: block;
-    justify-content: center;
-}
-
 .knap {
     background: none;
     border: solid black;
@@ -124,5 +132,5 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px;
-    margin-top: 100%;
+    margin-top: 30px;
 }
