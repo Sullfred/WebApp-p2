@@ -84,18 +84,8 @@ function headerClass(classroom) {
         document.querySelector("#ongoingHomework").innerHTML = `<p>Resterende opgaver: ${parsedResponse[teacherIndex].AssignedHomework}</p>`
         }
 
-        let qString = window.location.search
-        let location1 = qString.search("un=")
-        let location2 = qString.search("&uc=")
-        let name = qString.substring(location1, location2)
-        name = name.replace("un=","")
-        name = name.replace("%20", " ")
-        for (let index = 0; index < parsedResponse.length; index++) {
-            if(parsedResponse[index].UserName === name){
-                parsedResponse.splice(index,1)
-                teacherIndex = index
-            }
-        }
+        parsedResponse = spliceTeacher(parsedResponse)
+
         addStudents(parsedResponse)
     }
 
@@ -103,8 +93,22 @@ function headerClass(classroom) {
         // handle error here, print message perhaps
         console.log('error receiving async AJAX call');
     }
+}
 
-
+function spliceTeacher(parsedResponse) {
+    let qString = window.location.search
+    let location1 = qString.search("un=")
+    let location2 = qString.search("&uc=")
+    let name = qString.substring(location1, location2)
+    name = name.replace("un=","")
+    name = name.replace("%20", " ")
+    for (let index = 0; index < parsedResponse.length; index++) {
+        if(parsedResponse[index].UserName === name){
+            parsedResponse.splice(index,1)
+            teacherIndex = index
+        }
+    }
+    return parsedResponse
 }
 
 function addStudents(parsedResponse){
@@ -134,13 +138,15 @@ function addStudentInfo(studentIndex){
         idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Homework", "AssignedHomework", "Addition", "Subtraction", "Multiplication", "Division", "Root", "Potens", "Mixed"]
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        document.querySelector("#studentinformation").innerHTML = 'Elev ' + `${parsedResponse[studentIndex].UserName}`
+        parsedResponse = spliceTeacher(parsedResponse)
+        document.querySelector("#studentinformation").innerHTML = 'Elev: ' + `${parsedResponse[studentIndex].UserName}`
         //for (let index = 1; index < parsedResponse.length; index++) {
             let index = 0
             for (const key in parsedResponse[studentIndex]) {
                 if (Object.hasOwnProperty.call(parsedResponse[studentIndex], key)) {
                     const element = parsedResponse[studentIndex][key];
                     if(index > 2 ){
+                    console.log(element)
                     document.querySelector("#studentinformation").innerHTML += `<p id=${idArray[index]}>${idArray[index]}: ${element}</p>`
                     }
                 }

@@ -79,6 +79,8 @@ router.get('/', function(req,res) {
                 result[teacherIndex].Homework = 1
             }
         }
+        console.log(result)
+        console.log(editedResult)
         var dataToSendToClient = result
         // convert whatever we want to send (preferably should be an object) to JSON
         var JSONdata = JSON.stringify(dataToSendToClient)
