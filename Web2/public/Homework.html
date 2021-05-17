@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>MatemaTikTok</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <meta name="author" content="Daniel Vang Kleist">
     <meta charset="UTF-8">
 </head>
+
 <body>
     <header id="header">
         <div class="container">
@@ -18,92 +20,100 @@
 
     <nav id="nav-bar">
         <ul>
-            <li><a id="student" href="student.html">Hjem</a></li>
-            <li><a id="homework" href="homework.html">Lektier</a></li>
-            <li><a id="exercises" href="exercises.html">Flere opgaver</a></li>
-            <li><a id="progress" href="progress.html">Fremskridt</a></li>
-            <li><a id="index" href="index.html" class="log-ud">Log ud</a></li>
+            <li><a href="student.html">Hjem</a></li>
+            <li><a href="Exercises.html">Flere opgaver</a></li>
+            <li><a href="Progress.html">Fremskridt</a></li>
+            <li><a href="index.html" class="log-ud">Log ud</a></li>
         </ul>
     </nav>
 
-    <section id = "main-section">
-        <p>lorem ipsum dolor sit amet, consectet</p>
-    </section>
+    <section id="wholePage">
 
-    <aside id="side-box">
-        <div class="character">
-            <h3 id="helloUser">Hej</h3>
-            <table class="styled-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="thing">Level</td>
-                        <td id="level"></td>
-                    </tr>
-                    <tr>
-                        <td class="thing">Xp</td>
-                        <td id = "xp">0/0</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section id="main-section">
+            <!--
+        <div id="ticTacToeGame">
+            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+            <script src="../JS/ticTacToeGame.js"></script>
         </div>
-        <div class="statistics">
-            <h3>Opgaver</h3>
-            <div class="mat-emner">
+        -->
+            <div id="gotHomework">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos esse ad quam tempore itaque consequuntur non saepe deserunt consectetur cumque repellat aspernatur blanditiis sint sunt ipsa distinctio, laboriosam inventore hic.</p>
+            </div>
+        </section>
+
+        <aside id="side-box">
+            <div class="character">
+                <h3 id="helloUser">Hej</h3>
                 <table class="styled-table">
                     <thead>
                         <tr>
-                            <th>Emne</th>
-                            <th>Antal løste opgaver</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="thing">Plus</td>
-                            <td id="compPlus">0</td>
+                            <td class="thing">Level</td>
+                            <td id="level"></td>
                         </tr>
                         <tr>
-                            <td class="thing">Minus</td>
-                            <td id="compMinus">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Gange</td>
-                            <td id="compGange">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Dividere</td>
-                            <td id="compDiv">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Blandet</td>
-                            <td id="compBlandet">0</td>
+                            <td class="thing">Xp</td>
+                            <td id="xp">0/0</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="homework-todo">
-            <h3>Lektier</h3>
-            <p id="lektier">Lektier</p>
-        </div>
-    </aside>
+            <div class="statistics">
+                <h3>Opgaver</h3>
+                <div class="mat-emner">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Regneart</th>
+                                <th>Antal løste opgaver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="thing">Plus</td>
+                                <td id="compPlus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Minus</td>
+                                <td id="compMinus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Gange</td>
+                                <td id="compGange">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Dividere</td>
+                                <td id="compDiv">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Blandet</td>
+                                <td id="compBlandet">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="homework-todo">
+                <h3>Lektier</h3>
+                <p id="lektier">Lektier</p>
+            </div>
+        </aside>
+
+        <div class="repeatingImg"></div>
+
+    </section>
 
     <footer id="footer">
         <p>Copyright &copy; 2021 MatemaTikTok</p>
     </footer>
     <script src="javascripts/user.js"></script>
-    <script>
-        const queryString = window.location.search;
-        console.log(queryString + "test")
-        let sites = [["student","Hjem"],["homework", "Lektier"],["exercises", "Flere opgaver"], ["progress", "Fremskridt"]]
-        for (let index = 0; index < sites.length; index++) {
-            document.querySelector(`#${sites[index][0]}`).innerHTML = `<li><a href='${sites[index][0]}.html${queryString}'>${sites[index][1]}</a></li>`
-        }
-    </script>
 </body>
+
 </html>

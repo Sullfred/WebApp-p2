@@ -23,7 +23,7 @@ router.get('/login', function(req, res, next) {
   res.send('../public/login.html');
 });
 
-router.post('/', function(req, res, next){
+router.post('/', function(req, res){
   let enteredUserLogin = req.body.username
   let enteredUserPassword = req.body.password
   console.log(`UserLogin: ${enteredUserLogin}` + "\n" + `UserPassword: ${enteredUserPassword}`)
@@ -91,21 +91,19 @@ router.post('/', function(req, res, next){
         let userLoginId = getValue(rowDataPacketToString)
         let passedString = encodeURIComponent(userLoginId);
         if(userType === "Student"){
-          console.log("typen er elev")
-          return res.redirect('/student.html?' + `id=${userLoginId}`)
-        }
-        else if(userType === "Teacher"){
-          console.log("typen er lærer")
-          return res.redirect('/teacher.html?' + `id=${userLoginId}`)
-        }
-        else{
-          //lav en fejlkode at sende
-        }
-
+        console.log("typen er elev")
+        return res.redirect('/student.html?id=' + passedString)
+      }
+      else if(userType === "Teacher"){
+        console.log("typen er lærer")
+        return res.redirect('/teacher.html')
+      }
+      else{
+        //lav en fejlkode at sende
+      }
       })
     })
   }
-
 
   /*https://stackoverflow.com/a/65237583*/
   function sha256(ascii) {
