@@ -119,6 +119,7 @@ function CreateHomework(){
     con.query("DROP TABLE IF EXISTS Homework")
     let sql = `CREATE TABLE Homework (
                 AssignmentId INT AUTO_INCREMENT PRIMARY KEY,
+                AssignmentIdentifier VARCHAR(255),
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
