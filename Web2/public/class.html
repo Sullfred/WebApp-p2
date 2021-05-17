@@ -12,7 +12,6 @@
   </head>
 
   <body>
-    <input name="test" id="test" value="test" type="text" style=" display: none">
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -38,34 +37,25 @@
       </div>
     </nav>
   <section id="main-section">
-    <div id="classbox">
-      <h1 class="header">Klasse: </h1>
-      <p>Igangværende lektier:</p>
-      <p>Progress bar</p>
-    </div>
-
-    <div id="studentbox">
-      <h1 class="header">Elev: </h1>
-      <div class="students">
-        <button>Elever</button>
-        <ul id="studentlist">
-        </ul>
+      <div id="classbox">
+        <h1 id="classchoice" class="header">Klasse: Vælg en klasse </h1>
+        <p id="gotHomework"></p>
+        <p id="ongoingHomework"></p>
       </div>
-      <p>Level: </p>
-      <p>Lektier gennemført: 10/20</p>
-      <p>Antal rigtige</p>
-      <p>Antal forkerte</p>
-      <p>Øvrige opgaver</p>
-    </div>
+      <div id="studentbox">
+        <h1 class="header" id="studentinformation" >Elev: </h1>
+        <div class="students">
+          <button>Elever</button>
+          <ul id="studentlist">
+          </ul>
+        </div>
+      </div>
 
-    <div class="students">
+    <!--<div class="students">
       <button>Elever</button>
       <ul id="studentlist">
       </ul>
-    </div>
-    <script>
-
-    </script>
+    </div>-->
 
   </section>
     <footer id="footer">
