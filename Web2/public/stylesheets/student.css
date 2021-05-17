@@ -340,6 +340,7 @@ input[type=text]{
     color:#DE354C
  }
 
+ /* diverse page */
  .space {
     display: block;
     margin-bottom: 1em;
@@ -396,3 +397,4 @@ input[type=text]{
     background-color: #04AA6D;
     text-align: center;
 }
+
