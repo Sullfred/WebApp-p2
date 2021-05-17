@@ -23,7 +23,15 @@ router.get('/class', function(req, res, next) {
     res.send('../public/class.html');
 });
 
-router.post('/', function(req, res, next){
+router.get('/', function(req,res) {
+    // make some calls to database, fetch some data, information, check state, etc...
+
+    let test= req.body.test
+    console.log(test)
+    test2 = req.query.un
+    console.log(test2)
+    console.log(typeof test, typeof test2)
+
     const { Console } = require('console')
     let mysql = require('mysql')
     const ResultSet = require('mysql/lib/protocol/ResultSet')
@@ -40,16 +48,21 @@ router.post('/', function(req, res, next){
         if (err) throw err;
         console.log("Connected to database")
     });
-    let classr = req.body.classpost
-    console.log(classr)
-    let classRoom = "2.b"
 
-    function getStudents(classRoom){
-        students = con.query(`SELECT * FROM UserData WHERE UserClassroom = "${classRoom}"`)
-        console.log(students)
-        res.redirect("class.html")
-    }
+    /////////////////////
+    let classroom = "2.b"
+    /////////////////////
+    let sql = `SELECT * FROM UserData WHERE UserClassroom = "${classroom}"`
+    con.query(sql, function(err, result){
+        if (err) throw err
 
+    var dataToSendToClient = result
+    // convert whatever we want to send (preferably should be an object) to JSON
+    var JSONdata = JSON.stringify(dataToSendToClient)
+    con.end
+    res.send(JSONdata)
+    })
 })
+
 
 module.exports = router;
