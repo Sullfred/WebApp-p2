@@ -35,9 +35,9 @@ function createUsers(){
         console.log("Users table created!")
     })
     for (let index = 1; index !== 31; index++) {
-        let userType = "Student"
+        let userType = "Elev"
         if (10%index===0){
-            userType = "Teacher"
+            userType = "Lærer"
         }
         let salt = saltGenerator()
         let userPassAndSaltHashed = sha256(userType+"Password"+index+salt)
@@ -57,7 +57,7 @@ function createUsers(){
     if (userHashTest === 1){
         let hash = sha256("ElevPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
-        VALUES ('Student', 'StudentLogin31', 'StudentPassword31',
+        VALUES ('Elev', 'ElevLogin31', 'ElevPassword31',
         '55555', '${hash}')`
         con.query(sql), function(err, result){
             if (err) throw err
@@ -65,9 +65,7 @@ function createUsers(){
     }
 }
 function createUserData(){
-    con.query(`SET FOREIGN_KEY_CHECKS = 0`)
     con.query("DROP TABLE IF EXISTS UserData")
-    con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     let sql = `CREATE TABLE UserData (
                 PersonId INT AUTO_INCREMENT PRIMARY KEY,
                 UserName VARCHAR(255),
@@ -79,9 +77,7 @@ function createUserData(){
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
-                Division INT DEFAULT "0",
-                SquareRoot INT DEFAULT "0",
-                Potens INT DEFAULT "0",
+                Divison INT DEFAULT "0",
                 Mixed INT DEFAULT "0",
                 FOREIGN KEY (PersonId) REFERENCES Users(UserLoginId)
             )`
@@ -139,8 +135,8 @@ function saltGenerator(){
     return salt
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
-/*
-getUserData(enteredUserLogin,enteredUserPassword)
+
+
 function getUserData(enteredUserLogin, enteredUserPassword){
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
@@ -174,7 +170,8 @@ found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
-*/
+
+
 
 /*https://stackoverflow.com/a/65237583*/
 function sha256(ascii) {
@@ -277,5 +274,4 @@ function sha256(ascii) {
     }
     return result;
 };
-
 /*https://stackoverflow.com/a/65237583*/
