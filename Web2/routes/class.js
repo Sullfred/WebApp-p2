@@ -64,7 +64,6 @@ router.get('/', function(req,res) {
             editedResult[index] = result[index]
         }
         editedResult.splice(teacherIndex,1)
-        console.log(result[teacherIndex].Homework)
 
         for (let index = 0; index < editedResult.length; index++) {
             homework = editedResult[index].AssignedHomework
