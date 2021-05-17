@@ -21,7 +21,6 @@
     <nav id="nav-bar">
         <ul>
             <li><a href="student.html">Hjem</a></li>
-            <li><a href="Homework.html">Lektier</a></li>
             <li><a href="Exercises.html">Flere opgaver</a></li>
             <li><a href="Progress.html">Fremskridt</a></li>
             <li><a href="index.html" class="log-ud">Log ud</a></li>
@@ -31,44 +30,52 @@
     <section id="wholePage">
 
         <section id="main-section">
-            <div class="moreExercises">
-                <h2>Vælg opgavetype</h2>
-                <div class="box">
-                    <div class="btn btn-one">
-                        <label>
-                            <button id="plus">PLUS</button>
-                        </label>
-                    </div>
-                    <div class="btn btn-one">
-                        <button id="minus">MINUS</button>
-                    </div>
-                    <div class="btn btn-one">
-                        <button id="gange">GANGE</button>
-                    </div>
-                    <div class="btn btn-one">
-                        <button id="dividere">DIVIDERE</button>
-                    </div>
-                </div>
-                <div class="Opgave">
-                    <div>
-                        <h3 class="problem">Opgave:</h3>
-                        <input type="text" id="mathProblem" readonly class="problem">
-                    </div>
-                    <div class="break">
-                        <h3 class="svar">Svar:</h3>
-                        <input type="text" id="answer" class="svar">
-                        <p class="notCorrect"></p>
-                    </div>
-                    <div>
-                        <p hidden id="solvedPlus">0</p>
-                        <p hidden id="solvedMinus">0</p>
-                        <p hidden id="solvedGange">0</p>
-                        <p hidden id="solvedDividere">0</p>
-                    </div>
-                </div>
+            <div class="welcomeCentering">
+                <h2>Velkommen til MatemaTikTok</h2>
+                <p class="subText">Denne side er ikke nødvendig at læse, men hvis du vil vide mere om hvordan alting
+                    virker, så er det her.</p>
             </div>
 
-            <script src="./javascripts/randomMath.js"></script>
+            <div class="textInline">
+                <h3>Den sorte bar til højre, hvad er det?</h3>
+                <p class="subText">Til højre på skærmen er der en sort bar. Den indeholder alt det vigtige information
+                    du kan bruge.
+                    <br>Dit navn, hvilken level du er i og hvor meget xp du har i forhold hvor meget du skal bruge for
+                    at level up,<br>hvor mange af de forskellige opgavetyper du har løst og om du har lektier for.
+                    <span class="space"></span>Din sidebar vil du kunne se på alle sider bortset fra siden fremskridt.
+                </p>
+
+                <h3>Jeg kan level up, men hvordan gør jeg det?</h3>
+                <p class="subText">For at level up, skal du bruge xp. Xp får du som belønning for at løse opgaver.
+                    <br>Jo sværere en opgave jo mere xp får du. Der tre niveauer af opgaver: Let, mellem og svær.
+                    <br>En let opgave vil give dig 5 xp, en mellem vil give 8 xp og en svær vil give 11 xp.
+                    <br>Når du så har tjent nok xp vil du level up. Men det vil så også kræve mere xp at nå næste level.
+                </p>
+
+                <h3>Lektier</h3>
+                <p class="subText">Når din sidebar siger du har lektier for, kan du lave dine lektier inde på siden
+                    lektier.
+                    <br>Du vil selvfølgelig få xp for at løse opgaverne du har for som lektie.
+                </p>
+
+                <h3>Flere opgaver</h3>
+                <p class="subText">Hvis du synes du ikke har fået lavet nok opgaver, vil blive bedre til en af de fire
+                    regnearter <br>eller bare vil have en masse xp så du har klassens højeste level, så kan du bruge
+                    opgavesiden.
+                    <span class="space"></span>På opgave siden vælger du bare hvilken regneart du vil have, så vil siden
+                    give dig en. <br>Derefter skriver du bare svaret og trykker "enter". Hvis svaret er rigtig får du en
+                    ny opgave, <br>men hvis du svarer forkert har du kun et forsøg mere.
+                </p>
+
+                <h3>Fremskridt</h3>
+                <p class="subText">Denne side vil have samme information som sidebaren, men vil være mere detaljeret.
+                    <br>Der vil være nogle grafiske udtryk for xp og antallet af løste opgaver.
+                    <br>Siden kan du bruge hvis du er meget interesseret i din egen udvikling.
+                </p>
+            </div>
+
+            <div class="repeatingImg"></div>
+
         </section>
 
         <aside id="side-box">
@@ -132,7 +139,6 @@
                 <h3>Lektier</h3>
                 <p id="lektier">Lektier</p>
             </div>
-
         </aside>
 
         <div class="repeatingImg"></div>
