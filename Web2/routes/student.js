@@ -23,7 +23,6 @@ router.post('/', function(req, res, next){
   let test = req.body.test
   let cleanUserId = userId.replace(`?id=`,"" )
   console.log(cleanUserId + " " + test)
-
   const { Console } = require('console')
   let mysql = require('mysql')
   const ResultSet = require('mysql/lib/protocol/ResultSet')

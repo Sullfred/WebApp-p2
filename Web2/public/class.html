@@ -8,10 +8,11 @@
       <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
       <meta name="author" content="Daniel Vang Kleist, mm">
       <meta charset="UTF-8">
-      <script src="javascripts/class.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
-  <body onload = "addclass()">
+  <body>
+    <input name="test" id="test" value="test" type="text" style=" display: none">
     <header id="header">
         <div class="container">
             <h1><a href="#">MatemaTikTok</a></h1>
@@ -20,7 +21,7 @@
 
     <nav id="nav-bar">
       <div class="dropdown">
-        <button class="home"><a href="#">Forside</a></button>
+        <button id="teacher" class="home"><a href="teacher.html">Forside</a></button>
         <div class="classes">
           <button>Klasser</button>
           <ul id="classlist">
@@ -29,8 +30,8 @@
         <div class="homework">
           <button>Opgaver</button>
           <ul>
-            <li><a href="homeworkcreator.html">Opret opgave</a></li>
-            <li><a href="#">Opgave bibliotek</a></li>
+            <li><a id="homeworkcreator" href="homeworkcreator.html">Opret opgave</a></li>
+            <li><a href="#">Opgavebibliotek</a></li>
           </ul>
         </div>
         <button class="logout"><a href="index.html">Log-ud</a></button>
@@ -57,9 +58,28 @@
       <ul id="studentlist">
       </ul>
     </div>
+    <script>
+
+    </script>
 
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
     </footer>
+    <div id="classdiv" style="display: none;">
+      <form name="class" id="class" action="./class" method="POST">
+          <input type="text" id="classid" name="classid" value="">
+      </form>
+  </div>
+    <div id="querydiv" style="display: none;">
+        <form name="query" id="queryform" action="./class" method="POST">
+            <input type="text" id="queryid" name="id" value="">
+        </form>
+    </div>
+    <script type="text/javascript">
+        const queryString = window.location.search;
+        document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher.html${queryString}">Forside</a></button>`
+        document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator.html${queryString}">Opret opgave</a></li>`
+    </script>
+      <script src="javascripts/class2.js"></script>
   </body>
 </html>

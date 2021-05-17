@@ -2,14 +2,13 @@
 
 const userDataQueryString = window.location.search
 let firstCleanUDQS = userDataQueryString.split("&")
-//console.log(firstCleanUDQS + " " + "Den nåede herind!")
 
 let secondCleanUDQS=[]
 
 for (let index = 0; index < firstCleanUDQS.length; index++) {
     secondCleanUDQS[index] = firstCleanUDQS[index].split("=")
 }
-//console.log("SCUDQS er " + secondCleanUDQS)
+
 let finalCleanUDQS=[]
 let innerIndex = 1
 for (let index = 0; index < secondCleanUDQS.length; index++) {
@@ -18,7 +17,6 @@ for (let index = 0; index < secondCleanUDQS.length; index++) {
     }
     finalCleanUDQS[index] = secondCleanUDQS[index][innerIndex]
 }
-//console.log("Den helt rensede query er " + finalCleanUDQS)
 
 let user = {
     UserLoaded: finalCleanUDQS[0],
@@ -42,6 +40,7 @@ addHomework(user.Homework);
 solvedAssignments("compPlus")
 leveling(user.CurrentXp, user.CurrentLevel, 1197, user.RequiredXp)
 xpView(user.CurrentXp, user.RequiredXp)
+xpBar(user.CurrentXp, user.RequiredXp)
 
 
 /* ----------------------- */
@@ -98,4 +97,10 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
         return newXp;
     }
 
+}
+
+function xpBar(currentXp, requiredXp){
+    let xpPercent = Math.round((currentXp/requiredXp)*100)
+    document.querySelector("div.xp").style.width=`${xpPercent}%`
+    document.querySelector("div.xp").innerHTML=`${xpPercent}%`
 }
