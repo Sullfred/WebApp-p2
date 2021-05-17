@@ -37,15 +37,20 @@
         <button class="logout"><a href="index.html">Log-ud</a></button>
       </div>
     </nav>
-
+  <section id="main-section">
     <div id="classbox">
-      <h1 id="classchoice">Klasse: </h1>
+      <h1 class="header">Klasse: </h1>
       <p>Igangværende lektier:</p>
       <p>Progress bar</p>
     </div>
 
     <div id="studentbox">
-      <h1 id="studentinformation">Elev: </h1>
+      <h1 class="header">Elev: </h1>
+      <div class="students">
+        <button>Elever</button>
+        <ul id="studentlist">
+        </ul>
+      </div>
       <p>Level: </p>
       <p>Lektier gennemført: 10/20</p>
       <p>Antal rigtige</p>
@@ -62,9 +67,11 @@
 
     </script>
 
+  </section>
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
     </footer>
+  
     <div id="classdiv" style="display: none;">
       <form name="class" id="class" action="./class" method="POST">
           <input type="text" id="classid" name="classid" value="">

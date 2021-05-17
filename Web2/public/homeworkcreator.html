@@ -28,6 +28,23 @@
                 <li><button class="navbutton" id="logud"><a href="index.html">Log-ud</a></button></li>
             </ul>
         </nav>
+        <section id="main-section">
+            <div class="homework">
+                <form action="./homeworkcreator" method="POST" id="homeworkcreate">
+                    <h2>Opgaver</h2>
+                <fieldset id="fieldset">
+                    <legend id="legend">Indtast Opgave</legend>
+                    <input id="task" type="text" name="task" placeholder="Indtast Opgave" required>
+                    <input id="answer" type="text" name="answer" placeholder="Indtast Svar" required>
+                    <input type="radio" id="easy" name="difficulty" value="1" required><label for="nem">Nem</label>
+                    <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
+                    <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
+                    <input id="fullquery" type="text" name = "fullquery" value ="" style="display: none;">
+                </fieldset>
+                    <input class="homeworkbutton" type="submit" value="Tilføj">
+                    <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
+                </form>
+            </div>
 
         <div class="homework">
             <form id="homeworkcreate" onsubmit="saveopg()">
@@ -58,6 +75,18 @@
             <input class="knap" type="button" onclick="addop('^')" value="^">
         </div>
 
+            <div class="operator">
+                <input class="knap" type="button" onclick="addop('+')" value="+">
+                <input class="knap" type="button" onclick="addop('-')" value="-">
+                <!-- gange-->
+                <input class="knap" type="button" onclick="addop('&#215')" value="&#215">
+                <!-- dividere-->
+                <input class="knap" type="button" onclick="addop('&#247')" value="&#247">
+                <!-- kvadratrod-->
+                <input class="knap" type="button" onclick="addop('&#8730')" value="&#8730">
+                <input class="knap" type="button" onclick="addop('^')" value="^">
+            </div>
+        </section>
         <footer id="footer">
             <p>Copyright &copy; 2021 toBeAdded</p>
         </footer>
@@ -76,7 +105,5 @@
             }
             document.querySelector("#fullquery").innerHTML = `<input id="fullquery" name = "fullquery" value ="${queryString}" style="display: none;">`
         </script>
-
     </body>
-
 </html>
