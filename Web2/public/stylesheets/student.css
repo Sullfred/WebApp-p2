@@ -5,7 +5,6 @@ body {
     font-size: 16px;
     line-height: 1.6em;
     margin: 0%;
-    
 }
 
 #header {
@@ -401,18 +400,15 @@ input[type=text]{
 
 /*bg image*/
 .repeatingImg {
-    position: absolute;
-}
-
-.repeatingImg {
     background-image: url(../images/repeating-pattern.jpg); /*Vincent Burkhead*/
     background-repeat: repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     overflow: hidden;
     height: 100%;
-    z-index: -1;
+    z-index: -10;
     opacity: 0.3;
+    position: absolute;
     top: 0px;
     left: 0px;
     right: 0px;
