@@ -72,6 +72,7 @@ body {
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
+    min-height: max-content;
     height: 75vh;
     max-width: 25vw;
     z-index: 1;
@@ -216,10 +217,9 @@ img:hover {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    width: 100%;
     bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
+    position: absolute;
 }
 
 
@@ -356,7 +356,7 @@ input[type=text]{
  }
 
  .subText {
-     margin-top: -0.8em;
+     margin-top: -0.8em;dqw
  }
 
  .welcomeCentering {
@@ -383,7 +383,8 @@ input[type=text]{
 #wholePage {
     color: black;
     text-align: center;
-    height: 80vh;
+    position: relative;
+    min-height: 120vh;
     width: 100vw;
 }
 
@@ -488,7 +489,7 @@ input[type=text]{
     height: 388px;
     position: absolute;
     right: 21vw;
-    top: 37vh
+    top: 37vh;
 }
 
 .inlineFix p {
