@@ -62,20 +62,23 @@ body {
     width: 75vw;
     height: 75vh;
     box-sizing: border-box;
-    background-color: #f4f4f4;
     position: relative;
     z-index: 1;
 }
 
 #side-box {
     float: right;
-    width: 25vw;
     background-color: #333;
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
     height: 75vh;
+    max-width: 25vw;
     z-index: 1;
+    position: absolute;
+    right: 0;
+    display: block;
+    overflow: hidden;
 }
 
 @media(max-width:1000px) {
@@ -322,8 +325,8 @@ div[class*=box] {
     display: inline-block;
     outline: none;
     border: none;
-    background-color: #f4f4f4;
     font-size: 22px;
+    background-color:rgba(0, 0, 0, 0);
 }
 
 input[type=text]{
@@ -402,7 +405,7 @@ input[type=text]{
 .repeatingImg {
     background-image: url(../images/repeating-pattern.jpg); /*Vincent Burkhead*/
     background-repeat: repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
     overflow: hidden;
     height: 100%;
@@ -526,4 +529,20 @@ input[type=text]{
 
 .boldText {
     font-weight: 550;
+}
+
+
+/*Homework page*/
+.centerHomework {
+    position: relative;
+    top: 30%;
+}
+
+.betterButtons {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.betterButtons :hover {
+    font-weight: bold;
 }
