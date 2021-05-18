@@ -1,12 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html>
+  <head>
+      <title>MatemaTikTok</title>
+      <link rel="stylesheet" type="text/css" href="stylesheets/assignmentlibrary.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Test page for P2 project">
+      <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+      <meta name="author" content="Daniel Vang Kleist, mm">
+      <meta charset="UTF-8">
+      <script src="javascripts/assignmentlibrary.js"></script>
+  </head>
+
+  <body>
+    <header id="header">
+        <div class="container">
+            <h1><a href="#">MatemaTikTok</a></h1>
+        </div>
+    </header>
+
+    <nav id="nav-bar">
+      <div class="dropdown">
+        <button id="teacher" class="home"><a href="teacher.html">Forside</a></button>
+        <div class="classes">
+          <button>Klasser</button>
+          <ul id="classlist">
+          </ul>
+        </div>
+        <div class="homework">
+          <button>Opgaver</button>
+          <ul>
+            <li><a id="homeworkcreator" href="homeworkcreator.html">Opret opgave</a></li>
+          </ul>
+        </div>
+        <button class="logout"><a href="index.html">Log-ud</a></button>
+      </div>
+    </nav>
+
+    <div id="types">
+      <h2 class="header2">Opgave typer</h2>
+      <button>Plus</button>
+      <button>Minus</button>
+      <button>Gange</button>
+      <button>Divi</button>
+      <button>Sqrt</button>
+      <button>Power</button>
+      <button>Blandede</button>
+    </div>
+
+  <section id="main-section">
+    <form class="form" action="#">
+      <fieldset id="klasser">
+        <legend align="center">Klasser</legend>
+        <ul>
+          <li><input type="checkbox">1.a</li>
+          <li><input type="checkbox">2.b</li>
+          <li><input type="checkbox">2.c</li>
+        </ul>
+      </fieldset>
+      <fieldset id="opgaver">
+        <legend align="center">Opgaver</legend>
+        <ul>
+          <li><input type="checkbox">2+2+2+2+2=2</li>
+          <li><input type="checkbox">4+4</li>
+          <li><input type="checkbox">6+6</li>
+        </ul>
+      </fieldset>
+      <div class="knapper">
+        <input type="submit" class="sr" value="Tildel valgte opgaver">
+        <input type="reset"  class="sr" value="Fjern alle markeringer">
+      </div>
+    </form>
+  </section>
+
+    <footer id="footer">
+        <p>Copyright &copy; 2021 toBeAdded</p>
+    </footer>
+
+  </body>
 </html>
