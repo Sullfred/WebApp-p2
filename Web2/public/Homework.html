@@ -21,6 +21,7 @@
     <nav id="nav-bar">
         <ul>
             <li><a href="student.html">Hjem</a></li>
+            <li><a href="Homework.html">Lektier</a></li>
             <li><a href="Exercises.html">Flere opgaver</a></li>
             <li><a href="Progress.html">Fremskridt</a></li>
             <li><a href="index.html" class="log-ud">Log ud</a></li>
@@ -38,8 +39,28 @@
             <script src="../JS/ticTacToeGame.js"></script>
         </div>
         -->
-            <div id="gotHomework">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos esse ad quam tempore itaque consequuntur non saepe deserunt consectetur cumque repellat aspernatur blanditiis sint sunt ipsa distinctio, laboriosam inventore hic.</p>
+
+            <div class="centerHomework">
+                <h2 class="homeworkQuestionmark"></h2>
+
+                <div id="gotHomework">
+                    <div class="Opgave">
+                        <div>
+                            <h3 class="problem">Opgave:</h3>
+                            <input type="text" id="mathProblem" readonly class="problem">
+                        </div>
+                        <div class="break">
+                            <h3 class="svar">Svar:</h3>
+                            <input type="text" id="answer" class="svar">
+                            <div class="subText">
+                                <button class="betterButtons">Forrige</button>
+                                <button class="betterButtons">Næste</button>
+                            </div>
+                            <p class="notCorrect"></p>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -114,6 +135,7 @@
         <p>Copyright &copy; 2021 MatemaTikTok</p>
     </footer>
     <script src="javascripts/user.js"></script>
+    <script src="./javascripts/homework.js"></script>
 </body>
 
 </html>
