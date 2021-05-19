@@ -16,6 +16,7 @@ con.connect(function(err){
 createUsers()
 createUserData()
 CreateHomework()
+
 })
 
 function createUsers(){
@@ -55,7 +56,7 @@ function createUsers(){
     }
     let userHashTest = 1
     if (userHashTest === 1){
-        let hash = sha256("ElevPassword3155555")
+        let hash = sha256("StudentPassword3155555")
         let sql = `INSERT INTO Users (UserType, UserLogin, UserPass, UserSalt, UserPassAndSaltHashed)
         VALUES ('Student', 'StudentLogin31', 'StudentPassword31',
         '55555', '${hash}')`
@@ -75,7 +76,8 @@ function createUserData(){
                 Level INT DEFAULT "0",
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
-                Homework BOOL DEFAULT "1",
+                Homework BOOL DEFAULT "0",
+                AssignedHomework VARCHAR(15000) DEFAULT "",
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
@@ -100,9 +102,9 @@ function createUserData(){
     }
 }
 function randClass(){
-    let classroom = Math.floor(Math.random()*3)
-    let suffixes = ["a", "b", "c"]
-    let chosenSufix = suffixes[Math.round(Math.random())*2]
+    let classroom = Math.floor(Math.random()*2+1)
+    let suffixes = ["a", "b"]
+    let chosenSufix = suffixes[Math.round(Math.random())]
         return classroom+"."+chosenSufix
 }
 function randName(){
@@ -116,7 +118,9 @@ function randName(){
 function CreateHomework(){
     con.query("DROP TABLE IF EXISTS Homework")
     let sql = `CREATE TABLE Homework (
-                AssignmentId INT PRIMARY KEY,
+                AssignmentId INT AUTO_INCREMENT PRIMARY KEY,
+                AssignmentIdentifier VARCHAR(255),
+                CreatorAssignmentNum INT,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
@@ -139,9 +143,8 @@ function saltGenerator(){
     return salt
 }
 /* Forsøg på at lave en funktion der trækker data ud af databasen*/
-/*
-getUserData(enteredUserLogin,enteredUserPassword)
-function getUserData(enteredUserLogin, enteredUserPassword){
+function getUsers(enteredUserLogin, enteredUserPassword){
+
         con.query(`SELECT UserPassAndSaltHashed FROM Users WHERE UserLogin = "${enteredUserLogin}"`, function (err, result) {
             if (err) throw err;
             if (result.length != 0){
@@ -174,7 +177,54 @@ found in the database\nLogin Succesful`)
     else
     console.log("Login unsuccesful")
 }
-*/
+
+function getUserData(userId){
+    let user = {
+        PersionId: "",
+        UserName: "",
+        UserClassroom: "",
+        Level: 0,
+        CurrentXp: 0,
+        RequiredXp: 0,
+        Homework: 0,
+        Addition: 0,
+        Subtraction: 0,
+        Multiplication: 0,
+        Division: 0,
+        Mixed: 0
+    }
+    let userFields = ["PersonId", "UserName", "UserClassroom", "Level", "CurrentXp",
+                    "RequiredXp", "Homework", "Addition", "Subtraction", "Multiplication",
+                    "Division", "Mixed"]
+    let userFieldsValues = new Array(12)
+    for (let index = 0; index < userFields.length; index++) {
+        con.query(`SELECT ${userFields[index]} FROM UserData WHERE PersonId = "${userId}"`, function (err, result) {
+            if (err) throw err;
+            if (result.length != 0){
+                let rowDataPacketToString = stringify(Object.assign({}, result[0]))
+                userFieldsValues[index] = getValue(rowDataPacketToString)
+            }
+            if(index === 11){
+                user.PersionId = userFieldsValues[0]
+                user.UserName  = userFieldsValues[1]
+                user.UserClassroom = userFieldsValues[2]
+                user.Level = userFieldsValues[3]
+                user.CurrentXp = userFieldsValues[4]
+                user.RequiredXp = userFieldsValues[5]
+                user.Homework = userFieldsValues[6]
+                user.Addition = userFieldsValues[7]
+                user.Subtraction = userFieldsValues[8]
+                user.Multiplication = userFieldsValues[9]
+                user.Division = userFieldsValues[10]
+                user.Mixed = userFieldsValues[11]
+                console.log("UserData retrieved")
+                console.log(user)
+                return user
+            }
+        })
+    }
+}
+
 
 /*https://stackoverflow.com/a/65237583*/
 function sha256(ascii) {
