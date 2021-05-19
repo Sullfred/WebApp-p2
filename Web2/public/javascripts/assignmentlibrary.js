@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
     console.log("test")
     let queryString = window.location.search
-    let navButtonsIds = ["teacher", "homeworkcreator"]
+    let navButtonsIds = ["teacher", "homeworkcreator", "classes"]
     for (let index = 0; index < navButtonsIds.length; index++) {
         document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
     }
@@ -59,9 +59,9 @@ function postRequest(){
     let form = document.querySelector("#form")
 
     req.open('POST',url+query,true); // set this to POST if you would like
-    req.send(new FormData(form));
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
+    req.send(new FormData(form));
 
     function onLoad() {
         var response = this.responseText;
@@ -69,7 +69,7 @@ function postRequest(){
         var parsedResponse = JSON.parse(response);
         window.alert(`${parsedResponse}`);
         console.log(parsedResponse)
-        //går tilbage til forrige side
+        //går tilbage til n forrige side
         history.go(0)
     }
 
