@@ -1,14 +1,15 @@
 
+let user = {
+    Name: "Jens Jensen",
+    currentLevel: 0,
+    lektier: 1,
+    currentXp: 0,
+    requiredXp: 15,
+};
 
-const gotHomework = document.querySelector(".homeworkQuestionmark");
-const lektier = document.querySelector("#lektier")
-const homeworkSite = document.querySelector('#gotHomework');
+const homeworkSite = document.querySelector('#gotHomework')
 
-if (lektier) {
+if (user.lektier)
     homeworkSite.style.display = "block";
-    gotHomework.innerHTML = "Du har lektier for"
-}
-else {
+else
     homeworkSite.style.display = "none";
-    gotHomework.innerHTML = "Du har ikke lektier for"
-}

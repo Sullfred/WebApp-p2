@@ -1,7 +1,9 @@
 var req = new XMLHttpRequest();
 var url = '/class';
 
-req.open('GET',url,true); // set this to POST if you would like
+let param = window.location.search
+
+req.open('GET',url + `${param}`,true); // set this to POST if you would like
 req.addEventListener('load',onLoad);
 req.addEventListener('error',onError);
 req.send();
@@ -43,7 +45,7 @@ function onLoad() {
         Division: finalCleanUDQS[11],
         Mixed: finalCleanUDQS[12]
     }
-    addClass(user.UserClassroom, parsedResponse)
+    addClass(user.UserClassroom)
 }
 
 function onError() {
@@ -53,7 +55,7 @@ function onError() {
 
 function addClass(classroom) {
     let completeList = document.getElementById("classlist");
-    completeList.innerHTML = `<li><a onclick=headerClass("${classroom}")>${classroom}</a></li>`;
+    completeList.innerHTML = `<li><a class="classroom" id="class${classroom}">${classroom}</a></li>`;
 }
 
 $('body').on('click', 'a.classroom', function(event) {
@@ -65,7 +67,7 @@ function headerClass(classroom) {
     var req = new XMLHttpRequest();
     var url = '/class';
 
-    req.open('GET',url,true); // set this to POST if you would like
+    req.open('GET',url + `${param}`,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
@@ -73,8 +75,17 @@ function headerClass(classroom) {
     function onLoad() {
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
+        let teacherIndex = 0
+        optionsArray = ["Nej", "Ja"]
         document.getElementById("classchoice").innerHTML ="Klasse: " + classroom;
         document.getElementById("studentlist").innerHTML = '';
+        document.querySelector("#gotHomework").innerHTML = `<p>Igangværende lektier: ${optionsArray[parsedResponse[teacherIndex].Homework]} </p>`
+        if(parsedResponse[teacherIndex].Homework === 1){
+        document.querySelector("#ongoingHomework").innerHTML = `<p>Resterende opgaver: ${parsedResponse[teacherIndex].AssignedHomework}</p>`
+        }
+
+        parsedResponse = spliceTeacher(parsedResponse)
+
         addStudents(parsedResponse)
     }
 
@@ -82,8 +93,22 @@ function headerClass(classroom) {
         // handle error here, print message perhaps
         console.log('error receiving async AJAX call');
     }
+}
 
-
+function spliceTeacher(parsedResponse) {
+    let qString = window.location.search
+    let location1 = qString.search("un=")
+    let location2 = qString.search("&uc=")
+    let name = qString.substring(location1, location2)
+    name = name.replace("un=","")
+    name = name.replace("%20", " ")
+    for (let index = 0; index < parsedResponse.length; index++) {
+        if(parsedResponse[index].UserName === name){
+            parsedResponse.splice(index,1)
+            teacherIndex = index
+        }
+    }
+    return parsedResponse
 }
 
 function addStudents(parsedResponse){
@@ -101,18 +126,33 @@ $('body').on('click', 'a.student', function(event) {
     addStudentInfo(student)
 })
 
-function addStudentInfo(index){
+function addStudentInfo(studentIndex){
     var req = new XMLHttpRequest();
     var url = '/class';
-    req.open('GET',url,true); // set this to POST if you would like
+    req.open('GET',url + `${param}`,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
 
     function onLoad() {
+        idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Homework", "AssignedHomework", "Addition", "Subtraction", "Multiplication", "Division", "Root", "Potens", "Mixed"]
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        document.querySelector("#studentinformation").innerHTML = 'Elev ' + `${parsedResponse[index].UserName}`
+        parsedResponse = spliceTeacher(parsedResponse)
+        document.querySelector("#studentinformation").innerHTML = 'Elev: ' + `${parsedResponse[studentIndex].UserName}`
+        //for (let index = 1; index < parsedResponse.length; index++) {
+            let index = 0
+            for (const key in parsedResponse[studentIndex]) {
+                if (Object.hasOwnProperty.call(parsedResponse[studentIndex], key)) {
+                    const element = parsedResponse[studentIndex][key];
+                    if(index > 2 ){
+                    console.log(element)
+                    document.querySelector("#studentinformation").innerHTML += `<p id=${idArray[index]}>${idArray[index]}: ${element}</p>`
+                    }
+                }
+                index++
+            }
+        //}
     }
 
     function onError() {
