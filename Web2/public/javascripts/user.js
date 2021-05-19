@@ -98,9 +98,3 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
     }
 
 }
-
-function xpBar(currentXp, requiredXp){
-    let xpPercent = Math.round((currentXp/requiredXp)*100)
-    document.querySelector("div.xp").style.width=`${xpPercent}%`
-    document.querySelector("div.xp").innerHTML=`${xpPercent}%`
-}
