@@ -543,7 +543,3 @@ input[type=text]{
     overflow: hidden;
     cursor: pointer;
 }
-
-.betterButtons :hover {
-    font-weight: bold;
-}
