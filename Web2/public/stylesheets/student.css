@@ -45,7 +45,7 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    margin-right: 15px;
+    padding-right: 15px;
 }
 
 #nav-bar a:hover {
@@ -62,24 +62,18 @@ body {
     width: 75vw;
     height: 75vh;
     box-sizing: border-box;
+    background-color: #f4f4f4;
     position: relative;
-    z-index: 1;
 }
 
 #side-box {
     float: right;
+    width: 25vw;
     background-color: #333;
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
-    min-height: max-content;
     height: 75vh;
-    max-width: 25vw;
-    z-index: 1;
-    position: absolute;
-    right: 0;
-    display: block;
-    overflow: hidden;
 }
 
 @media(max-width:1000px) {
@@ -217,9 +211,6 @@ img:hover {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
 }
 
 
@@ -227,210 +218,9 @@ img:hover {
 .subject {
     display: block;
     margin-top: 15px;
-    
 }
-
-/* More Exercises css */
-.moreExercises {
-    text-align: center;
-    justify-content: center;
-}
-
-.moreExercises button {
-    border: none;
-    background: none;
-    font-weight: 550;
-    font-size: medium;
-    cursor: pointer;
-    display: block;
-    padding: 16px 31.3px;
-}
-
-/* Natalia Reshetnikova; https://webdeasy.de/en/top-css-buttons-en/ */
-div[class*=box] {
-    height: 33.33%;
-    width: 50%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .box {
-    background-image: linear-gradient(to bottom right, #DE354C, #39CCCC);
-  }
-
-  .btn {
-    line-height: 50px;
-    height: 50px;
-    text-align: center;
-    width: 250px;
-    cursor: pointer;
-    pointer-events: all;
-  }
-
-.btn-one {
-  color: #333;
-  transition: all 0.3s;
-  position: relative;
-}
-.btn-one span {
-  transition: all 0.3s;
-}
-.btn-one::before {
-  /*content: '';*/
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.3s;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-top-color: rgba(255,255,255,0.5);
-  border-bottom-color: rgba(255,255,255,0.5);
-  transform: scale(0.1, 1);
-}
-.btn-one:hover span {
-  letter-spacing: 2px;
-}
-.btn-one:hover::before {
-  opacity: 1; 
-  transform: scale(1, 1); 
-}
-.btn-one::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: all 0.3s;
-  background-color: rgba(255,255,255,0.1);
-}
-.btn-one:hover::after {
-  opacity: 0; 
-  transform: scale(0.1, 1);
-}
-/* Natalia Reshetnikova; https://webdeasy.de/en/top-css-buttons-en/ */
-
-
-.problem {
-    display: inline-block;
-    outline: none;
-    border: none;
-    font-size: 22px;
-    background-color:rgba(0, 0, 0, 0);
-}
-
-input[type=text]{
-    font-size: 20px;
-}
-
-.svar {
-    display: inline-block;
-    font-size: 22px;
-}
-
-.break {
-    display: block;
-    margin-top: -1.5em;
- }
-
- .notCorrect {
-    margin-top: -1em;
-    text-decoration: underline;
-    color:#DE354C
- }
-
- /* diverse page */
- .space {
-    display: block;
-    margin-bottom: 1em;
- }
-
- .subText {
-     margin-top: -0.8em;
- }
-
- .welcomeCentering {
-     text-align: center;
-     margin-bottom: 3em;
-     color: black;
- }
-
- .textInline p {
-    margin-left: 25px;
-    margin-bottom: 1.5em;
- }
-
- .textInline h3 {
-    margin-left: 15px;
- }
-
- .textInline {
-     color: black;
- }
 
 /* Progress page css */
-
-#wholePage {
-    color: black;
-    text-align: center;
-    position: relative;
-    min-height: 120vh;
-    width: 100vw;
-}
-
-.progressIntro {
-    border-bottom: solid 5px grey;
-}
-
-.backgroundImg {
-    background-image: url(../images/photo-1518562180175-34a163b1a9a6.jpg); /*Johannes Plenio*/
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
-    overflow: hidden;
-    width: 100%;
-
-}
-
-/*bg image*/
-.repeatingImg {
-    background-image: url(../images/repeating-pattern.jpg); /*Vincent Burkhead*/
-    background-repeat: repeat;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    height: 100%;
-    z-index: -10;
-    opacity: 0.3;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-}
-/*bg image*/
-
-.showLevelThings {
-    width: 350px;
-    height: 200px;
-    justify-content: center;
-    text-align: center;
-    border: solid black;
-    position: absolute;
-    left: 15vw;
-    top: 19vh;
-    
-}
 
 #nuværendeXp{
     text-align: center;
@@ -441,11 +231,8 @@ input[type=text]{
 
 /* Container for skill bars */
 .xpContainer {
-    width: 80%; /* Full width */
+    width: 100%; /* Full width */
     background-color: #ddd; /* Grey background */
-    position: relative;
-    justify-content: center;
-    display: inline-block;
 }
 
 .bar {
