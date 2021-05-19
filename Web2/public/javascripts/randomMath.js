@@ -23,6 +23,8 @@ function CalculateXpAddMult (amountDifficulty, answerDifficulty) {
         case (difficultyLevel >= 50):
             console.log("difficultyLevel = high");
             return earnableXp+6;
+        default:
+            return earnableXp;
     }
 }
 
