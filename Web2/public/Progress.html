@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-      <title>MatemaTikTok</title>
+    <title>MatemaTikTok</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="stylesheets/student.css">
     <meta name="description" content="Test page for P2 project">
@@ -9,6 +10,7 @@
     <meta name="author" content="Daniel Vang Kleist">
     <meta charset="UTF-8">
 </head>
+
 <body>
     <header id="header">
         <div class="container">
@@ -18,22 +20,74 @@
 
     <nav id="nav-bar">
         <ul>
-            <li><a id="student" href="student.html">Hjem</a></li>
-            <li><a id="homework" href="homework.html">Lektier</a></li>
-            <li><a id="exercises" href="exercises.html">Flere opgaver</a></li>
-            <li><a id="progress" href="progress.html">Fremskridt</a></li>
-            <li><a id="index" href="index.html" class="log-ud">Log ud</a></li>
+            <li><a href="student.html">Hjem</a></li>
+            <li><a href="Homework.html">Lektier</a></li>
+            <li><a href="Exercises.html">Flere opgaver</a></li>
+            <li><a href="Progress.html">Fremskridt</a></li>
+            <li><a href="index.html" class="log-ud">Log ud</a></li>
         </ul>
     </nav>
 
-    <section id = "main-section">
-        <p id ="nuværendeXp">Nuværende XP</p>
-        <div class="xpContainer">
-            <div class="bar xp"></div>
+    <section id="wholePage">
+        <div class="progressIntro backgroundImg">
+            <h2 id="helloUser">Velkommen til din fremskridts side:</h2>
+            <p class="subText">Her kan du se information om hvad du har lavet på MatemaTikTok.</p>
         </div>
 
-    </section>
+        <div class="showLevelThings backgroundImg">
+            <h3 id="level">Du er i level:</h3>
+            <p hidden id="xp">0/0</p>
+            <p id="nuværendeXp">Nuværende XP</p>
+            <div class="xpContainer">
+                <div class="bar xp stripes"></div>
+            </div>
+            <p>Manglende xp for at level up:</p>
+        </div>
 
+        <div class="showExerciseThings backgroundImg">
+            <div class="inlineFix">
+                <p class="boldText">Du har løst</p>
+                <p class="totalSovled boldText">0</p>
+                <p class="boldText">opgaver i alt</p>
+            </div>
+            <div>
+                <table class="styled-table2">
+                    <thead>
+                        <tr>
+                            <th>Regneart</th>
+                            <th>Antal løste opgaver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="thing">Plus</td>
+                            <td id="compPlus">0</td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Minus</td>
+                            <td id="compMinus">0</td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Gange</td>
+                            <td id="compGange">0</td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Dividere</td>
+                            <td id="compDiv">0</td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Blandet</td>
+                            <td id="compBlandet">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="repeatingImg"></div>
+
+
+    <!--
     <aside id="side-box">
         <div class="character">
             <h3 id="helloUser">Hej</h3>
@@ -97,14 +151,19 @@
         </div>
     </aside>
 
+    -->
+
     <footer id="footer">
         <p>Copyright &copy; 2021 MatemaTikTok</p>
     </footer>
+
+</section>
+
     <script src="javascripts/user.js"></script>
     <script>
         const queryString = window.location.search;
         console.log(queryString + "test")
-        let sites = [["student","Hjem"],["homework", "Lektier"],["exercises", "Flere opgaver"], ["progress", "Fremskridt"]]
+        let sites = [["student", "Hjem"], ["homework", "Lektier"], ["exercises", "Flere opgaver"], ["progress", "Fremskridt"]]
         for (let index = 0; index < sites.length; index++) {
             document.querySelector(`#${sites[index][0]}`).innerHTML = `<li><a href='${sites[index][0]}.html${queryString}'>${sites[index][1]}</a></li>`
         }

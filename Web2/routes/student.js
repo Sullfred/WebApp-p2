@@ -98,12 +98,7 @@ router.post('/', function(req, res, next){
 
 /* GET users listing. */
 router.get('/student', function(req, res, next) {
-  let id = req.query.id;
-  console.log(id);
   res.send('../public/student.html');
-
 });
-
-
 
 module.exports = router;
