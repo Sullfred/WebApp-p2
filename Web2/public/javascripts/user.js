@@ -40,7 +40,6 @@ addHomework(user.Homework);
 solvedAssignments("compPlus")
 leveling(user.CurrentXp, user.CurrentLevel, 1197, user.RequiredXp)
 xpView(user.CurrentXp, user.RequiredXp)
-xpBar(user.CurrentXp, user.RequiredXp)
 
 
 /* ----------------------- */
