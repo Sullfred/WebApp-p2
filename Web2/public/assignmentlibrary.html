@@ -8,7 +8,8 @@
       <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
       <meta name="author" content="Daniel Vang Kleist, mm">
       <meta charset="UTF-8">
-      <script src="javascripts/assignmentlibrary.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   </head>
 
   <body>
@@ -20,7 +21,7 @@
 
     <nav id="nav-bar">
       <div class="dropdown">
-        <button id="teacher" class="home"><a href="teacher.html">Forside</a></button>
+        <button class="home"><a id="teacher" href="teacher.html">Forside</a></button>
         <div class="classes">
           <button>Klasser</button>
           <ul id="classlist">
@@ -38,35 +39,31 @@
 
     <div id="types">
       <h2 class="header2">Opgave typer</h2>
-      <button>Plus</button>
-      <button>Minus</button>
-      <button>Gange</button>
-      <button>Divi</button>
-      <button>Sqrt</button>
-      <button>Power</button>
-      <button>Blandede</button>
+      <button name ="Plus" class="assTypeBtt">Plus</button>
+      <button name ="Minus" class="assTypeBtt">Minus</button>
+      <button name ="Gange" class="assTypeBtt">Gange</button>
+      <button name ="Division" class="assTypeBtt">Divi</button>
+      <button name ="Rødder" class="assTypeBtt">Sqrt</button>
+      <button name ="Potens" class="assTypeBtt">Power</button>
+      <button name ="Mixed" class="assTypeBtt">Blandede</button>
     </div>
 
   <section id="main-section">
-    <form class="form" action="#">
+    <!-- enctype="multipart/form-data" er nødvendigt for at multer kan håndtere formen på serversiden-->
+    <form id="form" class="form" action="./assignmentlibrary" method="POST" enctype="multipart/form-data">
       <fieldset id="klasser">
         <legend align="center">Klasser</legend>
-        <ul>
-          <li><input type="checkbox">1.a</li>
-          <li><input type="checkbox">2.b</li>
-          <li><input type="checkbox">2.c</li>
+        <ul id ="klassebeholder">
+          <input type="text" name="username" style="display: none"/>
         </ul>
       </fieldset>
       <fieldset id="opgaver">
         <legend align="center">Opgaver</legend>
-        <ul>
-          <li><input type="checkbox">2+2+2+2+2=2</li>
-          <li><input type="checkbox">4+4</li>
-          <li><input type="checkbox">6+6</li>
+        <ul id="opgaveliste">
         </ul>
       </fieldset>
       <div class="knapper">
-        <input type="submit" class="sr" value="Tildel valgte opgaver">
+        <input id="submitknap" type="submit" class="sr" value="Tildel valgte opgaver" href="#">
         <input type="reset"  class="sr" value="Fjern alle markeringer">
       </div>
     </form>
@@ -75,6 +72,6 @@
     <footer id="footer">
         <p>Copyright &copy; 2021 toBeAdded</p>
     </footer>
-
+    <script src="javascripts/assignmentlibrary.js"></script>
   </body>
 </html>

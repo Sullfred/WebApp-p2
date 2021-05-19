@@ -59,7 +59,7 @@ function addClass(classroom) {
 }
 
 $('body').on('click', 'a.classroom', function(event) {
-    classroom = event.target.id.replace("class","")
+    let classroom = event.target.id.replace("class","")
     headerClass(classroom)
 })
 

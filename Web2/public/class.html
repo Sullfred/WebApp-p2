@@ -30,7 +30,7 @@
           <button>Opgaver</button>
           <ul>
             <li><a id="homeworkcreator" href="homeworkcreator.html">Opret opgave</a></li>
-            <li><a href="assignmentlibrary.html">Opgavebibliotek</a></li>
+            <li><a id="assignmentlibrary" href="assignmentlibrary.html">Opgavebibliotek</a></li>
           </ul>
         </div>
         <button class="logout"><a href="index.html">Log-ud</a></button>
@@ -75,6 +75,8 @@
         const queryString = window.location.search;
         document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher.html${queryString}">Forside</a></button>`
         document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator.html${queryString}">Opret opgave</a></li>`
+        document.querySelector("#assignmentlibrary").innerHTML = `<li><a id="assignmentlibrary" href="assignmentlibrary.html${queryString}">Opgavebibliotek</a></li>`
+
     </script>
       <script src="javascripts/class2.js"></script>
   </body>

@@ -77,7 +77,7 @@ function createUserData(){
                 CurrentXp INT DEFAULT "0",
                 RequiredXp INT DEFAULT "15",
                 Homework BOOL DEFAULT "0",
-                AssignedHomework VARCHAR(255) DEFAULT "",
+                AssignedHomework VARCHAR(15000) DEFAULT "",
                 Addition INT DEFAULT "0",
                 Subtraction INT DEFAULT "0",
                 Multiplication INT DEFAULT "0",
@@ -120,6 +120,7 @@ function CreateHomework(){
     let sql = `CREATE TABLE Homework (
                 AssignmentId INT AUTO_INCREMENT PRIMARY KEY,
                 AssignmentIdentifier VARCHAR(255),
+                CreatorAssignmentNum INT,
                 Creator VARCHAR(255),
                 AssignmentType VARCHAR(255),
                 Difficulty INT DEFAULT "0",
