@@ -1,3 +1,5 @@
+export function leveling(currentXp, currentLevel, earnedXp, requiredXp);
+
 function leveling(currentXp, currentLevel, earnedXp, requiredXp){
     let newXp = currentXp + earnedXp
     if (newXp >= requiredXp){
