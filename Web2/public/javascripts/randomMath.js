@@ -65,6 +65,7 @@ function loadData(data){
     document.querySelector("#compBlandet").innerHTML = `${data.Mixed}`
 }
 
+/* Math problem creator */
 function randomDifficulty () {
     let amountdifficulty = Math.floor(Math.random()*3+1);
     return amountdifficulty;
@@ -251,8 +252,8 @@ function createExercise(n){
 
 function insertText(text, earnableXp, type) {
     document.querySelector("#mathProblem").value = text;
-    document.querySelector("#earnedXp").value = earnableXp
-    document.querySelector("#assType").value = `${type}`
+    document.querySelector("#earnedXp").value = earnableXp;
+    document.querySelector("#assType").value = type;
 }
 
 function listen () {
