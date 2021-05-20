@@ -45,16 +45,20 @@
 
                 <div id="gotHomework">
                     <div class="Opgave">
-                        <div>
-                            <h3 class="problem">Opgave:</h3>
-                            <input type="text" id="mathProblem" readonly class="problem">
+                        <div id = "assignmentContainer">
+                            <h3 id="assignment" class="problem">Opgave:</h3>
+                            <input type="text" id="mathProblem" readonly class="problem" value="">
                         </div>
                         <div class="break">
                             <h3 class="svar">Svar:</h3>
-                            <input type="text" id="answer" class="svar">
+                            <form id = "answerForm" method="POST" action="/homework">
+                                <input name="answer" type="text" id="answer" class="svar" value="">
+                                <input name="assId" type="hidden" id="assId" class="svar" value="" >
+                            </form>
+
                             <div class="subText">
-                                <button class="betterButtons">Forrige</button>
-                                <button class="betterButtons">Næste</button>
+                                <button id="prevBtt" class="betterButtons">Forrige</button>
+                                <button id="nextBtt" class="betterButtons">Næste</button>
                             </div>
                             <p class="notCorrect"></p>
 
@@ -124,6 +128,7 @@
                             <tr>
                                 <td class="thing">Blandet</td>
                                 <td id="compBlandet">0</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -143,7 +148,7 @@
         </footer>
 
     </section>
-    <script src="javascripts/user.js"></script>
+    <!--<script src="javascripts/user.js"></script>-->
     <script src="javascripts/homework.js"></script>
 </body>
 

@@ -90,12 +90,8 @@ router.post('/', upload.fields([]),function(req, res){
         console.log(element)
     }
   }
-  console.log(chosenClassesArr.length)
-  console.log(chosenAssignmentsArr.length)
 
   if(chosenClassesArr.length === 0 && chosenAssignmentsArr.length === 0 ){
-    console.log(chosenClassesArr.length)
-    console.log(chosenAssignmentsArr.length)
     var dataToSendToClient = ["Venligst vælg én eller flere opgaver og klasser"]
     var JSONdata = JSON.stringify(dataToSendToClient)
     res.send(JSONdata)

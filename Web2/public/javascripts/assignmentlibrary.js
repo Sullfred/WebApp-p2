@@ -36,7 +36,7 @@ function getRequest(assType){
         classList.innerHTML += `<input type="text" name="controlbox" style="display: none"/>`
         assList.innerHTML = ""
         for (let index = 0; index < parsedResponse.length; index++) {
-            assList.innerHTML += `<li><input name="assignment_${index}" type="checkbox" value="${parsedResponse[index].AssignmentId}">${parsedResponse[index].Assignment}=${parsedResponse[index].Answer}</li>`
+            assList.innerHTML += `<li><input name="assignment_${parsedResponse[index].AssignmentId}" type="checkbox" value="${parsedResponse[index].AssignmentId}">${parsedResponse[index].Assignment}=${parsedResponse[index].Answer}</li>`
         }
     }
 
