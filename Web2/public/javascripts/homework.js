@@ -43,6 +43,12 @@ function loadData(data){
     document.querySelector("#compRoot").innerHTML = `${data.SquareRoot}`
     document.querySelector("#compPotens").innerHTML = `${data.Potens}`
     document.querySelector("#compBlandet").innerHTML = `${data.Mixed}`
+    if(data.Homework === 1)
+        document.querySelector("#lektier").innerHTML = `Du har lektier for`
+    else
+        document.querySelector("#lektier").innerHTML = `Du har ikke lektier for`
+
+
     check = homeWorkBox(data)
     if(check === 1){
         getHomeworkRequest(data.AssignedHomework)
@@ -136,7 +142,7 @@ function getHomeworkRequest(homework){
 }
 
 function postRequest(){
-    query = window.location.search
+    let query = window.location.search
     var req = new XMLHttpRequest();
     var url = '/homework';
 
@@ -148,14 +154,6 @@ function postRequest(){
     function onLoad() {
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        console.log(parsedResponse)
-        const homeworkSite = document.querySelector('#gotHomework')
-        if (parsedResponse === 1){
-            homeworkSite.style.display = "block";
-        }
-        else{
-            homeworkSite.style.display = "none";
-        }
         history.go(0)
 
 

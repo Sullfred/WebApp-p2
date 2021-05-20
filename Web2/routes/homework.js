@@ -71,6 +71,7 @@ router.get('/', function(req, res){
     })
   }
 })
+
   router.post('/', upload.fields([]), function(req, res){
     const { Console } = require('console')
     let mysql = require('mysql')
@@ -119,9 +120,18 @@ router.get('/', function(req, res){
         con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${req.query.un}'`)
         con.query(`UPDATE UserData SET AssignedHomework = '${newHomework}' WHERE UserName ='${req.query.un}'`)
 
-        sql = `SELECT AssignmentType FROM Homework WHERE = ${req.body.assId}`
+        sql = `SELECT AssignmentType FROM Homework WHERE AssignmentId = ${req.body.assId}`
         con.query(sql, function(err, result){
-          console.log(result)
+
+          let assTypes = ["Plus","Minus","Gange","Dividere","Rødder","Potens", "Mixed"]
+          let assTypesInDB = ["Addition","Subtraction","Multiplication","Division","SquareRoot","Potens","Mixed"]
+          for (let index = 0; index < assTypes.length; index++) {
+            console.log(result[0].AssignmentType, assTypes[index])
+            if(result[0].AssignmentType === assTypes[index]){
+              console.log("test")
+              con.query(`UPDATE UserData SET ${assTypesInDB[index]} = ${assTypesInDB[index]}+1 WHERE UserName ='${req.query.un}'`)
+            }
+          }
 
           sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
           con.query(sql, function(err, result){

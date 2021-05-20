@@ -114,6 +114,7 @@ router.post('/', upload.fields([]),function(req, res){
       for (let assIndex = 0; assIndex < chosenAssignmentsArr.length; assIndex++) {
         con.query(`SET FOREIGN_KEY_CHECKS = 0`)
         con.query(`UPDATE UserData SET AssignedHomework = CONCAT(AssignedHomework, '${chosenAssignmentsArr[assIndex]}') WHERE UserClassroom = '${chosenClassesArr[classIndex]}'`)
+        con.query(`UPDATE UserData SET Homework = 1 WHERE UserClassroom = '${chosenClassesArr[classIndex]}'`)
         con.query(`SET FOREIGN_KEY_CHECKS = 1`)
       }
     }
