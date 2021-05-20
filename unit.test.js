@@ -8,6 +8,6 @@ test('Test of testfunction', () => {
 });
 
 test('Test if level up function is working', () => {
-    numberArray1= leveling(0,1,15,15);
-    expect(numberArray).toBe(1,0,18)
+    numberArray1 = leveling(0,1,15,15);
+    expect(numberArray).toEqual(1,0,18)
 })
