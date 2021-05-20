@@ -118,22 +118,27 @@ router.get('/', function(req, res){
         con.query(`UPDATE UserData SET Level = ${level} WHERE UserName ='${req.query.un}'`)
         con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${req.query.un}'`)
         con.query(`UPDATE UserData SET AssignedHomework = '${newHomework}' WHERE UserName ='${req.query.un}'`)
-        
-        sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
+
+        sql = `SELECT AssignmentType FROM Homework WHERE = ${req.body.assId}`
         con.query(sql, function(err, result){
-          if(result[0].AssignedHomework === ","){
-            con.query(`UPDATE UserData SET Homework = 0 WHERE UserName ='${req.query.un}'`)
-            var dataToSendToClient = 0
-            var JSONdata = JSON.stringify(dataToSendToClient)
-            con.end
-            res.send(JSONdata)
+          console.log(result)
+
+          sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
+          con.query(sql, function(err, result){
+            if(result[0].AssignedHomework === ","){
+              con.query(`UPDATE UserData SET Homework = 0 WHERE UserName ='${req.query.un}'`)
+              var dataToSendToClient = 0
+              var JSONdata = JSON.stringify(dataToSendToClient)
+              con.end
+              res.send(JSONdata)
+              }
+            else{
+              var dataToSendToClient = 1
+              var JSONdata = JSON.stringify(dataToSendToClient)
+              con.end
+              res.send(JSONdata)
             }
-          else{
-            var dataToSendToClient = 1
-            var JSONdata = JSON.stringify(dataToSendToClient)
-            con.end
-            res.send(JSONdata)
-          }
+          })
         })
       })
   })
