@@ -1,0 +1,154 @@
+body {
+    background-color: #f4f4f4;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 0%;
+}
+
+#header {
+    background-color: coral;
+    color: #fff;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.container a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#nav-bar {
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 1%;
+    border-bottom: 5px solid gray;
+}
+
+#nav-bar ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+#nav-bar li {
+    display: inline;
+}
+
+#nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+#nav-bar a:hover {
+    color: red;
+}
+
+#nav-bar .log-ud {
+    float: right;
+    padding-right: 1%;
+}
+
+.repeatingImg {
+    background-image: url(../images/repeating-pattern.jpg); /*Vincent Burkhead*/
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    overflow: hidden;
+    height: 100%;
+    z-index: -10;
+    opacity: 0.3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+#main-section {
+    float: left;
+    width: 75vw;
+    height: 75vh;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+#side-box {
+    float: right;
+    width: 25vw;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 75vh;
+    z-index: 1;
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+}
+
+#side-box .character,
+#side-box .statistics,
+#side-box .homework-todo {
+    border-bottom: 3px solid grey;
+}
+
+
+#side-box h3{
+    text-align: center;
+}
+
+#side-box p,
+#side-box .mat-emner{
+    text-align: center;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 150px;
+    color: white;
+}
+
+.styled-table thead tr {
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table thead tr:last-of-type {
+    border-bottom: 2px solid #dddddd;
+    padding-bottom: 0;
+}
+
+.styled-table tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+.styled-table tbody td.thing {
+    border-right: thin solid #dddddd ;
+}
