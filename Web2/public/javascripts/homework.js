@@ -50,13 +50,16 @@ function loadData(data){
 }
 
 function homeWorkBox(data){
-    const homeworkSite = document.querySelector('#gotHomework')
-    if (data.Homework === 1){
+    const gotHomework = document.querySelector(".homeworkQuestionmark");
+    const homeworkSite = document.querySelector('#gotHomework');
+    if (data.Homework === 1) {
         homeworkSite.style.display = "block";
+        gotHomework.innerHTML = "Du har lektier for"
         return 1
     }
-    else{
+    else {
         homeworkSite.style.display = "none";
+        gotHomework.innerHTML = "Du har ikke lektier for"
         return 0
     }
 }
@@ -112,6 +115,9 @@ function getHomeworkRequest(homework){
         document.querySelector("#answer").addEventListener('keydown', function(event){
             if (event.keyCode === 13){
                 if(Number(document.querySelector("#answer").value) === parsedResponse[assIndex].Answer){
+                    console.log(Number(document.querySelector("#answer").value))
+                    console.log(parsedResponse[assIndex].Answer)
+
                     document.querySelector("#answerForm").addEventListener('submit', function(event){
                         event.preventDefault()
                         postRequest()
@@ -143,9 +149,14 @@ function postRequest(){
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
         console.log(parsedResponse)
-        
+        const homeworkSite = document.querySelector('#gotHomework')
+        if (parsedResponse === 1){
+            homeworkSite.style.display = "block";
+        }
+        else{
+            homeworkSite.style.display = "none";
+        }
         history.go(0)
-        history.go(1)
 
 
     }
