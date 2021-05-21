@@ -246,10 +246,19 @@ body {
   left: 25px;
 }
 
+#studentinformation {
+  font-size: 55px;
+  word-wrap: break-word;
+  line-height: normal;
+  position: absolute;
+  left: 25px;
+  top: 55px;
+}
+
 #putStudentInfo {
   position: absolute;
   left: 25px;
-  top: 105px;
+  top: 165px;
   font-size: large;
   word-wrap: break-word;
 }
