@@ -182,10 +182,10 @@ body {
 
 .students ul {
   padding: 0;
-  margin: 1px;
+  margin: 0px;
   position: absolute;
   right: 65px;
-  top: 75px;
+  top: 90px;
   margin-top: 0px;
   width: 10vw;
   display: block;

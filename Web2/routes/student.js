@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
-router.post('/', function(req, res, next){
+/*router.post('/', function(req, res, next){
   let userId = req.body.id
   let test = req.body.test
   let cleanUserId = userId.replace(`?id=`,"" )
@@ -94,15 +94,44 @@ router.post('/', function(req, res, next){
     return Value
     }
   user = getUserData(cleanUserId)
-})
+})*/
 
 /* GET users listing. */
 router.get('/student', function(req, res, next) {
-  let id = req.query.id;
-  console.log(id);
   res.send('../public/student.html');
 
 });
+
+router.get('/', function(req, res){
+    // make some calls to database, fetch some data, information, check state, etc...
+    const { Console } = require('console')
+    let mysql = require('mysql')
+    const ResultSet = require('mysql/lib/protocol/ResultSet')
+    const { stringify } = require('querystring')
+    const { isNull } = require('util')
+    let con = mysql.createConnection({
+        host: 'localhost',
+        user: 'dat2c2-4',
+        password: 't95oqnsuoqLpR27r',
+        database: 'dat2c2_4'
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected to database")
+    });
+
+    console.log(req.query)
+
+    con.query(`SELECT * FROM UserData WHERE PersonId = '${req.query.pid}' AND UserName = '${req.query.un}' AND UserClassroom = '${req.query.uc}'`
+    ,function (err, result) {
+      if (err) throw err;
+
+      var dataToSendToClient = result
+      var JSONdata = JSON.stringify(dataToSendToClient)
+      res.send(JSONdata)
+    })
+})
 
 
 

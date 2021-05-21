@@ -47,7 +47,7 @@
     </div>
     <div id="studentbox">
       <h1 class="header">Elev: </h1>
-      <h1 id="studentinformation"></h1>      
+      <h1 id="studentinformation"></h1>
       <div class="students">
         <button>Elever</button>
         <ul id="studentlist">
@@ -67,23 +67,6 @@
   <footer id="footer">
     <p>Copyright &copy; 2021 MatemaTikTok</p>
   </footer>
-  <div id="classdiv" style="display: none;">
-    <form name="class" id="class" action="./class" method="POST">
-      <input type="text" id="classid" name="classid" value="">
-    </form>
-  </div>
-  <div id="querydiv" style="display: none;">
-    <form name="query" id="queryform" action="./class" method="POST">
-      <input type="text" id="queryid" name="id" value="">
-    </form>
-  </div>
-  <script type="text/javascript">
-    const queryString = window.location.search;
-    document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher.html${queryString}">Forside</a></button>`
-    document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator.html${queryString}">Opret opgave</a></li>`
-    document.querySelector("#assignmentlibrary").innerHTML = `<li><a id="assignmentlibrary" href="assignmentlibrary.html${queryString}">Tildel Lektier</a></li>`
-
-  </script>
   <script src="javascripts/class2.js"></script>
 </body>
 

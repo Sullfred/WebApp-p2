@@ -43,50 +43,59 @@ router.get('/', function(req,res) {
         console.log("Connected to database")
     });
 
-    let classroom = req.query.uc
+    if(req.query.state === "1"){
+        let sql = `SELECT * FROM UserData WHERE PersonId = ${req.query.pid}`
+        con.query(sql, function(err, result){
+            var dataToSendToClient = result
+            // convert whatever we want to send (preferably should be an object) to JSON
+            var JSONdata = JSON.stringify(dataToSendToClient)
+            con.end
+            res.send(JSONdata)
+        })
+    }
+    else {
+        let classroom = req.query.uc
+        let sql = `SELECT * FROM UserData WHERE UserClassroom = "${classroom}"`
+        con.query(sql, function(err, result){
+            if (err) throw err
 
-    let sql = `SELECT * FROM UserData WHERE UserClassroom = "${classroom}"`
-    con.query(sql, function(err, result){
-        if (err) throw err
+            let name = req.query.un
+            let teacherIndex = 0
 
-        let name = req.query.un
-        let teacherIndex = 0
-
-        for (let index = 0; index < result.length; index++) {
-            if(result[index].UserName === name){
-                teacherIndex = index
-                break
-            }
-        }
-        let editedResult = []
-
-        for (let index = 0; index < result.length; index++) {
-            editedResult[index] = result[index]
-        }
-        editedResult.splice(teacherIndex,1)
-
-        for (let index = 0; index < editedResult.length; index++) {
-            homework = editedResult[index].AssignedHomework
-            if(homework !== ""){
-                if(result[teacherIndex].AssignedHomework.includes(homework) === false){
-                    result[teacherIndex].AssignedHomework += (homework + ",")
+            for (let index = 0; index < result.length; index++) {
+                if(result[index].UserName === name){
+                    teacherIndex = index
+                    break
                 }
             }
-            if(result[teacherIndex].AssignedHomework === "" ){
-                result[teacherIndex].Homework = 0
+            let editedResult = []
+
+            for (let index = 0; index < result.length; index++) {
+                editedResult[index] = result[index]
             }
-            else if(result[teacherIndex].AssignedHomework.includes(",")){
-                result[teacherIndex].Homework = 1
+            editedResult.splice(teacherIndex,1)
+
+            for (let index = 0; index < editedResult.length; index++) {
+                homework = editedResult[index].AssignedHomework
+                if(homework !== ""){
+                    if(result[teacherIndex].AssignedHomework.includes(homework) === false){
+                        result[teacherIndex].AssignedHomework += (homework + ",")
+                    }
+                }
+                if(result[teacherIndex].AssignedHomework === "" ){
+                    result[teacherIndex].Homework = 0
+                }
+                else if(result[teacherIndex].AssignedHomework.includes(",")){
+                    result[teacherIndex].Homework = 1
+                }
             }
-        }
-        console.log(result)
-        console.log(editedResult)
-        var dataToSendToClient = result
-        // convert whatever we want to send (preferably should be an object) to JSON
-        var JSONdata = JSON.stringify(dataToSendToClient)
-        con.end
-        res.send(JSONdata)
-    })
+            var dataToSendToClient = result
+            // convert whatever we want to send (preferably should be an object) to JSON
+            var JSONdata = JSON.stringify(dataToSendToClient)
+            con.end
+            res.send(JSONdata)
+        })
+    }
 })
 
 
