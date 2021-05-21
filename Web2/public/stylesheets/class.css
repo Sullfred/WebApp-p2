@@ -246,6 +246,23 @@ body {
   left: 25px;
 }
 
+#putStudentInfo {
+  position: absolute;
+  left: 25px;
+  top: 105px;
+  font-size: large;
+  word-wrap: break-word;
+}
+
+#putClassInfo {
+  position: absolute;
+  left: 25px;
+  top: 105px;
+  font-size: large;
+  word-wrap: break-word;
+}
+
+/*
 #classbox p,
 #studentbox p {
   position: relative;
@@ -254,6 +271,7 @@ body {
   word-wrap: break-word;
   float: left;
 }
+*/
 
 @media(max-width:100%){
   #classbox {
