@@ -239,18 +239,11 @@ body {
 }
 
 .header {
-  margin-left: 25px;
   font-size: 55px;
-  text-align: center;
   word-wrap: break-word;
   line-height: normal;
-  float: left;
-}
-
-#studentinformation {
-  float: left;
-  word-wrap: break-word;
-  line-height: normal;
+  position: absolute;
+  left: 25px;
 }
 
 #classbox p,
