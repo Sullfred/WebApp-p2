@@ -176,7 +176,8 @@ body {
   z-index: 2;
   float: right;
   margin-right: 5%;
-  margin-top: -100px;
+  margin-top: 65px;
+  position: relative;
 }
 
 .students ul {
@@ -221,31 +222,33 @@ body {
 #classbox {
   background-color: whitesmoke;
   border: 1px solid black;
-  width: 45vw;
+  width: 35vw;
   min-height: 393px;
-  min-width: max-content;
-
+  position: absolute;
+  left: 5px;
 }
 
 #studentbox {
   background-color:whitesmoke;
   border: 1px solid black;
-  width: 60vw;
-  height: max-content;
-  min-width: max-content;
+  width: 40vw;
+  min-height: 393px;
+  position: absolute;
+  right: 5px;
+  overflow-y: auto;
 }
 
 .header {
-  padding: 20px;
-  width: max-content;
-  margin-left: 5%;
+  margin-left: 25px;
   font-size: 55px;
   text-align: center;
+  word-wrap: break-word;
+  line-height: normal;
+  float: left;
 }
 
 #classbox p,
 #studentbox p {
-  width: max-content;
   position: relative;
   font-size:large;
   margin-left: 5%;
@@ -269,4 +272,7 @@ body {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
