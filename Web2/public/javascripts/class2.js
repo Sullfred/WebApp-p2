@@ -118,7 +118,7 @@ function addStudentInfo(studentIndex){
     req.send();
 
     function onLoad() {
-        idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Homework", "AssignedHomework", "Addition", "Subtraction", "Multiplication", "Division", "Root", "Potens", "Mixed"]
+        idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Lektier", "Opgaver", "Addition", "Subtraktion", "Multiplikation", "Division", "Rødder", "Potens", "Blandet"]
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
         parsedResponse = spliceTeacher(parsedResponse)
