@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 var app = express();
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
+const levelingUp = require("../public/javascripts/leveling");
+
 
 var multer = require('multer');
 var upload = multer();
@@ -93,7 +95,7 @@ router.get('/', function(req, res){
     sql = `SELECT XpAmount FROM Homework WHERE Answer = ${req.body.answer} AND AssignmentId = ${req.body.assId}`
     con.query(sql, function(err, result){
       if (err) throw err
-      con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${req.query.un}'`)
+      //con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${req.query.un}'`)
       sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
       con.query(sql, function(err, result){
         if (err) throw err
@@ -106,15 +108,10 @@ router.get('/', function(req, res){
             newHomework += ","
           }
         }
-        let level = result[0].Level 
-        let currentXp = result[0].CurrentXp
-        let reqXp = result[0].RequiredXp
-        if(currentXp >= reqXp){
-          level++
-          reqXp = Math.floor(reqXp * 1.2)
-          leftOver = currentXp%reqXp
-          currenXp = leftOver
-        }
+        let level, currentXp, reqXp;
+    
+        [level, currentXp, reqXp] = levelingUp(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
+
         con.query(`UPDATE UserData SET CurrentXp = ${currentXp} WHERE UserName ='${req.query.un}'`)
         con.query(`UPDATE UserData SET Level = ${level} WHERE UserName ='${req.query.un}'`)
         con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${req.query.un}'`)
