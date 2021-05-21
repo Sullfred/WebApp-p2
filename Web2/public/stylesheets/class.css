@@ -174,10 +174,10 @@ body {
   cursor: pointer;
   border: none;
   z-index: 2;
-  float: right;
-  margin-right: 5%;
-  margin-top: 65px;
-  position: relative;
+  position: absolute;
+  right: 65px;
+  top: 65px;
+
 }
 
 .students ul {
@@ -247,12 +247,19 @@ body {
   float: left;
 }
 
+#studentinformation {
+  float: left;
+  word-wrap: break-word;
+  line-height: normal;
+}
+
 #classbox p,
 #studentbox p {
   position: relative;
   font-size:large;
   margin-left: 5%;
   word-wrap: break-word;
+  float: left;
 }
 
 @media(max-width:100%){
