@@ -53,6 +53,10 @@
                     <div>
                         <h3 class="problem">Opgave:</h3>
                         <input type="text" id="mathProblem" readonly class="problem">
+                        <form name="answerForm" method="POST" action ="./exercises" hidden>
+                            <input name="earnedXp" type="text" id="earnedXp" value="0">
+                            <input name="assType" type="text" id="assType" value="0">
+                        </form>
                     </div>
                     <div class="break">
                         <h3 class="svar">Svar:</h3>
@@ -119,6 +123,14 @@
                             <tr>
                                 <td class="thing">Dividere</td>
                                 <td id="compDiv">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Rødder</td>
+                                <td id="compRoot">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Potens</td>
+                                <td id="compPotens">0</td>
                             </tr>
                             <tr>
                                 <td class="thing">Blandet</td>

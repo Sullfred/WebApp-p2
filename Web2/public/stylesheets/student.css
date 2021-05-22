@@ -339,7 +339,7 @@ input[type=text]{
 }
 
 .break {
-    display: block;
+    display: inline-block;
     margin-top: -1.5em;
  }
 
@@ -450,8 +450,8 @@ input[type=text]{
 
 .bar {
     text-align: right; /* Right-align text */
-    padding-top: 10px; /* Add top padding */
-    padding-bottom: 10px; /* Add bottom padding */
+    padding-top: 5px; /* Add top padding */
+    padding-bottom: 5px; /* Add bottom padding */
     color: white; /* White text color */
 }
 
@@ -486,7 +486,7 @@ input[type=text]{
     float: right;
     border: solid black;
     width: auto;
-    height: 388px;
+    height: 487px;
     position: absolute;
     right: 21vw;
     top: 37vh;

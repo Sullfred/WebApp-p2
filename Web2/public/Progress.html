@@ -41,13 +41,13 @@
             <div class="xpContainer">
                 <div class="bar xp stripes"></div>
             </div>
-            <p>Manglende xp for at level up:</p>
+            <p id="requiredXp">Manglende xp for at level up:</p>
         </div>
 
         <div class="showExerciseThings backgroundImg">
             <div class="inlineFix">
                 <p class="boldText">Du har løst</p>
-                <p class="totalSovled boldText">0</p>
+                <p id="combAss" class="totalSovled boldText">0</p>
                 <p class="boldText">opgaver i alt</p>
             </div>
             <div>
@@ -76,6 +76,14 @@
                             <td id="compDiv">0</td>
                         </tr>
                         <tr>
+                            <td class="thing">Rødder</td>
+                            <td id="compRoot">0</td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Potens</td>
+                            <td id="compPotens">0</td>
+                        </tr>
+                        <tr>
                             <td class="thing">Blandet</td>
                             <td id="compBlandet">0</td>
                         </tr>
@@ -86,87 +94,20 @@
 
         <div class="repeatingImg"></div>
 
-
-    <!--
-    <aside id="side-box">
-        <div class="character">
-            <h3 id="helloUser">Hej</h3>
-            <table class="styled-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="thing">Level</td>
-                        <td id="level"></td>
-                    </tr>
-                    <tr>
-                        <td class="thing">Xp</td>
-                        <td id = "xp">0/0</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="statistics">
-            <h3>Opgaver</h3>
-            <div class="mat-emner">
-                <table class="styled-table">
-                    <thead>
-                        <tr>
-                            <th>Emne</th>
-                            <th>Antal løste opgaver</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="thing">Plus</td>
-                            <td id="compPlus">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Minus</td>
-                            <td id="compMinus">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Gange</td>
-                            <td id="compGange">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Dividere</td>
-                            <td id="compDiv">0</td>
-                        </tr>
-                        <tr>
-                            <td class="thing">Blandet</td>
-                            <td id="compBlandet">0</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="homework-todo">
-            <h3>Lektier</h3>
-            <p id="lektier">Lektier</p>
-        </div>
-    </aside>
-
-    -->
-
     <footer id="footer">
         <p>Copyright &copy; 2021 MatemaTikTok</p>
     </footer>
 
 </section>
 
-    <script src="javascripts/user.js"></script>
+    <!--<script src="javascripts/user.js"></script>-->
+    <script src="javascripts/progress.js"></script>
     <script>
-        const queryString = window.location.search;
-        console.log(queryString + "test")
+/*        const queryString = window.location.search;
         let sites = [["student", "Hjem"], ["homework", "Lektier"], ["exercises", "Flere opgaver"], ["progress", "Fremskridt"]]
         for (let index = 0; index < sites.length; index++) {
             document.querySelector(`#${sites[index][0]}`).innerHTML = `<li><a href='${sites[index][0]}.html${queryString}'>${sites[index][1]}</a></li>`
-        }
+        }*/
     </script>
 
 </body>

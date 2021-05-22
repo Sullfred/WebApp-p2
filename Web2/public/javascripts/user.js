@@ -19,20 +19,27 @@ for (let index = 0; index < secondCleanUDQS.length; index++) {
 }
 
 let user = {
-    Name: "Jens Jensen",
-    currentLevel: 0,
-    lektier: 1,
-    currentXp: 0,
-    requiredXp: 15,
-};
+    UserLoaded: finalCleanUDQS[0],
+    PersionId: finalCleanUDQS[1],
+    UserName: finalCleanUDQS[2],
+    UserClassroom: finalCleanUDQS[3],
+    Level: finalCleanUDQS[4],
+    CurrentXp: finalCleanUDQS[5],
+    RequiredXp: finalCleanUDQS[6],
+    Homework: finalCleanUDQS[7],
+    Addition: finalCleanUDQS[8],
+    Subtraction: finalCleanUDQS[9],
+    Multiplication: finalCleanUDQS[10],
+    Division: finalCleanUDQS[11],
+    Mixed: finalCleanUDQS[12]
+}
 
-addName(user.Name);
-addLevel(user.currentLevel);
-addHomework(lektier);
+addName(user.UserName);
+addLevel(user.Level);
+addHomework(user.Homework);
 solvedAssignments("compPlus")
 leveling(user.CurrentXp, user.CurrentLevel, 1197, user.RequiredXp)
 xpView(user.CurrentXp, user.RequiredXp)
-xpBar(user.CurrentXp, user.RequiredXp)
 
 
 /* ----------------------- */
@@ -60,7 +67,7 @@ function addHomework(lektier) {
 
 function solvedAssignments(assignmentType){
     let solved = document.querySelector(`#${assignmentType}`)
-    console.log(solved)
+//    console.log(solved)
     solved.innerHTML++
 }
 
@@ -89,10 +96,4 @@ function leveling(currentXp, currentLevel, earnedXp, requiredXp){
         return newXp;
     }
 
-}
-
-function xpBar(currentXp, requiredXp){
-    let xpPercent = Math.round((currentXp/requiredXp)*100)
-    document.querySelector("div.xp").style.width=`${xpPercent}%`
-    document.querySelector("div.xp").innerHTML=`${xpPercent}%`
 }

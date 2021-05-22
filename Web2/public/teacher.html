@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload = "navuser()">
+<body>
 
     <header id="header">
         <div class="container">
@@ -42,32 +42,9 @@
     </div>
 
     <footer id="footer">
-        <p>Copyright &copy; 2021 toBeAdded</p>
+        <p>Copyright &copy; 2021 MatemaTikTok</p>
     </footer>
-
-    <script src="javascripts/user.js"></script>
-    <div id="log-in" style="display: none;">
-        <form name="query" id="query" action="./teacher" method="POST">
-            <input type="text" id="id" name="id" value="">
-        </form>
-    </div>
-    <script type="text/javascript">
-        const queryString = window.location.search;
-        document.querySelector("#id").value = queryString
-        if(queryString.substr(0,4) === "?id="){
-            window.onload = function(){
-            document.forms['query'].submit()
-            }
-        }
-        let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "Opgaver"]]
-        for (let index = 0; index < navsites.length; index++) {
-            document.querySelector(`#${navsites[index][0]}`).innerHTML = `<li><a href='${navsites[index][0]}.html${queryString}'>${navsites[index][1]}</a></li>`
-        }
-        document.querySelector("#classpic").innerHTML = `<a id="classpic" href="class.html${queryString}" title="Tilgå klasse & elevoversigt"><img class="class-page" src="images/klasse.jpeg" alt="Klasse"></a>`
-        document.querySelector("#classtext").innerHTML = `<div id="classtext" class="image-text"><a href="class.html${queryString}">Klasser</a></div>`
-        document.querySelector("#asspic").innerHTML = `<a id="asspic" href="homeworkcreator.html${queryString}" title="Tilgå lektie & opgavesiden"><img class="homework-page" src="images/Opgaver.jpeg" alt="Opgave"></a>`
-        document.querySelector("#asstext").innerHTML = `<div id="asstext" class="image-text2"><a href="homeworkcreator.html${queryString}">Opgaver</a></div>`
-    </script>
+    <script src="javascripts/teacher.js"></script>
 </body>
 
 </html>

@@ -2,15 +2,13 @@
 <html>
 
     <head>
-        <title>toBeAdded</title>
+        <title>MatemaTikTok</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/homeworkcreator.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Test page for P2 project">
         <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
         <meta name="author" content="Daniel Vang Kleist, mm">
         <meta charset="UTF-8">
-        <script src="javascripts/homeworkcreator.js"></script>
-
     </head>
 
     <body>
@@ -36,7 +34,7 @@
                     <legend id="legend">Indtast Opgave</legend>
                     <input id="task" type="text" name="task" placeholder="Indtast Opgave" required>
                     <input id="answer" type="text" name="answer" placeholder="Indtast Svar" required>
-                    <input type="radio" id="easy" name="difficulty" value="1" required><label for="nem">Nem</label>
+                    <input type="radio" id="easy" name="difficulty" value="1" required checked><label for="nem">Nem</label>
                     <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
                     <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
                     <input id="fullquery" type="text" name = "fullquery" value ="" style="display: none;">
@@ -45,35 +43,6 @@
                     <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
                 </form>
             </div>
-
-        <div class="homework">
-            <form id="homeworkcreate" onsubmit="saveopg()">
-                <h2>Opgaver</h2>
-            <fieldset id="fieldset">
-                <legend id="legend">Indtast Opgave</legend>
-                <input id="task" type="text" name="task" placeholder="Indtast Opgave" required>
-                <input id="answer" type="text" name="answer" placeholder="Indtast Svar" required>
-                <input type="radio" id="easy" name="difficulty" value="1" required><label for="nem">Nem</label>
-                <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
-                <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
-                <input id="fullquery" type="text" name = "fullquery" value ="" style="display: none;">
-            </fieldset>
-                <input class="homeworkbutton" type="submit" value="Tilføj">
-                <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
-            </form>
-        </div>
-
-        <div class="operator">
-            <input class="knap" type="button" onclick="addop('+')" value="+">
-            <input class="knap" type="button" onclick="addop('-')" value="-">
-            <!-- gange-->
-            <input class="knap" type="button" onclick="addop('&#215')" value="&#215">
-            <!-- dividere-->
-            <input class="knap" type="button" onclick="addop('&#247')" value="&#247">
-            <!-- kvadratrod-->
-            <input class="knap" type="button" onclick="addop('&#8730')" value="&#8730">
-            <input class="knap" type="button" onclick="addop('^')" value="^">
-        </div>
 
             <div class="operator">
                 <input class="knap" type="button" onclick="addop('+')" value="+">
@@ -88,7 +57,7 @@
             </div>
         </section>
         <footer id="footer">
-            <p>Copyright &copy; 2021 toBeAdded</p>
+            <p>Copyright &copy; 2021 MatemaTikTok</p>
         </footer>
         <script src="javascripts/user.js"></script>
 
@@ -105,5 +74,7 @@
             }
             document.querySelector("#fullquery").innerHTML = `<input id="fullquery" name = "fullquery" value ="${queryString}" style="display: none;">`
         </script>
+        <script src="javascripts/homeworkcreator.js"></script>
+
     </body>
 </html>

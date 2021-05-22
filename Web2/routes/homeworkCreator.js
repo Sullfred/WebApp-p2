@@ -1,6 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser')
+var app = express();
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
+
+var multer = require('multer');
+var upload = multer();
+
+// for parsing application/json
+app.use(express.json());
+
+// for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+// for parsing multipart/form-data
+app.use(upload.array());
+app.use(express.static('public'));
 
 /* GET users listing. */
 router.get('/homeworkCreator', function(req, res, next) {
@@ -43,6 +59,7 @@ router.post('/', function(req, res, next){
   }
 
   function getId(qString){
+    http://localhost:3000/assignmentlibrary.html?%20ld=1&pid=1&un=Bert%20Murphy&uc=2.a&ul=0&ucxp=0&urxp=15&uhmw=0&uadd=0&usubt=0&umult=0&udiv=0&umix=0
     start = qString.search("&pid=")
     end = qString.search("&un=")
     pid = qString.substring(start+5, end)
@@ -58,40 +75,12 @@ router.post('/', function(req, res, next){
   let assignmentIdentifier = assIdtf(uncleanUsername, getId(cleanQueryString) )
   console.log(assignmentIdentifier)
 
-  /*function get_info(data, callback){
-      
-    var sql = `SELECT Assignment from Homework where Creator = '${data}'`;
-    con.query(sql, function(err, results){
-          if (err){ 
-            throw err;
-          }
-          console.log(results[0]); // good
-         // stuff_i_want = results[0].objid;  // Scope is larger than function
-
-          //return callback(results[0].objid);
-  })
-}
-
-
-//usage
-
-var stuff_i_want = '';
-
-let test = get_info("Kiara Macdonald", function(result){
-  stuff_i_want = result;
-  console.log("Stuff i want \n", stuff_i_want )
-  return stuff_i_want
-  //rest of your code goes in here
-});
-
-console.log(test, "test")*/
-
-  function assIdtf(Name, pId){
-    let cleanUsername = uncleanUsername.replace("%20"," ")
+  function assIdtf(name, pId){
+    let cleanUsername = name.replace("%20"," ")
     firstLetter = cleanUsername.substring(0,1)
     secondLetter = cleanUsername.substring(cleanUsername.search(" ")+1, cleanUsername.search(" ")+2)
     initials = firstLetter + secondLetter
-    let assIdtf  = pid + initials
+    let assIdtf  = pId + initials
     console.log(assIdtf)
     return assIdtf
 

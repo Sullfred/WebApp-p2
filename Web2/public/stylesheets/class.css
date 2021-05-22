@@ -174,23 +174,24 @@ body {
   cursor: pointer;
   border: none;
   z-index: 2;
-  float: right;
-  margin-right: 5%;
-  margin-top: -100px;
+  position: absolute;
+  right: 65px;
+  top: 65px;
+
 }
 
 .students ul {
   padding: 0;
-  margin: 1px;
-  position: relative;
+  margin: 0px;
+  position: absolute;
+  right: 65px;
+  top: 90px;
   margin-top: 0px;
-  margin-left: 80%;
-  width: 10%;
+  width: 10vw;
   display: block;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  height: max-content;
   background: #555;
   list-style: none;
   border-radius: 5px;
@@ -221,36 +222,66 @@ body {
 #classbox {
   background-color: whitesmoke;
   border: 1px solid black;
-  width: 45vw;
+  width: 35vw;
   min-height: 393px;
-  min-width: max-content;
-
+  position: absolute;
+  left: 5px;
 }
 
 #studentbox {
   background-color:whitesmoke;
   border: 1px solid black;
-  width: 60vw;
-  height: max-content;
-  min-width: max-content;
+  width: 40vw;
+  min-height: 393px;
+  max-height: 393px;
+  position: absolute;
+  right: 5px;
+  overflow-y: auto;
 }
 
 .header {
-  padding: 20px;
-  width: max-content;
-  margin-left: 5%;
   font-size: 55px;
-  text-align: center;
+  word-wrap: break-word;
+  line-height: normal;
+  position: absolute;
+  left: 25px;
 }
 
+#studentinformation {
+  font-size: 55px;
+  word-wrap: break-word;
+  line-height: normal;
+  position: absolute;
+  left: 25px;
+  top: 55px;
+}
+
+#putStudentInfo {
+  position: absolute;
+  left: 25px;
+  top: 165px;
+  font-size: large;
+  word-wrap: break-word;
+}
+
+#putClassInfo {
+  position: absolute;
+  left: 25px;
+  top: 105px;
+  font-size: large;
+  word-wrap: break-word;
+}
+
+/*
 #classbox p,
 #studentbox p {
-  width: max-content;
   position: relative;
   font-size:large;
   margin-left: 5%;
   word-wrap: break-word;
+  float: left;
 }
+*/
 
 @media(max-width:100%){
   #classbox {
@@ -269,4 +300,7 @@ body {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
