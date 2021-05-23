@@ -185,40 +185,21 @@ function randomDivisionProblem () {
     let type = 4;
     let amountDifficulty = 2;
     let numbers = [];
-    n = 10
 
-    for (i=0; i < amountDifficulty; i++){
-        numbers[i] = Math.ceil(Math.random()*n*10);
-        n = 1
+    let answer = Math.ceil(Math.random()*20);
+
+    numbers[1] = Math.ceil(Math.random()*20);
+    numbers[0] = answer*numbers[1];
+
+    for(let i=0; i < amountDifficulty-1; i++){
+        numbers[i] = numbers[i]+"/";
     }
+    let problem = numbers.join('');
+    let difference = numbers[0] - numbers[1];
 
-    numbers.sort((a, b) => {
-        if (a > b)
-            return -1;
-        if (a < b)
-            return 1;
-        return 0;
-    });
+    let earnableXp = CalculateXp(amountDifficulty*2, difference);
 
-    if (numbers[0]%numbers[1]){
-        randomDivisionProblem();
-    }
-    else {
-        let answer = numbers[0] / numbers[1];
-
-        let difference = numbers[0] - numbers[1];
-
-        for(let i=0; i < amountDifficulty-1; i++){
-            numbers[i] = numbers[i]+"/";
-        }
-
-        let problem = numbers.join('');
-
-        let earnableXp = CalculateXp(amountDifficulty*2, difference*2);
-
-        return [problem, answer, earnableXp, type]
-    }
-
+    return [problem, answer, earnableXp, type]
 }
 
 
