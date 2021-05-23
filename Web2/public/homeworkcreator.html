@@ -68,7 +68,7 @@
                 document.forms['query'].submit()
                 }
             }
-            let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "opgaver"]]
+            let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "Opgaver"]]
             for (let index = 0; index < navsites.length; index++) {
                 document.querySelector(`#${navsites[index][0]}`).innerHTML = `<li><a href='${navsites[index][0]}.html${queryString}'>${navsites[index][1]}</a></li>`
             }
