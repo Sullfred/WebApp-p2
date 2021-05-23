@@ -28,7 +28,7 @@
         </nav>
         <section id="main-section">
             <div class="homework">
-                <form action="./homeworkcreator" method="POST" id="homeworkcreate">
+                <form action="./homeworkcreator" method="POST" id="homeworkcreate" name="homeworkcreate">
                     <h2>Opgaver</h2>
                 <fieldset id="fieldset">
                     <legend id="legend">Indtast Opgave</legend>
@@ -37,9 +37,8 @@
                     <input type="radio" id="easy" name="difficulty" value="1" required checked><label for="nem">Nem</label>
                     <input type="radio" id="medium" name="difficulty" value="2"><label for="mellem">Mellem</label>
                     <input type="radio" id="hard" name="difficulty" value="3"><label for="svær">Svær</label>
-                    <input id="fullquery" type="text" name = "fullquery" value ="" style="display: none;">
                 </fieldset>
-                    <input class="homeworkbutton" type="submit" value="Tilføj">
+                    <input id="submit" class="homeworkbutton" type="submit" value="Tilføj">
                     <input class="homeworkbutton" type="button" onclick="reset()" value="Ryd">
                 </form>
             </div>
@@ -59,21 +58,7 @@
         <footer id="footer">
             <p>Copyright &copy; 2021 MatemaTikTok</p>
         </footer>
-        <script src="javascripts/user.js"></script>
 
-        <script type="text/javascript">
-            const queryString = window.location.search;
-            if(queryString.substr(0,4) === "?id="){
-                window.onload = function(){
-                document.forms['query'].submit()
-                }
-            }
-            let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "opgaver"]]
-            for (let index = 0; index < navsites.length; index++) {
-                document.querySelector(`#${navsites[index][0]}`).innerHTML = `<li><a href='${navsites[index][0]}.html${queryString}'>${navsites[index][1]}</a></li>`
-            }
-            document.querySelector("#fullquery").innerHTML = `<input id="fullquery" name = "fullquery" value ="${queryString}" style="display: none;">`
-        </script>
         <script src="javascripts/homeworkcreator.js"></script>
 
     </body>

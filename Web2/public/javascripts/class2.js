@@ -56,7 +56,6 @@ function headerClass(classroom) {
     function onLoad() {
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        console.log(parsedResponse)
         let teacherIndex = 0
         optionsArray = ["Nej", "Ja"]
         document.getElementById("classchoice").innerHTML ="Klasse: " + classroom;
