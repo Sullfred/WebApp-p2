@@ -44,7 +44,9 @@ router.get('/', function(req, res){
   });
 
   if(req.query.state === "1"){
+
     sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(req.query.un)}`
+
     con.query(sql, function(err, result){
       if (err) throw err
       var dataToSendToClient = result
@@ -63,7 +65,9 @@ router.get('/', function(req, res){
       else
       sqlAppendString += ` OR AssignmentId = ${assignments[index]}`
     }
+
     sql = `SELECT * FROM Homework ${con.escape(sqlAppendString)}`
+
     con.query(sql, function(err, result){
       if (err) throw err
       var dataToSendToClient = result
@@ -92,11 +96,13 @@ router.get('/', function(req, res){
         console.log("Connected to database")
     });
 
+
     sql = `SELECT XpAmount FROM Homework WHERE Answer = ${con.escape(req.body.answer)} AND AssignmentId = ${con.escape(req.body.assId)}`
     con.query(sql, function(err, result){
       if (err) throw err
       //con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${req.query.un}'`)
       sql = `SELECT * FROM UserData WHERE UserName = ${req.query.un}`
+
       con.query(sql, function(err, result){
         if (err) throw err
         let homework = result[0].AssignedHomework.split(",")
@@ -112,12 +118,14 @@ router.get('/', function(req, res){
     
         [level, currentXp, reqXp] = levelingUp(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
 
+
         con.query(`UPDATE UserData SET CurrentXp = ${con.escape(currentXp)} WHERE UserName =${con.escape(req.query.un)}`)
         con.query(`UPDATE UserData SET Level = ${con.escape(level)} WHERE UserName =${con.escape(req.query.un)}`)
         con.query(`UPDATE UserData SET RequiredXp = ${con.escape(reqXp)} WHERE UserName =${con.escape(req.query.un)}`)
         con.query(`UPDATE UserData SET AssignedHomework = ${con.escape(newHomework)} WHERE UserName =${con.escape(req.query.un)}`)
 
         sql = `SELECT AssignmentType FROM Homework WHERE AssignmentId = ${con.escape(req.body.assId)}`
+
         con.query(sql, function(err, result){
 
           let assTypes = ["Plus","Minus","Gange","Dividere","Rødder","Potens", "Mixed"]
@@ -126,6 +134,7 @@ router.get('/', function(req, res){
             console.log(result[0].AssignmentType, assTypes[index])
             if(result[0].AssignmentType === assTypes[index]){
               console.log("test")
+
               con.query(`UPDATE UserData SET ${con.escape(assTypesInDB[index])} = ${con.escape(assTypesInDB[index])}+1 WHERE UserName =${con.escape(req.query.un)}`)
             }
           }
@@ -134,6 +143,7 @@ router.get('/', function(req, res){
           con.query(sql, function(err, result){
             if(result[0].AssignedHomework === ","){
               con.query(`UPDATE UserData SET Homework = 0 WHERE UserName =${con.escape(req.query.un)}`)
+
               var dataToSendToClient = 0
               var JSONdata = JSON.stringify(dataToSendToClient)
               con.end

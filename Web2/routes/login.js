@@ -43,17 +43,22 @@ router.post('/', function(req, res, next){
 
     let enteredUserLogin = req.body.username
     let enteredUserPassword = req.body.password
+
     con.query(`SELECT UserPassAndSaltHashed, UserSalt FROM Users WHERE UserLogin = ${con.escape(enteredUserLogin)} AND UserPass = ${con.escape(enteredUserPassword)}`
+
     ,function (err, result) {
         if (err) throw err;
 
         if(result.length === 1){
             if(result[0].UserPassAndSaltHashed === sha256(enteredUserPassword + result[0].UserSalt) ){
+
                 con.query(`SELECT UserType, UserLoginId FROM Users WHERE UserPassAndSaltHashed = ${con.escape(result[0].UserPassAndSaltHashed)}`
+
                 ,function (err, result) {
                     if (err) throw err;
 
                     if(result[0].UserType === "Student"){
+
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
                             res.redirect(`/student.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
@@ -63,6 +68,7 @@ router.post('/', function(req, res, next){
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
                             res.redirect(`/teacher.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
+
                         })
                     }
                 })

@@ -42,10 +42,12 @@ router.get('/', function(req, res){
       console.log("Connected to database")
   });
 
+
   let sql = `SELECT * FROM Homework WHERE AssignmentType = ${con.escape(req.query.asstyp)}`
   con.query(sql, function(err, result){
       if (err) throw err
     con.end
+
     res.send(result)
   })
 })
@@ -114,8 +116,10 @@ router.post('/', upload.fields([]),function(req, res){
     for (let classIndex = 0; classIndex < chosenClassesArr.length; classIndex++) {
       for (let assIndex = 0; assIndex < chosenAssignmentsArr.length; assIndex++) {
         con.query(`SET FOREIGN_KEY_CHECKS = 0`)
+
         con.query(`UPDATE UserData SET AssignedHomework = CONCAT(AssignedHomework, ${con.escape(chosenAssignmentsArr[assIndex])}) WHERE UserClassroom = ${con.escape(chosenClassesArr[classIndex])}`)
         con.query(`UPDATE UserData SET Homework = 1 WHERE UserClassroom = ${con.escape(chosenClassesArr[classIndex])}`)
+
         con.query(`SET FOREIGN_KEY_CHECKS = 1`)
       }
     }

@@ -41,7 +41,9 @@ router.get('/', function(req, res){
       console.log("Connected to database")
   });
 
+
   sql = `SELECT * FROM UserData WHERE UserName = "${con.escape(req.query.un)}"`
+
   con.query(sql, function(err, result){
     if (err) throw err
     var dataToSendToClient = result

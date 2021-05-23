@@ -41,7 +41,6 @@ router.post('/', upload.fields([]), function(req, res, next){
       console.log("Connected to database")
     });
 
-
   let creator = req.query.un
   let task = req.body.task
   let assignmentType = (deffAssType(task))
@@ -52,8 +51,10 @@ router.post('/', upload.fields([]), function(req, res, next){
   assIdtf()
   console.log(assignmentIdentifier)
 
+
   function assIdtf(){
     let sql = `SELECT COUNT(AssignmentIdentifier) FROM Homework WHERE Creator = '${req.query.un}'`
+
     con.query(sql, function(err, result){
       if (err) throw err
       let assAmm = 0

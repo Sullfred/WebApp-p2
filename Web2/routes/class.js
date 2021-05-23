@@ -44,7 +44,9 @@ router.get('/', function(req,res) {
     });
 
     if(req.query.state === "1"){
+
         let sql = `SELECT * FROM UserData WHERE PersonId = ${con.escape(req.query.pid)}`
+
         con.query(sql, function(err, result){
             var dataToSendToClient = result
             // convert whatever we want to send (preferably should be an object) to JSON
@@ -54,7 +56,9 @@ router.get('/', function(req,res) {
         })
     }
     else {
+
         let sql = `SELECT * FROM UserData WHERE UserClassroom = ${con.escape(req.query.uc)}`
+
         con.query(sql, function(err, result){
             if (err) throw err
 
@@ -88,7 +92,9 @@ router.get('/', function(req,res) {
                     result[teacherIndex].Homework = 1
                 }
             }
+
             console.log(result)
+
             var dataToSendToClient = result
             // convert whatever we want to send (preferably should be an object) to JSON
             var JSONdata = JSON.stringify(dataToSendToClient)
