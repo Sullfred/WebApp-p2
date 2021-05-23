@@ -56,13 +56,13 @@ router.post('/', function(req, res, next){
                     if(result[0].UserType === "Student"){
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${result[0].UserLoginId}`, function (err, result) {
                             if (err) throw err;
-                            res.redirect(`/student.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
+                            res.redirect(`/node0/student.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
                         })
                     }
                     else if(result[0].UserType === "Teacher"){
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${result[0].UserLoginId}`, function (err, result) {
                             if (err) throw err;
-                            res.redirect(`/teacher.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
+                            res.redirect(`/node0/teacher.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
                         })
                     }
                 })
