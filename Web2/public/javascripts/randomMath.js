@@ -283,7 +283,7 @@ function listen () {
                         console.log("SHALOM SHALOM. Something went wrong");
                         break;
                 }*/
-                [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*3));
+                [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*4));
                 console.log(answer)
 
 
