@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-    console.log("test")
     let queryString = window.location.search
     let navButtonsIds = ["teacher", "homeworkcreator", "classes"]
     for (let index = 0; index < navButtonsIds.length; index++) {
@@ -28,7 +27,9 @@ function getRequest(assType){
         var parsedResponse = JSON.parse(response);
         let assList = document.querySelector("#opgaveliste")
         let classList = document.querySelector("#klassebeholder")
-        let userClasses = query.substring(query.search("uc=")+3,query.search("&ul="))
+
+        let userClasses = query.substring(query.search("uc=")+3,query.length)
+
         let visibleClasses = userClasses
         userClasses = userClasses.replace(".","")
         classList.innerHTML = ""

@@ -2,11 +2,11 @@ let assArr = []
 
 document.addEventListener('DOMContentLoaded', function(){
     let queryString = window.location.search
-    /*let navButtonsIds = ["teacher", "homeworkcreator", "classes"]
+
+    let navButtonsIds = ["student", "homework", "exercises", "progress"]
     for (let index = 0; index < navButtonsIds.length; index++) {
         document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
-    }*/
-
+    }
     getRequest(queryString)
 })
 
@@ -53,6 +53,7 @@ function loadData(data){
     if(check === 1){
         getHomeworkRequest(data.AssignedHomework)
     }
+
 }
 
 function homeWorkBox(data){

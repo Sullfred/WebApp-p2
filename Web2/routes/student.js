@@ -123,7 +123,9 @@ router.get('/', function(req, res){
 
     console.log(req.query)
 
-    con.query(`SELECT * FROM UserData WHERE PersonId = '${req.query.pid}' AND UserName = '${req.query.un}' AND UserClassroom = '${req.query.uc}'`
+
+    con.query(`SELECT * FROM UserData WHERE PersonId = '${con.escape(req.query.pid)}' AND UserName = '${con.escape(req.query.un)}' AND UserClassroom = '${con.escape(req.query.uc)}'`
+
     ,function (err, result) {
       if (err) throw err;
 
