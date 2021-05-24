@@ -21,7 +21,7 @@ app.use(express.static('public'));
 const path = require('path');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/teacher', function(req, res, next) {
   let sess = req.session
   console.log("cookie on teach site",req.session)
   console.log("teacher test")
