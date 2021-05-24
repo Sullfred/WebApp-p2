@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let index = 0; index < navButtonsIds.length; index++) {
         document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
     }
+
     getRequest(queryString)
 })
 
@@ -13,9 +14,11 @@ function getRequest(query){
     var req = new XMLHttpRequest();
     var url = '/exercises';
 
+
     req.open('GET',url+query,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
+
     req.send()
 
     function onLoad() {
@@ -23,11 +26,13 @@ function getRequest(query){
         var parsedResponse = JSON.parse(response);
         loadData(parsedResponse[0])
 
+
     }
     function onError() {
         // handle error here, print message perhaps
         console.log('error receiving async AJAX call');
     }
+
 }
 
 function loadData(data){
@@ -41,4 +46,5 @@ function loadData(data){
     document.querySelector("#compRoot").innerHTML = `${data.SquareRoot}`
     document.querySelector("#compPotens").innerHTML = `${data.Potens}`
     document.querySelector("#compBlandet").innerHTML = `${data.Mixed}`
+
 }

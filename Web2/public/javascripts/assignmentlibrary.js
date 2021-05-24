@@ -27,7 +27,9 @@ function getRequest(assType){
         var parsedResponse = JSON.parse(response);
         let assList = document.querySelector("#opgaveliste")
         let classList = document.querySelector("#klassebeholder")
+
         let userClasses = query.substring(query.search("uc=")+3,query.length)
+
         let visibleClasses = userClasses
         userClasses = userClasses.replace(".","")
         classList.innerHTML = ""

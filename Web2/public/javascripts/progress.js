@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
     let queryString = window.location.search
+
     let navButtonsIds = ["student", "homework", "exercises", "progress"]
     for (let index = 0; index < navButtonsIds.length; index++) {
         document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
     }
+
     getRequest(queryString)
 })
 
