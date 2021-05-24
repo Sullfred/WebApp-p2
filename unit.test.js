@@ -57,7 +57,7 @@ test('Test if Multiplication is working', () => {
     array = Multiplication()
     expect(array).not.toContain(null)
 })
-/*
+
 const {Division} = require('./Web2/public/javascripts/randomMath');
 test('Test if Division is working', () => {
     expect(Division[0]).toEqual(Division[1])
@@ -69,7 +69,7 @@ test('Test if Division is working', () => {
     expect(array).not.toContain(null)
 })
 
-
+/*
 const {Diff} = require('./Web2/public/javascripts/randomMath');
 test('Test if difficulty is working', () => {
     array = Diff()

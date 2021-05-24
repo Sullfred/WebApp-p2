@@ -110,46 +110,27 @@ module.exports.Multiplication = function randomMultiplicationProblem () {
     let earnableXp = 5;
 
     return [problem, answer, earnableXp, type]
-    
 }
 
 module.exports.Division = function randomDivisionProblem () {
     let type = 4;
-    let amountOfOperands = 2;
+    let amountDifficulty = 2;
     let numbers = [];
-    n = 10
 
-    for (i=0; i < amountOfOperands; i++){
-        numbers[i] = Math.ceil(Math.random()*n*10);
-        n = 1
+    let answer = Math.ceil(Math.random()*20);
+
+    numbers[1] = Math.ceil(Math.random()*20);
+    numbers[0] = answer*numbers[1];
+
+    for(let i=0; i < amountDifficulty-1; i++){
+        numbers[i] = numbers[i]+"/";
     }
+    let problem = numbers.join('');
+    let difference = numbers[0] - numbers[1];
 
-    numbers.sort((a, b) => {
-        if (a > b)
-            return -1;
-        if (a < b)
-            return 1;
-        return 0;
-    });
+    let earnableXp = 5;
 
-    if (numbers[0]%numbers[1]){
-        randomDivisionProblem();
-    }
-    else {
-        let answer = numbers[0] / numbers[1];
-
-        let difference = numbers[0] - numbers[1];
-
-        for(let i=0; i < amountOfOperands-1; i++){
-            numbers[i] = numbers[i]+"/";
-        }
-
-        let problem = numbers.join('');
-
-        let earnableXp = 5;
-       
-        return [problem, answer, earnableXp, type]
-    }
+    return [problem, answer, earnableXp, type]
 }
 
 
