@@ -1,7 +1,7 @@
 
 function randomDifficulty () {
-    let amountdifficulty = Math.floor(Math.random()*3+1);
-    return amountdifficulty;
+    let amountOfOperands = Math.floor(Math.random()*3+1);
+    return amountOfOperands;
 }
 
 function numberDifficulty () {
@@ -9,8 +9,8 @@ function numberDifficulty () {
     return numberDifficulty;
 }
 
-function CalculateXp (amountDifficulty, answerDifficulty) {
-    let difficultyLevel = amountDifficulty*answerDifficulty/5;
+module.exports.CalculateXp = function CalculateXp (amountOfOperands, answerDifficulty) {
+    let difficultyLevel = amountOfOperands*answerDifficulty/5;
     let earnableXp = 5;
 
     switch(true){
@@ -28,12 +28,12 @@ function CalculateXp (amountDifficulty, answerDifficulty) {
     }
 }
 
-function randomAdditionProblem () {
+module.exports.Addition = function randomAdditionProblem () {
     let type = 1;
-    let amountDifficulty = randomDifficulty();
+    let amountOfOperands = randomDifficulty();
     let numbers = [];
     
-    for (i=0; i <= amountDifficulty; i++){
+    for (i=0; i <= amountOfOperands; i++){
         numbers[i] = Math.round(Math.random()*numberDifficulty());
     }
 
@@ -41,23 +41,22 @@ function randomAdditionProblem () {
         return num1+num2;
     }, 0);
 
-    for(let i=0; i <= amountDifficulty-1; i++){
+    for(let i=0; i <= amountOfOperands-1; i++){
         numbers[i] = numbers[i]+"+";
     }
 
     let problem = numbers.join('');
-    let earnableXp = CalculateXp(amountDifficulty, answer);
+    let earnableXp = 5;
 
     return [problem, answer, earnableXp, type]
-
 }
 
-function randomSubtractionProblem () {
+module.exports.Subtraction = function randomSubtractionProblem () {
     let type = 2;
-    let amountDifficulty = randomDifficulty();
+    let amountOfOperands = randomDifficulty();
     let numbers = [];
     
-    for (i=0; i <= amountDifficulty; i++){
+    for (i=0; i <= amountOfOperands; i++){
         numbers[i] = Math.round(Math.random()*numberDifficulty());
     }
 
@@ -76,24 +75,24 @@ function randomSubtractionProblem () {
 
     let difference = numbers[0] - Math.abs(answer);
 
-    for(let i=0; i <= amountDifficulty-1; i++){
+    for(let i=0; i <= amountOfOperands-1; i++){
         numbers[i] = numbers[i]+"-";
     }
 
     let problem = numbers.join('');
 
-    let earnableXp = CalculateXp(amountDifficulty*3, difference*2)
+    let earnableXp = 5;
 
     return [problem, answer, earnableXp, type]
 }
 
 
-function randomMultiplicationProblem () {
+module.exports.Multiplication = function randomMultiplicationProblem () {
     let type = 3;
-    let amountDifficulty = 2;
+    let amountOfOperands = 2;
     let numbers = [];
 
-    for (i=0; i < amountDifficulty; i++){
+    for (i=0; i < amountOfOperands; i++){
         numbers[i] = Math.ceil(Math.random()*10);
     }
 
@@ -102,25 +101,25 @@ function randomMultiplicationProblem () {
         answer = answer * numbers[i]
     }
 
-    for(let i=0; i < amountDifficulty-1; i++){
+    for(let i=0; i < amountOfOperands-1; i++){
         numbers[i] = numbers[i]+"*";
     }
 
     let problem = numbers.join('');
 
-    let earnableXp = CalculateXp(amountDifficulty*2, answer);
+    let earnableXp = 5;
 
     return [problem, answer, earnableXp, type]
     
 }
 
-function randomDivisionProblem () {
+module.exports.Division = function randomDivisionProblem () {
     let type = 4;
-    let amountDifficulty = 2;
+    let amountOfOperands = 2;
     let numbers = [];
     n = 10
 
-    for (i=0; i < amountDifficulty; i++){
+    for (i=0; i < amountOfOperands; i++){
         numbers[i] = Math.ceil(Math.random()*n*10);
         n = 1
     }
@@ -141,17 +140,16 @@ function randomDivisionProblem () {
 
         let difference = numbers[0] - numbers[1];
 
-        for(let i=0; i < amountDifficulty-1; i++){
+        for(let i=0; i < amountOfOperands-1; i++){
             numbers[i] = numbers[i]+"/";
         }
 
         let problem = numbers.join('');
 
-        let earnableXp = CalculateXp(amountDifficulty*2, difference*2);
+        let earnableXp = 5;
        
         return [problem, answer, earnableXp, type]
     }
-    
 }
 
 
@@ -253,4 +251,4 @@ function listen () {
     });
 }
 
-listen();
+//listen();
