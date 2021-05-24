@@ -1,6 +1,7 @@
 
     document.querySelector("#loginform").addEventListener('submit', function(event){
-        event.preventDefault()
+        event.preventDefault();
+        console.log("login submitted");
         postLogin()
     })
 
@@ -10,6 +11,7 @@ function postLogin(){
     var url = '/login';
     let form = document.querySelector("#loginform")
   
+    console.log("test before requests")
     req.open('POST',url,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
