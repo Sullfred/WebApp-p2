@@ -69,6 +69,7 @@ body {
     border: solid 2px;
 }
 
+
 .homework {
     border: solid black;
     width: 600px;
@@ -115,6 +116,7 @@ body {
     padding: 5px;
     margin-top: 5%;
     font-size: 50px;
+    width: 545px;
 }
 
 .knap {
@@ -133,4 +135,5 @@ body {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    bottom: 0;
 }
