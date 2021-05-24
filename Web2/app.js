@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -15,9 +16,15 @@ var homeworkCreatorRouter = require('./routes/homeworkCreator');
 var classRouter = require('./routes/class');
 var assignmentlibraryRouter = require('./routes/assignmentlibrary');
 
-
-
 var app = express();
+
+app.use(session({
+  secret: 'key',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(cookieParser())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

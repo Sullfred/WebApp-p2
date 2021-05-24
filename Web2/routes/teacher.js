@@ -18,9 +18,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const path = require('path');
+
 /* GET users listing. */
-router.get('/teacher', function(req, res, next) {
-  res.send('../public/teacher.html');
+router.get('/', function(req, res, next) {
+  let sess = req.session
+  console.log("cookie on teach site",req.session)
+  console.log("teacher test")
+  if (sess.userLogin){
+    res.sendFile(path.join(__dirname, '..', 'public', 'teacher.html'));
+  }
+  else
+    res.send("please login")
 });
 
 module.exports = router;

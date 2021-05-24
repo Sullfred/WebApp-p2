@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
     let queryString = window.location.search
-    loadData(queryString)
+    //loadData(queryString)
 })
 
 function loadData(queryString){

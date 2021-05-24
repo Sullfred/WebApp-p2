@@ -5,18 +5,17 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 function loadNav(queryString){
-    document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher.html${queryString}">Forside</a></button>`
-    document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator.html${queryString}">Opret opgave</a></li>`
-    document.querySelector("#assignmentlibrary").innerHTML = `<li><a id="assignmentlibrary" href="assignmentlibrary.html${queryString}">Tildel Lektier</a></li>`
-
+    document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher">Forside</a></button>`
+    document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator">Opret opgave</a></li>`
+    document.querySelector("#assignmentlibrary").innerHTML = `<li><a id="assignmentlibrary" href="assignmentlibrary">Tildel Lektier</a></li>`
 }
 
 function getRequest(query){
     var req = new XMLHttpRequest();
     var url = '/class';
-    let state = "&state=1"
+    let state = "?state=1"
 
-    req.open('GET',url + query+state,true); // set this to POST if you would like
+    req.open('GET',url + state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
@@ -46,9 +45,9 @@ function addClass(classroom) {
 function headerClass(classroom) {
     var req = new XMLHttpRequest();
     var url = '/class';
-    let query = window.location.search
+    let state = '?state=2'
 
-    req.open('GET',url + query ,true); // set this to POST if you would like
+    req.open('GET',url + state ,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
@@ -110,9 +109,9 @@ function addStudents(parsedResponse){
 function addStudentInfo(studentIndex){
     var req = new XMLHttpRequest();
     var url = '/class';
-    let query = window.location.search
+    let state = '?state=2'
 
-    req.open('GET',url + query,true); // set this to POST if you would like
+    req.open('GET',url + state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();

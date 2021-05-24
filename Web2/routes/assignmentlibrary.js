@@ -18,39 +18,54 @@ app.use(express.urlencoded({ extended: false }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const path = require('path');
+
 /* GET users listing. */
-router.get('/assignmentlibrary', function(req, res, next) {
-  res.send('../public/assignmentlibrary.html');
+router.get('/', function(req, res, next) {
+  let sess = req.session
+  if (sess.userLogin){
+    if(req.query.state === undefined){
+    res.sendFile(path.join(__dirname, '..', 'public', 'assignmentlibrary.html'));
+    }
+    else if(req.query.state === "1"){
+      var dataToSendToClient = sess.userClassroom
+      var JSONdata = JSON.stringify(dataToSendToClient)
+      res.send(JSONdata)
+    }
+
+    else if (req.query.state === "2"){
+      const { Console } = require('console')
+      let mysql = require('mysql')
+      const ResultSet = require('mysql/lib/protocol/ResultSet')
+      const { stringify } = require('querystring')
+      const { isNull } = require('util')
+      let con = mysql.createConnection({
+          host: 'localhost',
+          user: 'dat2c2-4',
+          password: 't95oqnsuoqLpR27r',
+          database: 'dat2c2_4'
+      });
+
+      con.connect(function(err) {
+          if (err) throw err;
+          console.log("Connected to database")
+      });
+
+      let sql = `SELECT * FROM Homework WHERE AssignmentType = ${con.escape(req.query.asstyp)}`
+      con.query(sql, function(err, result){
+          if (err) throw err
+        con.end
+        var dataToSendToClient = result
+        var JSONdata = JSON.stringify(dataToSendToClient)
+        res.send(JSONdata)
+      })
+    }
+  }
+  else
+    res.send("please login")
 });
 
-router.get('/', function(req, res){
-  // make some calls to database, fetch some data, information, check state, etc...
-  const { Console } = require('console')
-  let mysql = require('mysql')
-  const ResultSet = require('mysql/lib/protocol/ResultSet')
-  const { stringify } = require('querystring')
-  const { isNull } = require('util')
-  let con = mysql.createConnection({
-      host: 'localhost',
-      user: 'dat2c2-4',
-      password: 't95oqnsuoqLpR27r',
-      database: 'dat2c2_4'
-  });
 
-  con.connect(function(err) {
-      if (err) throw err;
-      console.log("Connected to database")
-  });
-
-
-  let sql = `SELECT * FROM Homework WHERE AssignmentType = ${con.escape(req.query.asstyp)}`
-  con.query(sql, function(err, result){
-      if (err) throw err
-    con.end
-
-    res.send(result)
-  })
-})
 
 
 // upload.fields er en del af multers måde at håndtere upload af formdata

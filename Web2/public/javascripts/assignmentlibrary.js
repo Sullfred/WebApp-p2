@@ -1,40 +1,57 @@
-document.addEventListener('DOMContentLoaded', function(){
-    let queryString = window.location.search
-    let navButtonsIds = ["teacher", "homeworkcreator", "classes"]
-    for (let index = 0; index < navButtonsIds.length; index++) {
-        document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
-    }
-})
+
 
 let buttons = document.querySelectorAll('.assTypeBtt')
 for (let index = 0; index < buttons.length; index++) {
     buttons[index].addEventListener('click',function(event){
-        getRequest(event.target.name)
+        classRequest(event.target.name)
+        assRequest(event.target.name)
     })
 }
 
-function getRequest(assType){
+function classRequest(assType){
     var req = new XMLHttpRequest();
     var url = '/assignmentlibrary';
-    let query = window.location.search
-    let assTypeQueryfi = "&asstyp="+assType
-    req.open('GET',url+query+assTypeQueryfi,true); // set this to POST if you would like
+    let state = "?state=1"
+
+    req.open('GET',url+state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
     function onLoad() {
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        let assList = document.querySelector("#opgaveliste")
+
+        let userClasses = parsedResponse
         let classList = document.querySelector("#klassebeholder")
-
-        let userClasses = query.substring(query.search("uc=")+3,query.length)
-
         let visibleClasses = userClasses
         userClasses = userClasses.replace(".","")
         classList.innerHTML = ""
         classList.innerHTML += `<li><input name="klasse_${userClasses}" type="checkbox">${visibleClasses}</li>`
         classList.innerHTML += `<input type="text" name="controlbox" style="display: none"/>`
+    }
+
+    function onError() {
+        // handle error here, print message perhaps
+        console.log('error receiving async AJAX call');
+    }
+}
+
+function assRequest(assType){
+    var req = new XMLHttpRequest();
+    var url = '/assignmentlibrary';
+    let assTypeQueryfi = "?asstyp="+assType
+    let state = "&state=2"
+
+
+    req.open('GET',url+assTypeQueryfi+state,true); // set this to POST if you would like
+    req.addEventListener('load',onLoad);
+    req.addEventListener('error',onError);
+    req.send();
+    function onLoad() {
+        var response = this.responseText;
+        var parsedResponse = JSON.parse(response);
+
+        let assList = document.querySelector("#opgaveliste")
         assList.innerHTML = ""
         for (let index = 0; index < parsedResponse.length; index++) {
             assList.innerHTML += `<li><input name="assignment_${parsedResponse[index].AssignmentId}" type="checkbox" value="${parsedResponse[index].AssignmentId}">${parsedResponse[index].Assignment}=${parsedResponse[index].Answer}</li>`

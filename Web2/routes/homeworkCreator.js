@@ -18,10 +18,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const path = require('path');
+
 /* GET users listing. */
-router.get('/homeworkCreator', function(req, res, next) {
-  res.send('../public/homeworkCreator.html');
+router.get('/', function(req, res, next) {
+  let sess = req.session
+  console.log("cookie on teach site",req.session)
+  console.log("teacher test")
+  if (sess.userLogin){
+    res.sendFile(path.join(__dirname, '..', 'public', 'homeworkcreator.html'));
+  }
+  else
+    res.send("please login")
 });
+
 
 router.post('/', upload.fields([]), function(req, res, next){
   const { Console } = require('console')
@@ -41,19 +51,20 @@ router.post('/', upload.fields([]), function(req, res, next){
       console.log("Connected to database")
     });
 
-  let creator = req.query.un
+    let sess = req.session
+
+  let creator = sess.userName
   let task = req.body.task
   let assignmentType = (deffAssType(task))
   let difficulty =req.body.difficulty
   let xpAmount = deffXpAmm(difficulty)
   let answer = req.body.answer
-  let assignmentIdentifier = []
-  assIdtf()
-  console.log(assignmentIdentifier)
+  let assignmentIdentifier = assIdtf()
+
 
 
   function assIdtf(){
-    let sql = `SELECT COUNT(AssignmentIdentifier) FROM Homework WHERE Creator = '${req.query.un}'`
+    let sql = `SELECT COUNT(AssignmentIdentifier) FROM Homework WHERE Creator = '${sess.userName}'`
 
     con.query(sql, function(err, result){
       if (err) throw err
@@ -63,15 +74,13 @@ router.post('/', upload.fields([]), function(req, res, next){
           assAmm = result[0][key];
         }
       }
-      firstLetter = req.query.un.substring(0,1)
-      secondLetter = req.query.un.substring(req.query.un.search(" ")+1, req.query.un.search(" ")+2)
+      firstLetter = sess.userName.substring(0,1)
+      secondLetter = sess.userName.substring(sess.userName.search(" ")+1, sess.userName.search(" ")+2)
       initials = firstLetter + secondLetter
-      let assIdtf  = req.query.pid + initials + assAmm
-      assignmentIdentifier.unshift(assIdtf)
+      let assIdtf  = sess.personId + initials + assAmm
       con.end
     })
   }
-
 
   function deffAssType(task){
     let counter = 0
@@ -121,7 +130,7 @@ router.post('/', upload.fields([]), function(req, res, next){
     var JSONdata = JSON.stringify(dataToSendToClient)
     res.send(JSONdata)
   }
-  //putAssignment(assignmentIdentifier, creator, assignmentType, difficulty, xpAmount, task, answer)
+  putAssignment(assignmentIdentifier, creator, assignmentType, difficulty, xpAmount, task, answer)
 })
 
 module.exports = router;
