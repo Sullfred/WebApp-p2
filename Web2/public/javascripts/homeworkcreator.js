@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-  queryString = window.location.search
-  let navsites = [["teacher","Forside"],["class", "Klasser"],["homeworkcreator", "opgaver"]]
-  for (let index = 0; index < navsites.length; index++) {
-      document.querySelector(`#${navsites[index][0]}`).innerHTML = `<li><a href='${navsites[index][0]}.html${queryString}'>${navsites[index][1]}</a></li>`
-  }
   document.querySelector("#homeworkcreate").addEventListener('submit', function(event){
     event.preventDefault()
     postRequest(queryString)

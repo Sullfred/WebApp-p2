@@ -69,7 +69,7 @@ router.get('/', function(req, res){
       sqlAppendString += ` OR AssignmentId = ${con.escape(assignments[index])}`
     }
 
-    sql = `SELECT * FROM Homework ${con.escape(sqlAppendString)}`
+    sql = `SELECT * FROM Homework ${sqlAppendString}`
 
     con.query(sql, function(err, result){
       if (err) throw err
@@ -118,7 +118,7 @@ router.get('/', function(req, res){
         }
         let level, currentXp, reqXp;
 
-        [level, currentXp, reqXp] = leveling(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
+        [level, currentXp, reqXp] = levelingUp(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
 
 
         con.query(`UPDATE UserData SET CurrentXp = ${con.escape(currentXp)} WHERE UserName =${con.escape(req.query.un)}`)
