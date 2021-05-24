@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const session = require('express-session');
+app.use(session({secret: 'ssshhhhh'}));
+
 /* GET users listing. */
 router.get('/assignmentlibrary', function(req, res, next) {
   res.send('../public/assignmentlibrary.html');

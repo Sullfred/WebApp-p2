@@ -18,10 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const session = require('express-session');
+app.use(session({secret: 'ssshhhhh'}));
+
 /* GET users listing. */
 router.get('/homeworkCreator', function(req, res, next) {
   res.send('../public/homeworkCreator.html');
 });
+
 
 router.post('/', upload.fields([]), function(req, res, next){
   const { Console } = require('console')
@@ -36,10 +40,10 @@ router.post('/', upload.fields([]), function(req, res, next){
       database: 'dat2c2_4'
   });
 
-    con.connect(function(err) {
+    /*con.connect(function(err) {
       if (err) throw err;
       console.log("Connected to database")
-    });
+    });*/
 
 
   let creator = req.query.un
@@ -48,9 +52,8 @@ router.post('/', upload.fields([]), function(req, res, next){
   let difficulty =req.body.difficulty
   let xpAmount = deffXpAmm(difficulty)
   let answer = req.body.answer
-  let assignmentIdentifier = []
-  assIdtf()
-  console.log(assignmentIdentifier)
+  let assignmentIdentifier = assIdtf()
+
 
   function assIdtf(){
     let sql = `SELECT COUNT(AssignmentIdentifier) FROM Homework WHERE Creator = '${req.query.un}'`
@@ -66,11 +69,9 @@ router.post('/', upload.fields([]), function(req, res, next){
       secondLetter = req.query.un.substring(req.query.un.search(" ")+1, req.query.un.search(" ")+2)
       initials = firstLetter + secondLetter
       let assIdtf  = req.query.pid + initials + assAmm
-      assignmentIdentifier.unshift(assIdtf)
       con.end
     })
   }
-
 
   function deffAssType(task){
     let counter = 0
@@ -120,7 +121,7 @@ router.post('/', upload.fields([]), function(req, res, next){
     var JSONdata = JSON.stringify(dataToSendToClient)
     res.send(JSONdata)
   }
-  //putAssignment(assignmentIdentifier, creator, assignmentType, difficulty, xpAmount, task, answer)
+  putAssignment(assignmentIdentifier, creator, assignmentType, difficulty, xpAmount, task, answer)
 })
 
 module.exports = router;

@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const session = require('express-session');
+app.use(session({secret: 'ssshhhhh'}));
+
 /* GET users listing. */
 router.get('/homework', function(req, res, next) {
   res.send('../public/homework.html');
@@ -55,15 +58,15 @@ router.get('/', function(req, res){
   }
   else if(req.query.state === "2"){
     assignments = req.query.hmwrkass.split(",")
-    let sqlAppendString = ""
+    let sqlAppendString = ``
     for (let index = 1; index < assignments.length-1; index++) {
       if(index === 1){
-        sqlAppendString += `WHERE AssignmentId = ${assignments[index]}`
+        sqlAppendString += `WHERE AssignmentId = ${con.escape(assignments[index])}`
       }
       else
-      sqlAppendString += ` OR AssignmentId = ${assignments[index]}`
+      sqlAppendString += ` OR AssignmentId = ${con.escape(assignments[index])}`
     }
-    sql = `SELECT * FROM Homework ${con.escape(sqlAppendString)}`
+    sql = `SELECT * FROM Homework ${sqlAppendString}`
     con.query(sql, function(err, result){
       if (err) throw err
       var dataToSendToClient = result
@@ -96,7 +99,7 @@ router.get('/', function(req, res){
     con.query(sql, function(err, result){
       if (err) throw err
       //con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${req.query.un}'`)
-      sql = `SELECT * FROM UserData WHERE UserName = ${req.query.un}`
+      sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(req.query.un)}`
       con.query(sql, function(err, result){
         if (err) throw err
         let homework = result[0].AssignedHomework.split(",")
@@ -109,8 +112,8 @@ router.get('/', function(req, res){
           }
         }
         let level, currentXp, reqXp;
-    
-        [level, currentXp, reqXp] = levelingUp(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
+
+        [level, currentXp, reqXp] = leveling(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
 
         con.query(`UPDATE UserData SET CurrentXp = ${con.escape(currentXp)} WHERE UserName =${con.escape(req.query.un)}`)
         con.query(`UPDATE UserData SET Level = ${con.escape(level)} WHERE UserName =${con.escape(req.query.un)}`)

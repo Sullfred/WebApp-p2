@@ -20,7 +20,14 @@ app.use(express.static('public'));
 
 /* GET users listing. */
 router.get('/teacher', function(req, res, next) {
-  res.send('../public/teacher.html');
+  let sess = req.session
+  console.log(req.session)
+  console.log("test")
+  if (sess.userLogin && sess.upash){
+    res.send('../public/teacher.html');
+  }
+  else
+  console.log("test")
 });
 
 module.exports = router;

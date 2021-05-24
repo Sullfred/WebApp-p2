@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const session = require('express-session');
+app.use(session({secret: 'ssshhhhh'}));
+
 /* GET users listing. */
 router.get('/exercises', function(req, res, next) {
   res.redirect("../public/Exercises.html");
@@ -41,7 +44,7 @@ router.get('/', function(req, res){
       console.log("Connected to database")
   });
 
-  sql = `SELECT * FROM UserData WHERE UserName = "${con.escape(req.query.un)}"`
+  sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(req.query.un)}`
   con.query(sql, function(err, result){
     if (err) throw err
     var dataToSendToClient = result

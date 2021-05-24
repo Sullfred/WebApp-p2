@@ -18,10 +18,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const path = require('path');
+
+
+
 /* GET users listing. */
-router.get('/login', function(req, res, next) {
+router.get('/', function(req, res, next) {
+    console.log("test")
     res.send('../public/login.html');
 });
+
 
 router.post('/', function(req, res, next){
     const { Console } = require('console')
@@ -40,15 +46,18 @@ router.post('/', function(req, res, next){
         if (err) throw err;
         console.log("Connected to database")
     });
-
+    let sess = req.session
     let enteredUserLogin = req.body.username
     let enteredUserPassword = req.body.password
+    console.log(req.cookie)
     con.query(`SELECT UserPassAndSaltHashed, UserSalt FROM Users WHERE UserLogin = ${con.escape(enteredUserLogin)} AND UserPass = ${con.escape(enteredUserPassword)}`
     ,function (err, result) {
         if (err) throw err;
 
         if(result.length === 1){
             if(result[0].UserPassAndSaltHashed === sha256(enteredUserPassword + result[0].UserSalt) ){
+                sess.userLogin = req.body.username
+                sess.upash = sha256(enteredUserPassword + result[0].UserSalt)
                 con.query(`SELECT UserType, UserLoginId FROM Users WHERE UserPassAndSaltHashed = ${con.escape(result[0].UserPassAndSaltHashed)}`
                 ,function (err, result) {
                     if (err) throw err;

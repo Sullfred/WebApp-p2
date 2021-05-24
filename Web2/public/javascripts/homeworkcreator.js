@@ -24,8 +24,7 @@ function postRequest(query){
       var response = this.responseText;
       var parsedResponse = JSON.parse(response);
       window.alert(parsedResponse)
-      //går tilbage til n forrige side
-      history.go(0)
+      document.querySelector("#homeworkcreate").reset()
   }
 
   function onError() {

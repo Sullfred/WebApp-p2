@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
+const session = require('express-session');
+app.use(session({secret: 'ssshhhhh'}));
+
 /*router.post('/', function(req, res, next){
   let userId = req.body.id
   let test = req.body.test
@@ -123,7 +126,7 @@ router.get('/', function(req, res){
 
     console.log(req.query)
 
-    con.query(`SELECT * FROM UserData WHERE PersonId = '${con.escape(req.query.pid)}' AND UserName = '${con.escape(req.query.un)}' AND UserClassroom = '${con.escape(req.query.uc)}'`
+    con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(req.query.pid)} AND UserName = ${con.escape(req.query.un)} AND UserClassroom = ${con.escape(req.query.uc)}`
     ,function (err, result) {
       if (err) throw err;
 
