@@ -384,7 +384,7 @@ input[type=text]{
     color: black;
     text-align: center;
     position: relative;
-    min-height: 120vh;
+    min-height: 100vh;
     width: 100vw;
 }
 
