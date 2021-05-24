@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MatemaTikTok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/student.css">
+    <meta name="description" content="Test page for P2 project">
+    <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+    <meta name="author" content="Daniel Vang Kleist">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <h1><a href="#">MatemaTikTok</a></h1>
+        </div>
+    </header>
+
+    <nav id="nav-bar">
+        <ul>
+            <li><a id="student" href="student.html">Hjem</a></li>
+            <li><a id="homework" href="Homework.html">Lektier</a></li>
+            <li><a id="exercises" href="Exercises.html">Flere opgaver</a></li>
+            <li><a id="progress" href="Progress.html">Fremskridt</a></li>
+            <li><a href="index.html" class="log-ud">Log ud</a></li>
+        </ul>
+    </nav>
+
+    <section id="wholePage">
+
+        <section id="main-section">
+            <div class="moreExercises">
+                <h2>Vælg opgavetype</h2>
+                <div class="box">
+                    <div class="btn btn-one">
+                        <label>
+                            <button id="plus">PLUS</button>
+                        </label>
+                    </div>
+                    <div class="btn btn-one">
+                        <button id="minus">MINUS</button>
+                    </div>
+                    <div class="btn btn-one">
+                        <button id="gange">GANGE</button>
+                    </div>
+                    <div class="btn btn-one">
+                        <button id="dividere">DIVIDERE</button>
+                    </div>
+                </div>
+                <div class="Opgave">
+                    <div>
+                        <h3 class="problem">Opgave:</h3>
+                        <input type="text" id="mathProblem" readonly class="problem">
+                        <form name="answerForm" method="POST" action ="./exercises" hidden>
+                            <input name="earnedXp" type="text" id="earnedXp" value="0">
+                            <input name="assType" type="text" id="assType" value="0">
+                        </form>
+                    </div>
+                    <div class="break">
+                        <h3 class="svar">Svar:</h3>
+                        <input type="text" id="answer" class="svar">
+                        <p class="notCorrect"></p>
+                    </div>
+                    <div>
+                        <p hidden id="solvedPlus">0</p>
+                        <p hidden id="solvedMinus">0</p>
+                        <p hidden id="solvedGange">0</p>
+                        <p hidden id="solvedDividere">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <script src="./javascripts/randomMath.js"></script>
+        </section>
+
+        <aside id="side-box">
+            <div class="character">
+                <h3 id="helloUser">Hej</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="thing">Level</td>
+                            <td id="level"></td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Xp</td>
+                            <td id="xp">0/0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="statistics">
+                <h3>Opgaver</h3>
+                <div class="mat-emner">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Regneart</th>
+                                <th>Antal løste opgaver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="thing">Plus</td>
+                                <td id="compPlus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Minus</td>
+                                <td id="compMinus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Gange</td>
+                                <td id="compGange">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Dividere</td>
+                                <td id="compDiv">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Rødder</td>
+                                <td id="compRoot">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Potens</td>
+                                <td id="compPotens">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Blandet</td>
+                                <td id="compBlandet">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="homework-todo">
+                <h3>Lektier</h3>
+                <p id="lektier">Lektier</p>
+            </div>
+
+        </aside>
+
+        <div class="repeatingImg"></div>
+
+    <footer id="footer">
+        <p>Copyright &copy; 2021 MatemaTikTok</p>
+    </footer>
+
+</section>
+
+    <script src="javascripts/exercises.js"></script>
+</body>
+
+</html>

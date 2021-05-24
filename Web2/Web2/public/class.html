@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MatemaTikTok</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/class.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test page for P2 project">
+  <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+  <meta name="author" content="Daniel Vang Kleist, mm">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header id="header">
+    <div class="container">
+      <h1><a href="#">MatemaTikTok</a></h1>
+    </div>
+  </header>
+
+  <nav id="nav-bar">
+    <div class="dropdown">
+      <button id="teacher" class="home"><a href="teacher">Forside</a></button>
+      <div class="classes">
+        <button>Klasser</button>
+        <ul id="classlist">
+        </ul>
+      </div>
+      <div class="homework">
+        <button>Opgaver</button>
+        <ul>
+          <li><a id="homeworkcreator" href="homeworkcreator">Opret opgave</a></li>
+          <li><a id="assignmentlibrary" href="assignmentlibrary">Tildel Lektier</a></li>
+        </ul>
+      </div>
+      <button class="logout"><a href="/">Log-ud</a></button>
+    </div>
+  </nav>
+  <section id="main-section">
+    <div id="classbox">
+      <h1 id="classchoice" class="header">Klasse: Vælg en klasse </h1>
+      <div id="putClassInfo">
+        <p id="gotHomework"></p>
+        <p id="ongoingHomework"></p>
+      </div>
+    </div>
+    <div id="studentbox">
+      <h1 class="header">Elev: </h1>
+      <h1 id="studentinformation"></h1>
+      <div class="students">
+        <button>Elever</button>
+        <ul id="studentlist">
+        </ul>
+      </div>
+      <div id="putStudentInfo">
+      </div>
+    </div>
+
+    <!--<div class="students">
+      <button>Elever</button>
+      <ul id="studentlist">
+      </ul>
+    </div>-->
+
+  </section>
+  <footer id="footer">
+    <p>Copyright &copy; 2021 MatemaTikTok</p>
+  </footer>
+  <script src="javascripts/class2.js"></script>
+</body>
+
+</html>

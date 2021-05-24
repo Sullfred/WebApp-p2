@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>MatemaTikTok</title>
+      <link rel="stylesheet" type="text/css" href="stylesheets/assignmentlibrary.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Test page for P2 project">
+      <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+      <meta name="author" content="Daniel Vang Kleist, mm">
+      <meta charset="UTF-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    <header id="header">
+        <div class="container">
+            <h1><a href="#">MatemaTikTok</a></h1>
+        </div>
+    </header>
+
+    <nav id="nav-bar">
+      <div class="dropdown">
+        <button class="home"><a id="teacher" href="teacher">Forside</a></button>
+        <div class="classes">
+          <button class="home"><a id="classes" href="class">Klasser</a></button>
+
+        </div>
+        <div class="homework">
+          <button>Opgaver</button>
+          <ul>
+            <li><a id="homeworkcreator" href="homeworkcreator">Opret opgave</a></li>
+          </ul>
+        </div>
+        <button class="logout"><a href="/">Log-ud</a></button>
+      </div>
+    </nav>
+
+    <div id="types">
+      <h2 class="header2">Opgave typer</h2>
+      <button name ="Plus" class="assTypeBtt">Plus</button>
+      <button name ="Minus" class="assTypeBtt">Minus</button>
+      <button name ="Gange" class="assTypeBtt">Gange</button>
+      <button name ="Division" class="assTypeBtt">Divi</button>
+      <button name ="Rødder" class="assTypeBtt">Sqrt</button>
+      <button name ="Potens" class="assTypeBtt">Power</button>
+      <button name ="Mixed" class="assTypeBtt">Blandede</button>
+    </div>
+
+  <section id="main-section">
+    <!-- enctype="multipart/form-data" er nødvendigt for at multer kan håndtere formen på serversiden-->
+    <form id="form" class="form" action="./assignmentlibrary" method="POST" enctype="multipart/form-data">
+      <fieldset id="klasser">
+        <legend align="center">Klasser</legend>
+        <ul id ="klassebeholder">
+          <input type="text" name="username" style="display: none"/>
+        </ul>
+      </fieldset>
+      <fieldset id="opgaver">
+        <legend align="center">Opgaver</legend>
+        <ul id="opgaveliste">
+        </ul>
+      </fieldset>
+      <div class="knapper">
+        <input id="submitknap" type="submit" class="sr" value="Tildel valgte opgaver" href="#">
+        <input type="reset"  class="sr" value="Fjern alle markeringer">
+      </div>
+    </form>
+  </section>
+
+    <footer id="footer">
+        <p>Copyright &copy; 2021 MatemaTikTok</p>
+    </footer>
+    <script src="javascripts/assignmentlibrary.js"></script>
+  </body>
+</html>

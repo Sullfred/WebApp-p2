@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MatemaTikTok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/student.css">
+    <meta name="description" content="Test page for P2 project">
+    <meta name="keywords" content="Mathematics, homework, project, Aalborg university">
+    <meta name="author" content="Daniel Vang Kleist">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <h1><a href="#">MatemaTikTok</a></h1>
+        </div>
+    </header>
+
+    <nav id="nav-bar">
+        <ul>
+            <li><a id="student" href="student.html">Hjem</a></li>
+            <li><a id="homework" href="Homework.html">Lektier</a></li>
+            <li><a id="exercises" href="Exercises.html">Flere opgaver</a></li>
+            <li><a id="progress" href="Progress.html">Fremskridt</a></li>
+            <li><a href="index.html" class="log-ud">Log ud</a></li>
+        </ul>
+    </nav>
+
+    <section id="wholePage">
+
+        <section id="main-section">
+            <!--
+        <div id="ticTacToeGame">
+            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+            <script src="../JS/ticTacToeGame.js"></script>
+        </div>
+        -->
+
+            <div class="centerHomework">
+                <h2 class="homeworkQuestionmark"></h2>
+
+                <div id="gotHomework">
+                    <div class="Opgave">
+                        <div id = "assignmentContainer">
+                            <h3 id="assignment" class="problem">Opgave:</h3>
+                            <input type="text" id="mathProblem" readonly class="problem" value="">
+                        </div>
+                        <div>
+                            <h3 class="svar break">Svar:</h3>
+                            <form id = "answerForm" method="POST" action="/homework" class="break">
+                                <input name="answer" type="text" id="answer" class="svar" value="">
+                                <input name="assId" type="hidden" id="assId" class="svar" value="" >
+                            </form>
+
+                            <div class="subText">
+                                <button id="prevBtt" class="betterButtons">Forrige</button>
+                                <button id="nextBtt" class="betterButtons">Næste</button>
+                            </div>
+                            <p class="notCorrect"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside id="side-box">
+            <div class="character">
+                <h3 id="helloUser">Hej</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="thing">Level</td>
+                            <td id="level"></td>
+                        </tr>
+                        <tr>
+                            <td class="thing">Xp</td>
+                            <td id="xp">0/0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="statistics">
+                <h3>Opgaver</h3>
+                <div class="mat-emner">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Regneart</th>
+                                <th>Antal løste opgaver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="thing">Plus</td>
+                                <td id="compPlus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Minus</td>
+                                <td id="compMinus">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Gange</td>
+                                <td id="compGange">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Dividere</td>
+                                <td id="compDiv">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Rødder</td>
+                                <td id="compRoot">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Potens</td>
+                                <td id="compPotens">0</td>
+                            </tr>
+                            <tr>
+                                <td class="thing">Blandet</td>
+                                <td id="compBlandet">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="homework-todo">
+                <h3>Lektier</h3>
+                <p id="lektier">Lektier</p>
+            </div>
+        </aside>
+
+        <div class="repeatingImg"></div>
+
+
+
+        <footer id="footer">
+            <p>Copyright &copy; 2021 MatemaTikTok</p>
+        </footer>
+
+    </section>
+
+    <script src="javascripts/homework.js"></script>
+</body>
+
+</html>
