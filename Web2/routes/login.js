@@ -59,6 +59,7 @@ router.post('/', upload.fields([]), function(req, res, next){
                     if (err) throw err;
                     console.log(result[0])
                     if(result[0].UserType === "Student"){
+                            sess.userType = "Student"
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
                             sess.personId = result[0].PersonId
@@ -72,6 +73,7 @@ router.post('/', upload.fields([]), function(req, res, next){
                         })
                     }
                     else if(result[0].UserType === "Teacher"){
+                        sess.userType = "Teacher"
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             sess.personId = result[0].PersonId
                             sess.userName = result[0].UserName

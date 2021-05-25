@@ -31,7 +31,6 @@ router.get('/', function(req, res, next) {
             res.sendFile(path.join(__dirname, '..', 'public', 'class.html'));
             console.log(sess.personId)
             console.log("state",req.query.state)
-            
         }
         else
             res.send("please login")
