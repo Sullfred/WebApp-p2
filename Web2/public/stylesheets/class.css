@@ -257,9 +257,9 @@ body {
 }
 
 #putStudentInfo {
-  position: absolute;
-  left: 25px;
-  top: 165px;
+  position: relative;
+  float: left;
+  margin-left: 25px;
   font-size: large;
   word-wrap: break-word;
 }
