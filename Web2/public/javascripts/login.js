@@ -1,7 +1,11 @@
 
     document.querySelector("#loginform").addEventListener('submit', function(event){
+<<<<<<< Updated upstream
         event.preventDefault();
         console.log("login submitted");
+=======
+        event.preventDefault()
+>>>>>>> Stashed changes
         postLogin()
     })
 
@@ -11,7 +15,10 @@ function postLogin(){
     var url = '/login';
     let form = document.querySelector("#loginform")
   
+<<<<<<< Updated upstream
     console.log("test before requests")
+=======
+>>>>>>> Stashed changes
     req.open('POST',url,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);

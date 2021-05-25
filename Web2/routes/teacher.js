@@ -21,7 +21,11 @@ app.use(express.static('public'));
 const path = require('path');
 
 /* GET users listing. */
+<<<<<<< Updated upstream
 router.get('/', function(req, res, next) {
+=======
+router.get('/teacher', function(req, res, next) {
+>>>>>>> Stashed changes
   let sess = req.session
   console.log("cookie on teach site",req.session)
   console.log("teacher test")
