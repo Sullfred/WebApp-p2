@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#homeworkcreate").addEventListener('submit', function(event){
     event.preventDefault()
-    postRequest(queryString)
+    postRequest()
   })
 })
 
-function postRequest(query){
+function postRequest(){
   var req = new XMLHttpRequest();
   var url = '/homeworkcreator';
   let form = document.querySelector("#homeworkcreate")
 
-  req.open('POST',url+query,true); // set this to POST if you would like
+  req.open('POST',url,true); // set this to POST if you would like
   req.addEventListener('load',onLoad);
   req.addEventListener('error',onError);
   req.send(new FormData(form));

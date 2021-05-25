@@ -102,7 +102,7 @@ const path = require('path');
 
 router.get('/', function(req, res){
   let sess = req.session
-  if (sess.userName){
+  if (sess.userType === "Student"){
     if(req.query.state === undefined)
     res.sendFile(path.join(__dirname, '..', 'public', 'student.html'));
     else if(req.query.state === "1"){

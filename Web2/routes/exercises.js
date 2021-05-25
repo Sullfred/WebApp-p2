@@ -22,7 +22,7 @@ const path = require('path');
 
 router.get('/', function(req, res){
   let sess = req.session
-  if (sess.userName){
+  if (sess.userType === "Student"){
     if(req.query.state === undefined)
     res.sendFile(path.join(__dirname, '..', 'public', 'exercises.html'));
     else if(req.query.state === "1"){
@@ -77,74 +77,58 @@ router.post('/', upload.fields([]), function(req, res){
       if (err) throw err;
       console.log("Connected to database")
   });
-
-  console.log(req.body)
-  var dataToSendToClient = 1
-  var JSONdata = JSON.stringify(dataToSendToClient)
-  con.end
-  res.send(JSONdata)
-  /*sql = `SELECT XpAmount FROM Homework WHERE Answer = ${req.body.answer} AND AssignmentId = ${req.body.assId}`
+  sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`
   con.query(sql, function(err, result){
     if (err) throw err
-    con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${sess.userName}'`)
-    sql = `SELECT * FROM UserData WHERE UserName = '${sess.userName}'`
-    con.query(sql, function(err, result){
-      if (err) throw err
-      let homework = result[0].AssignedHomework.split(",")
-      doneAssIndex = homework.indexOf(req.body.assId)
-      let newHomework =""
-      for (let index = 0; index < homework.length-1; index++) {
-        if(index !== doneAssIndex){
-          newHomework += homework[index]
-          newHomework += ","
-        }
-      }
-      let level = result[0].Level 
-      let currentXp = result[0].CurrentXp
-      let reqXp = result[0].RequiredXp
-      if(currentXp >= reqXp){
-        level++
-        reqXp = Math.floor(reqXp * 1.2)
-        leftOver = currentXp%reqXp
-        currenXp = leftOver
-      }
-      con.query(`UPDATE UserData SET CurrentXp = ${currentXp} WHERE UserName ='${sess.userName}'`)
-      con.query(`UPDATE UserData SET Level = ${level} WHERE UserName ='${sess.userName}'`)
-      con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${sess.userName}'`)
-      con.query(`UPDATE UserData SET AssignedHomework = '${newHomework}' WHERE UserName ='${sess.userName}'`)
 
-      sql = `SELECT AssignmentType FROM Homework WHERE AssignmentId = ${req.body.assId}`
-      con.query(sql, function(err, result){
-
-        let assTypes = ["Plus","Minus","Gange","Dividere","Rødder","Potens", "Mixed"]
-        let assTypesInDB = ["Addition","Subtraction","Multiplication","Division","SquareRoot","Potens","Mixed"]
-        for (let index = 0; index < assTypes.length; index++) {
-          console.log(result[0].AssignmentType, assTypes[index])
-          if(result[0].AssignmentType === assTypes[index]){
-            console.log("test")
-            con.query(`UPDATE UserData SET ${assTypesInDB[index]} = ${assTypesInDB[index]}+1 WHERE UserName ='${sess.userName}'`)
+    function levelingUp(currentXp, currentLevel, earnedXp, requiredXp){
+      let newXp = currentXp + earnedXp
+      if (newXp >= requiredXp){
+          currentLevel++;
+          currentXp = newXp-requiredXp;
+          requiredXp = Math.floor(requiredXp*1.2);
+          if(currentXp >= requiredXp){
+              //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+              levelingUp(currentXp, currentLevel, 0, requiredXp);
           }
-        }
-
-        sql = `SELECT * FROM UserData WHERE UserName = '${sess.userName}'`
-        con.query(sql, function(err, result){
-          if(result[0].AssignedHomework === ","){
-            con.query(`UPDATE UserData SET Homework = 0 WHERE UserName ='${sess.userName}'`)
-            var dataToSendToClient = 0
-            var JSONdata = JSON.stringify(dataToSendToClient)
-            con.end
-            res.send(JSONdata)
-            }
           else{
-            var dataToSendToClient = 1
-            var JSONdata = JSON.stringify(dataToSendToClient)
-            con.end
-            res.send(JSONdata)
+              //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+              return [currentLevel, currentXp, requiredXp];
           }
-        })
-      })
+      }
+      else{
+          //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
+          currentXp = newXp;
+          return [currentLevel, currentXp, requiredXp];
+      }
+  }
+    [currentLevel, currentXp, requiredXp] = levelingUp(result[0].CurrentXp, result[0].Level, Number(req.body.earnedXp), result[0].RequiredXp)
+
+    con.query(`UPDATE UserData SET CurrentXp = ${con.escape(currentXp)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+    con.query(`UPDATE UserData SET Level = ${con.escape(currentLevel)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+    con.query(`UPDATE UserData SET RequiredXp = ${con.escape(requiredXp)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+
+    let assTypesInDB = ["Addition","Subtraction","Multiplication","Division","SquareRoot","Potens","Mixed"]
+    con.query(`UPDATE UserData SET ${assTypesInDB[req.body.assType]} = ${assTypesInDB[req.body.assType]}+1 WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+
+    sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(sess.userName)}`
+    con.query(sql, function(err, result){
+      if(result[0].AssignedHomework === ","){
+        con.query(`UPDATE UserData SET Homework = 0 WHERE UserName =${con.escape(sess.userName)}`)
+
+        var dataToSendToClient = 0
+        var JSONdata = JSON.stringify(dataToSendToClient)
+        con.end
+        res.send(JSONdata)
+        }
+      else{
+        var dataToSendToClient = 1
+        var JSONdata = JSON.stringify(dataToSendToClient)
+        con.end
+        res.send(JSONdata)
+      }
     })
-  })*/
+  })
 })
 
 module.exports = router;

@@ -6,7 +6,6 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
 const levelingUp = require("../public/javascripts/leveling");
 
-
 var multer = require('multer');
 var upload = multer();
 
@@ -24,7 +23,7 @@ const path = require('path');
 
 router.get('/', function(req, res){
   let sess = req.session
-  if (sess.userName){
+  if (sess.userType === "Student"){
     if(req.query.state === undefined)
       res.sendFile(path.join(__dirname, '..', 'public', 'homework.html'));
     else if(req.query.state === "1" || req.query.state === "2"){
@@ -104,10 +103,12 @@ router.get('/', function(req, res){
         console.log("Connected to database")
     });
 
+    let xpAmm = 0
+
     sql = `SELECT XpAmount FROM Homework WHERE Answer = ${con.escape(req.body.answer)} AND AssignmentId = ${con.escape(req.body.assId)}`
     con.query(sql, function(err, result){
       if (err) throw err
-      //con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${sess.userName}'`)
+      xpAmm = result[0].XpAmount
       sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`
       con.query(sql, function(err, result){
         if (err) throw err
@@ -120,14 +121,33 @@ router.get('/', function(req, res){
             newHomework += ","
           }
         }
-        let level, currentXp, reqXp;
 
-        [level, currentXp, reqXp] = levelingUp(result[0].CurrentXp, result[0].Level, result[0].XpAmount, result[0].RequiredXp)
-
+        function levelingUp(currentXp, currentLevel, earnedXp, requiredXp){
+          let newXp = currentXp + earnedXp
+          if (newXp >= requiredXp){
+              currentLevel++;
+              currentXp = newXp-requiredXp;
+              requiredXp = Math.floor(requiredXp*1.2);
+              if(currentXp >= requiredXp){
+                  //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+                  levelingUp(currentXp, currentLevel, 0, requiredXp);
+              }
+              else{
+                  //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`);
+                  return [currentLevel, currentXp, requiredXp];
+              }
+          }
+          else{
+              //console.log(`CurrentXp:${currentXp}, Currentlvl:${currentLevel}, NewXp:${newXp}, RequiredXp:${requiredXp}`)
+              currentXp = newXp;
+              return [currentLevel, currentXp, requiredXp];
+          }
+      }
+        [currentLevel, currentXp, requiredXp] = levelingUp(result[0].CurrentXp, result[0].Level, xpAmm, result[0].RequiredXp)
 
         con.query(`UPDATE UserData SET CurrentXp = ${con.escape(currentXp)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
-        con.query(`UPDATE UserData SET Level = ${con.escape(level)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
-        con.query(`UPDATE UserData SET RequiredXp = ${con.escape(reqXp)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+        con.query(`UPDATE UserData SET Level = ${con.escape(currentLevel)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+        con.query(`UPDATE UserData SET RequiredXp = ${con.escape(requiredXp)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
         con.query(`UPDATE UserData SET AssignedHomework = ${con.escape(newHomework)} WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
 
         sql = `SELECT AssignmentType FROM Homework WHERE AssignmentId = ${con.escape(req.body.assId)}`
@@ -137,9 +157,8 @@ router.get('/', function(req, res){
           let assTypes = ["Plus","Minus","Gange","Dividere","Rødder","Potens", "Mixed"]
           let assTypesInDB = ["Addition","Subtraction","Multiplication","Division","SquareRoot","Potens","Mixed"]
           for (let index = 0; index < assTypes.length; index++) {
-            console.log(result[0].AssignmentType, assTypes[index])
             if(result[0].AssignmentType === assTypes[index]){
-              con.query(`UPDATE UserData SET ${con.escape(assTypesInDB[index])} = ${con.escape(assTypesInDB[index])}+1 WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
+              con.query(`UPDATE UserData SET ${assTypesInDB[index]} = ${assTypesInDB[index]}+1 WHERE UserName =${con.escape(sess.userName)} AND PersonId =${con.escape(sess.personId)}`)
             }
           }
 

@@ -23,7 +23,7 @@ const path = require('path');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   let sess = req.session
-  if (sess.userLogin){
+  if (sess.userType === "Teacher"){
     if(req.query.state === undefined){
     res.sendFile(path.join(__dirname, '..', 'public', 'assignmentlibrary.html'));
     }

@@ -47,7 +47,6 @@ function loadData(data){
     else
         document.querySelector("#lektier").innerHTML = `Du har ikke lektier for`
 
-
     check = homeWorkBox(data)
     if(check === 1){
         getHomeworkRequest(data.AssignedHomework)

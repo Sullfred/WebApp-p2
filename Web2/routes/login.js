@@ -51,21 +51,18 @@ router.post('/', upload.fields([]), function(req, res, next){
     con.query(`SELECT UserPassAndSaltHashed, UserSalt FROM Users WHERE UserLogin = ${con.escape(enteredUserLogin)}`
     ,function (err, result) {
         if (err) throw err;
-        console.log(result)
         if(result.length === 1){
             if(result[0].UserPassAndSaltHashed === sha256(enteredUserPassword + result[0].UserSalt) ){
                 con.query(`SELECT UserType, UserLoginId FROM Users WHERE UserPassAndSaltHashed = ${con.escape(result[0].UserPassAndSaltHashed)}`
                 ,function (err, result) {
                     if (err) throw err;
-                    console.log(result[0])
                     if(result[0].UserType === "Student"){
-                            sess.userType = "Student"
+                        sess.userType = "Student"
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
                             sess.personId = result[0].PersonId
                             sess.userName = result[0].UserName
                             sess.userClassroom = result[0].UserClassroom
-                            console.log(sess)
                             if (err) throw err;
                             var dataToSendToClient = ["Elev"]
                             var JSONdata = JSON.stringify(dataToSendToClient)
