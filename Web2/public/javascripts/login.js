@@ -7,7 +7,7 @@ document.querySelector("#loginform").addEventListener('submit', function(event){
 
 function postLogin(){
     var req = new XMLHttpRequest();
-    var url = '/login';
+    var url = '/node0/login';
     let form = document.querySelector("#loginform")
 
     req.open('POST',url,true); // set this to POST if you would like
