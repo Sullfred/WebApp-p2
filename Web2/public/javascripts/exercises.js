@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-    let queryString = window.location.search
-    let navButtonsIds = ["student", "homework", "exercises", "progress"]
-    for (let index = 0; index < navButtonsIds.length; index++) {
-        document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
-    }
-
-    getRequest(queryString)
+    getRequest()
 })
 
 
@@ -13,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function(){
 function getRequest(query){
     var req = new XMLHttpRequest();
     var url = '/exercises';
+    state = "?state=1"
 
-
-    req.open('GET',url+query,true); // set this to POST if you would like
+    req.open('GET',url+state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
 

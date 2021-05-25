@@ -22,12 +22,12 @@ app.use(express.static('public'));
 const path = require('path');
 
 /* GET users listing. */
-router.get('/class', function(req, res, next) {
+router.get('/', function(req, res, next) {
     if(req.query.state === undefined){
         let sess = req.session
         console.log("cookie on class site",req.session)
         console.log("class test")
-        if (sess.userLogin){
+        if (sess){
             res.sendFile(path.join(__dirname, '..', 'public', 'class.html'));
             console.log(sess.personId)
             console.log("state",req.query.state)

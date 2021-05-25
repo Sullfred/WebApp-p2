@@ -18,43 +18,49 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
-const session = require('express-session');
-app.use(session({secret: 'ssshhhhh'}));
-
-/* GET users listing. */
-router.get('/exercises', function(req, res, next) {
-  res.redirect("../public/Exercises.html");
-});
+const path = require('path');
 
 router.get('/', function(req, res){
-  const { Console } = require('console')
-  let mysql = require('mysql')
-  const ResultSet = require('mysql/lib/protocol/ResultSet')
-  const { stringify } = require('querystring')
-  const { isNull } = require('util')
-  let con = mysql.createConnection({
-      host: 'localhost',
-      user: 'dat2c2-4',
-      password: 't95oqnsuoqLpR27r',
-      database: 'dat2c2_4'
-  });
+  let sess = req.session
+  if (sess.userName){
+    if(req.query.state === undefined)
+    res.sendFile(path.join(__dirname, '..', 'public', 'exercises.html'));
+    else if(req.query.state === "1"){
+      const { Console } = require('console')
+      let mysql = require('mysql')
+      const ResultSet = require('mysql/lib/protocol/ResultSet')
+      const { stringify } = require('querystring')
+      const { isNull } = require('util')
+      let con = mysql.createConnection({
+          host: 'localhost',
+          user: 'dat2c2-4',
+          password: 't95oqnsuoqLpR27r',
+          database: 'dat2c2_4'
+      });
 
-  con.connect(function(err) {
-      if (err) throw err;
-      console.log("Connected to database")
-  });
+      con.connect(function(err) {
+          if (err) throw err;
+          console.log("Connected to database")
+      });
 
-  sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(req.query.un)}`
-  con.query(sql, function(err, result){
-    if (err) throw err
-    var dataToSendToClient = result
-    var JSONdata = JSON.stringify(dataToSendToClient)
-    con.end
-    res.send(JSONdata)
-  })
+      sql = `SELECT * FROM UserData WHERE UserName = ${con.escape(sess.userName)} AND PersonId = ${con.escape(sess.personId)}`
+      con.query(sql, function(err, result){
+        if (err) throw err
+        var dataToSendToClient = result
+        var JSONdata = JSON.stringify(dataToSendToClient)
+        con.end
+        res.send(JSONdata)
+      })
+    }
+  }
+  else{
+    res.send("please login")
+  }
 })
 
 router.post('/', upload.fields([]), function(req, res){
+  let sess = req.session
+
   const { Console } = require('console')
   let mysql = require('mysql')
   const ResultSet = require('mysql/lib/protocol/ResultSet')
@@ -80,8 +86,8 @@ router.post('/', upload.fields([]), function(req, res){
   /*sql = `SELECT XpAmount FROM Homework WHERE Answer = ${req.body.answer} AND AssignmentId = ${req.body.assId}`
   con.query(sql, function(err, result){
     if (err) throw err
-    con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${req.query.un}'`)
-    sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
+    con.query(`UPDATE UserData SET CurrentXp = CurrentXp+${result[0].XpAmount} WHERE UserName = '${sess.userName}'`)
+    sql = `SELECT * FROM UserData WHERE UserName = '${sess.userName}'`
     con.query(sql, function(err, result){
       if (err) throw err
       let homework = result[0].AssignedHomework.split(",")
@@ -102,10 +108,10 @@ router.post('/', upload.fields([]), function(req, res){
         leftOver = currentXp%reqXp
         currenXp = leftOver
       }
-      con.query(`UPDATE UserData SET CurrentXp = ${currentXp} WHERE UserName ='${req.query.un}'`)
-      con.query(`UPDATE UserData SET Level = ${level} WHERE UserName ='${req.query.un}'`)
-      con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${req.query.un}'`)
-      con.query(`UPDATE UserData SET AssignedHomework = '${newHomework}' WHERE UserName ='${req.query.un}'`)
+      con.query(`UPDATE UserData SET CurrentXp = ${currentXp} WHERE UserName ='${sess.userName}'`)
+      con.query(`UPDATE UserData SET Level = ${level} WHERE UserName ='${sess.userName}'`)
+      con.query(`UPDATE UserData SET RequiredXp = ${reqXp} WHERE UserName ='${sess.userName}'`)
+      con.query(`UPDATE UserData SET AssignedHomework = '${newHomework}' WHERE UserName ='${sess.userName}'`)
 
       sql = `SELECT AssignmentType FROM Homework WHERE AssignmentId = ${req.body.assId}`
       con.query(sql, function(err, result){
@@ -116,14 +122,14 @@ router.post('/', upload.fields([]), function(req, res){
           console.log(result[0].AssignmentType, assTypes[index])
           if(result[0].AssignmentType === assTypes[index]){
             console.log("test")
-            con.query(`UPDATE UserData SET ${assTypesInDB[index]} = ${assTypesInDB[index]}+1 WHERE UserName ='${req.query.un}'`)
+            con.query(`UPDATE UserData SET ${assTypesInDB[index]} = ${assTypesInDB[index]}+1 WHERE UserName ='${sess.userName}'`)
           }
         }
 
-        sql = `SELECT * FROM UserData WHERE UserName = '${req.query.un}'`
+        sql = `SELECT * FROM UserData WHERE UserName = '${sess.userName}'`
         con.query(sql, function(err, result){
           if(result[0].AssignedHomework === ","){
-            con.query(`UPDATE UserData SET Homework = 0 WHERE UserName ='${req.query.un}'`)
+            con.query(`UPDATE UserData SET Homework = 0 WHERE UserName ='${sess.userName}'`)
             var dataToSendToClient = 0
             var JSONdata = JSON.stringify(dataToSendToClient)
             con.end
