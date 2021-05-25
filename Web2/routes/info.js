@@ -20,14 +20,11 @@ app.use(express.static('public'));
 
 const path = require('path');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res){
     let sess = req.session
-    if (sess.userType === "Teacher"){
-        res.sendFile(path.join(__dirname, '..', 'public', 'teacher.html'));
+    if (sess.userType === "Student"){
+        res.sendFile(path.join(__dirname, '..', 'public', 'info.html'));
     }
-    else
-        res.send("please login")
-});
+})
 
-module.exports = router;
+module.exports = router
