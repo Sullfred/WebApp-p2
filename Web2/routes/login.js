@@ -64,13 +64,18 @@ router.post('/', upload.fields([]), function(req, res, next){
                     if (err) throw err;
 
                     if(result[0].UserType === "Student"){
+<<<<<<< Updated upstream
 
+=======
+                            sess.userType = "Student"
+>>>>>>> Stashed changes
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
                             res.redirect(`/student.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
                         })
                     }
                     else if(result[0].UserType === "Teacher"){
+                        sess.userType = "Teacher"
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             console.log(result)
                             sess.personId = result[0].PersonId
