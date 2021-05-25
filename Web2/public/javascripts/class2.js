@@ -12,7 +12,7 @@ function loadNav(queryString){
 
 function getRequest(query){
     var req = new XMLHttpRequest();
-    var url = '/class';
+    var url = 'class';
     let state = "?state=1"
 
     req.open('GET',url + state,true); // set this to POST if you would like
