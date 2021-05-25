@@ -272,7 +272,6 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-
 function getRequest(){
     var req = new XMLHttpRequest();
     var url = 'exercises';
