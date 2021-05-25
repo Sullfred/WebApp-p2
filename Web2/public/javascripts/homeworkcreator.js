@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function postRequest(){
   var req = new XMLHttpRequest();
-  var url = '/homeworkcreator';
+  var url = 'homeworkcreator';
   let form = document.querySelector("#homeworkcreate")
 
   req.open('POST',url,true); // set this to POST if you would like
