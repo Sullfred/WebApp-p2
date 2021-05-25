@@ -1,22 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(){
-    let queryString = window.location.search
-
-    let navButtonsIds = ["student", "homework", "exercises", "progress"]
-    for (let index = 0; index < navButtonsIds.length; index++) {
-        document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
-    }
-
-    getRequest(queryString)
+    getRequest()
 })
 
 
 
-function getRequest(query){
+function getRequest(){
     var req = new XMLHttpRequest();
     var url = '/progress';
-    //let query = window.location.search
+    let state = "?state=1"
 
-    req.open('GET',url+query,true); // set this to POST if you would like
+    req.open('GET',url+state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
@@ -35,7 +28,7 @@ function loadUserData(data){
     document.querySelector("#helloUser").innerHTML = `Velkommen til din fremskridts side: ${data[0].UserName}`
     document.querySelector("#level").innerHTML = `Du er i level: ${data[0].Level}`
     document.querySelector("#nuværendeXp").innerHTML = `Nuværende XP: ${data[0].CurrentXp}`
-    document.querySelector("#requiredXp").innerHTML = `Manglende xp for at level up: ${data[0].RequiredXp}`
+    document.querySelector("#requiredXp").innerHTML = `Manglende xp for at level up: ${data[0].RequiredXp-data[0].CurrentXp}`
     document.querySelector("#combAss").innerHTML = `${data[0].Addition+data[0].Subtraction+data[0].Multiplication+data[0].Division+data[0].SquareRoot+data[0].Potens+data[0].Mixed}`
     document.querySelector("#compPlus").innerHTML = `${data[0].Addition}`
     document.querySelector("#compMinus").innerHTML = `${data[0].Subtraction}`

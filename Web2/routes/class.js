@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
         let sess = req.session
         console.log("cookie on class site",req.session)
         console.log("class test")
-        if (sess.userLogin){
+        if (sess){
             res.sendFile(path.join(__dirname, '..', 'public', 'class.html'));
             console.log(sess.personId)
             console.log("state",req.query.state)

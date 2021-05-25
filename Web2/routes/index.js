@@ -9,7 +9,6 @@ router.get('/index', function(req, res, next) {
   let sess = req.session
   if (sess.userLogin){
     sess.destroy()
-    console.log("index test",sess)
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
   }
   else

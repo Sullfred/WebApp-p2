@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array());
 app.use(express.static('public'));
 
-const session = require('express-session');
-app.use(session({secret: 'ssshhhhh'}));
+const path = require('path');
+
 
 /*router.post('/', function(req, res, next){
   let userId = req.body.id
@@ -99,41 +99,44 @@ app.use(session({secret: 'ssshhhhh'}));
   user = getUserData(cleanUserId)
 })*/
 
-/* GET users listing. */
-router.get('/student', function(req, res, next) {
-  res.send('../public/student.html');
-
-});
 
 router.get('/', function(req, res){
-    // make some calls to database, fetch some data, information, check state, etc...
-    const { Console } = require('console')
-    let mysql = require('mysql')
-    const ResultSet = require('mysql/lib/protocol/ResultSet')
-    const { stringify } = require('querystring')
-    const { isNull } = require('util')
-    let con = mysql.createConnection({
-        host: 'localhost',
-        user: 'dat2c2-4',
-        password: 't95oqnsuoqLpR27r',
-        database: 'dat2c2_4'
-    });
+  let sess = req.session
+  if (sess.userName){
+    if(req.query.state === undefined)
+    res.sendFile(path.join(__dirname, '..', 'public', 'student.html'));
+    else if(req.query.state === "1"){
+      const { Console } = require('console')
+      let mysql = require('mysql')
+      const ResultSet = require('mysql/lib/protocol/ResultSet')
+      const { stringify } = require('querystring')
+      const { isNull } = require('util')
+      let con = mysql.createConnection({
+          host: 'localhost',
+          user: 'dat2c2-4',
+          password: 't95oqnsuoqLpR27r',
+          database: 'dat2c2_4'
+      });
 
-    con.connect(function(err) {
+      con.connect(function(err) {
+          if (err) throw err;
+          console.log("Connected to database")
+      });
+
+      con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(sess.personId)} AND UserName = ${con.escape(sess.userName)} AND UserClassroom = ${con.escape(sess.userClassroom)}`
+      ,function (err, result) {
         if (err) throw err;
-        console.log("Connected to database")
-    });
+        var dataToSendToClient = result
+        var JSONdata = JSON.stringify(dataToSendToClient)
+        res.send(JSONdata)
+      })
+    }
+  }
+  else
+    res.send("please login")
 
-    console.log(req.query)
+    // make some calls to database, fetch some data, information, check state, etc...
 
-    con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(req.query.pid)} AND UserName = ${con.escape(req.query.un)} AND UserClassroom = ${con.escape(req.query.uc)}`
-    ,function (err, result) {
-      if (err) throw err;
-
-      var dataToSendToClient = result
-      var JSONdata = JSON.stringify(dataToSendToClient)
-      res.send(JSONdata)
-    })
 })
 
 

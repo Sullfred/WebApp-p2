@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
   let sess = req.session
   console.log("cookie on teach site",req.session)
   console.log("teacher test")
-  if (sess.userLogin){
+  if (sess){
     res.sendFile(path.join(__dirname, '..', 'public', 'homeworkcreator.html'));
   }
   else
