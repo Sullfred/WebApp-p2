@@ -249,7 +249,7 @@ listen();
 function postRequest(){
     let query = window.location.search
     var req = new XMLHttpRequest();
-    var url = '/exercises';
+    var url = 'exercises';
 
     req.open('post',url+query,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function getRequest(){
     var req = new XMLHttpRequest();
-    var url = '/exercises';
+    var url = 'exercises';
     state = "?state=1"
 
     req.open('GET',url+state,true); // set this to POST if you would like

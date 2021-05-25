@@ -71,7 +71,7 @@ function homeWorkBox(data){
 
 function getHomeworkRequest(homework){
     var req = new XMLHttpRequest();
-    var url = '/homework';
+    var url = 'homework';
     let state = "?state=2"
     let homeworkAss = "&hmwrkass="+homework
 
@@ -139,7 +139,7 @@ function getHomeworkRequest(homework){
 function postRequest(){
     let query = window.location.search
     var req = new XMLHttpRequest();
-    var url = '/homework';
+    var url = 'homework';
 
     req.open('post',url+query,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
