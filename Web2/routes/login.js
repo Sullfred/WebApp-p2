@@ -24,8 +24,6 @@ const path = require('path');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    console.log("test")
-    //res.send('../public/login.html');
     res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
 });
 
@@ -50,29 +48,31 @@ router.post('/', upload.fields([]), function(req, res, next){
     let sess = req.session
     let enteredUserLogin = req.body.username
     let enteredUserPassword = req.body.password
-    con.query(`SELECT UserPassAndSaltHashed, UserSalt FROM Users WHERE UserLogin = ${con.escape(enteredUserLogin)} AND UserPass = ${con.escape(enteredUserPassword)}`
-
+    con.query(`SELECT UserPassAndSaltHashed, UserSalt FROM Users WHERE UserLogin = ${con.escape(enteredUserLogin)}`
     ,function (err, result) {
         if (err) throw err;
-
+        console.log(result)
         if(result.length === 1){
             if(result[0].UserPassAndSaltHashed === sha256(enteredUserPassword + result[0].UserSalt) ){
-                sess.userLogin = req.body.username
                 con.query(`SELECT UserType, UserLoginId FROM Users WHERE UserPassAndSaltHashed = ${con.escape(result[0].UserPassAndSaltHashed)}`
-
                 ,function (err, result) {
                     if (err) throw err;
-
+                    console.log(result[0])
                     if(result[0].UserType === "Student"){
-
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
                             if (err) throw err;
-                            res.redirect(`/student.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
+                            sess.personId = result[0].PersonId
+                            sess.userName = result[0].UserName
+                            sess.userClassroom = result[0].UserClassroom
+                            console.log(sess)
+                            if (err) throw err;
+                            var dataToSendToClient = ["Elev"]
+                            var JSONdata = JSON.stringify(dataToSendToClient)
+                            res.send(JSONdata)
                         })
                     }
                     else if(result[0].UserType === "Teacher"){
                         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(result[0].UserLoginId)}`, function (err, result) {
-                            console.log(result)
                             sess.personId = result[0].PersonId
                             sess.userName = result[0].UserName
                             sess.userClassroom = result[0].UserClassroom
@@ -80,16 +80,13 @@ router.post('/', upload.fields([]), function(req, res, next){
                             var dataToSendToClient = ["Lærer"]
                             var JSONdata = JSON.stringify(dataToSendToClient)
                             res.send(JSONdata)
-                            //res.redirect(`/teacher.html?pid=${result[0].PersonId}&un=${result[0].UserName}&uc=${result[0].UserClassroom}`)
                         })
                     }
                 })
             }
-            else{
-            }
         }
         else{
-
+            res.send("Brugernavn eller kodeord var forkert")
         }
     })
 

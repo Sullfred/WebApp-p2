@@ -21,15 +21,13 @@ app.use(express.static('public'));
 const path = require('path');
 
 /* GET users listing. */
-router.get('/teacher', function(req, res, next) {
-  let sess = req.session
-  console.log("cookie on teach site",req.session)
-  console.log("teacher test")
-  if (sess.userLogin){
-    res.sendFile(path.join(__dirname, '..', 'public', 'teacher.html'));
-  }
-  else
-    res.send("please login")
+router.get('/', function(req, res, next) {
+    let sess = req.session
+    if (sess.userName){
+        res.sendFile(path.join(__dirname, '..', 'public', 'teacher.html'));
+    }
+    else
+        res.send("please login")
 });
 
 module.exports = router;

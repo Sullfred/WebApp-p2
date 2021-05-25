@@ -1,21 +1,20 @@
-let assArr = []
 
 document.addEventListener('DOMContentLoaded', function(){
-    let queryString = window.location.search
+    /*let queryString = window.location.search
 
     let navButtonsIds = ["student", "homework", "exercises", "progress"]
     for (let index = 0; index < navButtonsIds.length; index++) {
         document.querySelector(`#${navButtonsIds[index]}`).href += `${queryString}`
-    }
-    getRequest(queryString)
+    }*/
+    getRequest()
 })
 
-function getRequest(query){
+function getRequest(){
     var req = new XMLHttpRequest();
     var url = '/homework';
-    state = "&state=1"
+    state = "?state=1"
 
-    req.open('GET',url+query+state,true); // set this to POST if you would like
+    req.open('GET',url+state,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send()
@@ -72,22 +71,18 @@ function homeWorkBox(data){
 }
 
 function getHomeworkRequest(homework){
-    let query = window.location.search
     var req = new XMLHttpRequest();
     var url = '/homework';
-    let state = "&state=2"
+    let state = "?state=2"
     let homeworkAss = "&hmwrkass="+homework
 
-    req.open('get',url+query+state+homeworkAss,true); // set this to POST if you would like
+    req.open('get',url+state+homeworkAss,true); // set this to POST if you would like
     req.addEventListener('load',onLoad);
     req.addEventListener('error',onError);
     req.send();
     function onLoad() {
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        parsedResponse.forEach(element => {
-            assArr.push(element)
-        });
         assIndex = 0
         document.querySelector("#mathProblem").value = `${parsedResponse[assIndex].Assignment}`
         document.querySelector("#assId").value = `${parsedResponse[assIndex].AssignmentId}`
