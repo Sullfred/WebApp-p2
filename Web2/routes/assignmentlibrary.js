@@ -57,6 +57,8 @@ router.get('/', function(req, res, next) {
         con.end
         var dataToSendToClient = result
         var JSONdata = JSON.stringify(dataToSendToClient)
+        con.end
+        console.log("Disconnected from database")
         res.send(JSONdata)
       })
     }
@@ -141,6 +143,8 @@ router.post('/', upload.fields([]),function(req, res){
     con.end
     var dataToSendToClient = ["Opgaverne er blevet tilføjet til de valgte klassers lektier"]
     var JSONdata = JSON.stringify(dataToSendToClient)
+    con.end
+    console.log("Disconnected from database")
     res.send(JSONdata)
   }
 })

@@ -48,6 +48,8 @@ router.get('/', function(req, res){
                 if (err) throw err;
                 var dataToSendToClient = result
                 var JSONdata = JSON.stringify(dataToSendToClient)
+                con.end
+                console.log("Disconnected from database")
                 res.send(JSONdata)
             })
         }

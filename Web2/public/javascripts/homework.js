@@ -27,7 +27,7 @@ function getRequest(){
     }
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=1');
     }
 }
 
@@ -116,9 +116,7 @@ function getHomeworkRequest(homework){
         document.querySelector("#answer").addEventListener('keydown', function(event){
             if (event.keyCode === 13){
                 if(Number(document.querySelector("#answer").value) === parsedResponse[assIndex].Answer){
-                    console.log(Number(document.querySelector("#answer").value))
-                    console.log(parsedResponse[assIndex].Answer)
-
+                    
                     document.querySelector("#answerForm").addEventListener('submit', function(event){
                         event.preventDefault()
                         postRequest()
@@ -132,7 +130,7 @@ function getHomeworkRequest(homework){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=2');
     }
 }
 
@@ -155,6 +153,6 @@ function postRequest(){
     }
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on POST');
     }
 }
