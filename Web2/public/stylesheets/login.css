@@ -52,6 +52,7 @@ body {
     bottom: -70px;
     color: black;
     text-decoration: underline;
+    color: red;
 }
 
 a:hover {
