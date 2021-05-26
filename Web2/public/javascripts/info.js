@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function getRequest(){
     var req = new XMLHttpRequest();
-    var url = '/info';
+    var url = 'info';
     state = "?state=1"
 
     req.open('GET',url+state,true); // set this to POST if you would like
