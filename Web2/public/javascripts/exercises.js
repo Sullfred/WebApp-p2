@@ -30,7 +30,7 @@ function CalculateXp (amountDifficulty, answerDifficulty) {
 }
 
 function randomAdditionProblem () {
-    let type = 1;
+    let type = 0;
     let amountDifficulty = randomDifficulty();
     let numbers = [];
 
@@ -54,7 +54,7 @@ function randomAdditionProblem () {
 }
 
 function randomSubtractionProblem () {
-    let type = 2;
+    let type = 1;
     let amountDifficulty = randomDifficulty();
     let numbers = [];
 
@@ -90,7 +90,7 @@ function randomSubtractionProblem () {
 
 
 function randomMultiplicationProblem () {
-    let type = 3;
+    let type = 2;
     let amountDifficulty = 2;
     let numbers = [];
 
@@ -116,7 +116,7 @@ function randomMultiplicationProblem () {
 }
 
 function randomDivisionProblem () {
-    let type = 4;
+    let type = 3;
     let amountDifficulty = 2;
     let numbers = [];
 
@@ -162,7 +162,7 @@ function createExercise(n){
     //console.log(`Earnable xp = ${earnableXp}`);
 
     insertText(problem, earnableXp, type);
-    console.log(answer)
+    //console.log(answer)
     return [answer, earnableXp, type]
 }
 
@@ -199,30 +199,10 @@ function listen () {
             if(userAnswer == answer) {
                 postRequest()
                 //console.log(userAnswer + " " + answer)
-                console.log("correct");
+                //console.log("correct");
                 document.querySelector(".notCorrect").innerHTML = "";
-                /*switch(type){
-                    case 1:
-                        document.querySelector("#solvedPlus").innerHTML++;
-                        break;
-                    case 2:
-                        document.querySelector("#solvedMinus").innerHTML++;
-                        break;
-                    case 3:
-                        document.querySelector("#solvedGange").innerHTML++;
-                        break;
-                    case 4:
-                        document.querySelector("#solvedDividere").innerHTML++;
-                        break;
-                    default:
-                        console.log("SHALOM SHALOM. Something went wrong");
-                        break;
-                }*/
 
                 [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*4));
-
-                console.log(answer)
-
 
                 document.querySelector("#answer").value = "";
             }
