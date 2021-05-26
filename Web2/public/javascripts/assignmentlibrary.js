@@ -10,7 +10,7 @@ for (let index = 0; index < buttons.length; index++) {
 
 function classRequest(assType){
     var req = new XMLHttpRequest();
-    var url = '/assignmentlibrary';
+    var url = 'assignmentlibrary';
     let state = "?state=1"
 
     req.open('GET',url+state,true); // set this to POST if you would like
@@ -38,7 +38,7 @@ function classRequest(assType){
 
 function assRequest(assType){
     var req = new XMLHttpRequest();
-    var url = '/assignmentlibrary';
+    var url = 'assignmentlibrary';
     let assTypeQueryfi = "?asstyp="+assType
     let state = "&state=2"
 
@@ -72,7 +72,7 @@ document.querySelector("#form").addEventListener('submit', function(event){
 
 function postRequest(){
     var req = new XMLHttpRequest();
-    var url = '/assignmentlibrary';
+    var url = 'assignmentlibrary';
     let query = window.location.search
     let form = document.querySelector("#form")
 

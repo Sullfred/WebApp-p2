@@ -3,10 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-
 function getRequest(){
     var req = new XMLHttpRequest();
-    var url = '/progress';
+    var url = 'progress';
     let state = "?state=1"
 
     req.open('GET',url+state,true); // set this to POST if you would like
