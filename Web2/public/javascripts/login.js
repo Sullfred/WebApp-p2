@@ -22,10 +22,8 @@ function postLogin(){
             window.location.replace(window.location.href.replace("login", "student"))
         else if(parsedResponse[0] === "Lærer")
             window.location.replace(window.location.href.replace("login", "teacher"))
-        else if(parsedResponse[0] === "Error on login"){
-            window.alert("Error on login")
-            document.querySelector("#wrongPass").style.display = inline
-        }
+        else if(parsedResponse[0] === "Error on login")
+            document.querySelector("#wrongPass").style.display = "inline"
     }
 
     function onError() {
