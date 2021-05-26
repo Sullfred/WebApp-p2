@@ -19,10 +19,10 @@ function postLogin(){
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
         if(parsedResponse[0] === "Elev"){
-            window.location.replace(window.location.href.replace(window.location.href.substring(window.location.href.lastIndexOf("3000/")+5, window.location.href.length),"student"))
+            window.location.replace(window.location.href.replace(window.location.href.substring(window.location.href.lastIndexOf("node0/")+6, window.location.href.length),"student"))
         }
         else if(parsedResponse[0] === "Lærer")
-            window.location.replace(window.location.href.replace(window.location.href.substring(window.location.href.lastIndexOf("3000/")+5, window.location.href.length),"teacher"))
+            window.location.replace(window.location.href.replace(window.location.href.substring(window.location.href.lastIndexOf("node0/")+6, window.location.href.length),"teacher"))
         else if(parsedResponse[0] === "Error on login")
             document.querySelector("#wrongPass").style.display = "inline"
     }
