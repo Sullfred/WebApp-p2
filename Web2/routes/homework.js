@@ -80,7 +80,7 @@ router.get('/', function(req, res){
     }
   }
   else
-  res.send("please login")
+    res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
 })
 
   router.post('/', upload.fields([]), function(req, res){

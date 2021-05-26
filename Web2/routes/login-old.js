@@ -60,7 +60,7 @@ router.post('/', function(req, res, next){
               })
           }
           else
-          console.log("Bruger ikke fundet")
+            res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
       })
   }
 

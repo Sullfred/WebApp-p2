@@ -133,10 +133,7 @@ router.get('/', function(req, res){
     }
   }
   else
-    res.send("please login")
-
-    // make some calls to database, fetch some data, information, check state, etc...
-
+    res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
 })
 
 

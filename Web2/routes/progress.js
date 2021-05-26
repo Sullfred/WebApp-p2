@@ -42,7 +42,6 @@ router.get('/', function(req, res){
           if (err) throw err;
           console.log("Connected to database")
       });
-        console.log(sess)
         con.query(`SELECT * FROM UserData WHERE PersonId = ${con.escape(sess.personId)} AND UserName = ${con.escape(sess.userName)} AND UserClassroom = ${con.escape(sess.userClassroom)}`
         ,function (err, result) {
           if (err) throw err;
@@ -53,7 +52,7 @@ router.get('/', function(req, res){
     }
   }
   else{
-    res.send("please login")
+    res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
   }
 })
 
