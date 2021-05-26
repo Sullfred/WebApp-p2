@@ -27,7 +27,7 @@ function getRequest(){
     }
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=1');
     }
 }
 
@@ -130,7 +130,7 @@ function getHomeworkRequest(homework){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=2');
     }
 }
 
@@ -153,6 +153,6 @@ function postRequest(){
     }
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on POST');
     }
 }

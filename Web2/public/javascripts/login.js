@@ -29,6 +29,6 @@ function postLogin(){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on POST');
     }
 }

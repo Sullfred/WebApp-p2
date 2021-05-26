@@ -32,7 +32,7 @@ function classRequest(assType){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=1');
     }
 }
 
@@ -60,7 +60,7 @@ function assRequest(assType){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, state 2');
     }
 }
 
@@ -93,6 +93,6 @@ function postRequest(){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on POST');
     }
 }

@@ -20,7 +20,7 @@ function getRequest(query){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on get, State=1');
     }
 }
 
@@ -62,7 +62,7 @@ function headerClass(classroom) {
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=2');
     }
 }
 
@@ -121,8 +121,6 @@ function addStudentInfo(studentIndex){
 
     function onError() {
         // handle error here, print message perhaps
-        console.log('error receiving async AJAX call');
+        console.log('Error on GET, State=2, AddStudentInfo');
     }
 }
-
-//current, required, opgaver, lektier        parsedResponse[8].AssignedHomework = Math.floor((parsedResponse[8].AssignedHomework.length/2)-2)
