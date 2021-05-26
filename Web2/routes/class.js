@@ -52,7 +52,6 @@ router.get('/', function(req, res, next) {
 
                 let sql = `SELECT * FROM UserData WHERE PersonId = ${con.escape(sess.personId)}`
                 con.query(sql, function(err, result){
-                    console.log(result)
                     var dataToSendToClient = result
                     // convert whatever we want to send (preferably should be an object) to JSON
                     var JSONdata = JSON.stringify(dataToSendToClient)
@@ -97,8 +96,6 @@ router.get('/', function(req, res, next) {
                             result[teacherIndex].Homework = 1
                         }
                     }
-
-                    console.log(result)
 
                     var dataToSendToClient = result
                     // convert whatever we want to send (preferably should be an object) to JSON

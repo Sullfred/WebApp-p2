@@ -85,7 +85,9 @@ router.post('/', upload.fields([]), function(req, res, next){
             }
         }
         else{
-            res.send("Brugernavn eller kodeord var forkert")
+            var dataToSendToClient = ["Error on login"]
+            var JSONdata = JSON.stringify(dataToSendToClient)
+            res.send(JSONdata)
         }
     })
 
