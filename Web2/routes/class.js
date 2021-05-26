@@ -27,9 +27,6 @@ router.get('/', function(req, res, next) {
     if (sess.userType === "Teacher"){
         if(req.query.state === undefined){
             res.sendFile(path.join(__dirname, '..', 'public', 'class.html'));
-            console.log(sess.personId)
-            console.log("state",req.query.state)
-
         }
         else{
             const { Console } = require('console')
@@ -61,7 +58,7 @@ router.get('/', function(req, res, next) {
             }
             else if(req.query.state === "2") {
 
-                let sql = `SELECT * FROM UserData WHERE UserClassroom = ${con.escape(sess.userClassroom)}`
+                let sql = `SELECT * FROM UserData WHERE UserClassroom = ${con.escape(sess.userClassroom)} AND UserName NOT LIKE '%${sess.userName}%'`
 
                 con.query(sql, function(err, result){
                     if (err) throw err

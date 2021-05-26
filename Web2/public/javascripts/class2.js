@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
-    let queryString = window.location.search
-    getRequest(queryString)
-    loadNav(queryString)
+    getRequest()
 })
-
-function loadNav(queryString){
-    document.querySelector("#teacher").innerHTML = `<button id="teacher" class="home"><a href="teacher">Forside</a></button>`
-    document.querySelector("#homeworkcreator").innerHTML = `<li><a id="homeworkcreator" href="homeworkcreator">Opret opgave</a></li>`
-    document.querySelector("#assignmentlibrary").innerHTML = `<li><a id="assignmentlibrary" href="assignmentlibrary">Tildel Lektier</a></li>`
-}
 
 function getRequest(query){
     var req = new XMLHttpRequest();
@@ -62,10 +54,8 @@ function headerClass(classroom) {
         document.getElementById("studentlist").innerHTML = '';
         document.querySelector("#gotHomework").innerHTML = `<p>Igangværende lektier: ${optionsArray[parsedResponse[teacherIndex].Homework]} </p>`
         if(parsedResponse[teacherIndex].Homework === 1){
-        document.querySelector("#ongoingHomework").innerHTML = `<p>Resterende opgaver: ${parsedResponse[teacherIndex].AssignedHomework}</p>`
+        //document.querySelector("#ongoingHomework").innerHTML = `<p>Resterende opgaver: ${parsedResponse[teacherIndex].AssignedHomework}</p>`
         }
-
-        parsedResponse = spliceTeacher(parsedResponse)
 
         addStudents(parsedResponse)
     }
@@ -74,22 +64,6 @@ function headerClass(classroom) {
         // handle error here, print message perhaps
         console.log('error receiving async AJAX call');
     }
-}
-
-function spliceTeacher(parsedResponse) {
-    let qString = window.location.search
-    let location1 = qString.search("un=")
-    let location2 = qString.search("&uc=")
-    let name = qString.substring(location1, location2)
-    name = name.replace("un=","")
-    name = name.replace("%20", " ")
-    for (let index = 0; index < parsedResponse.length; index++) {
-        if(parsedResponse[index].UserName === name){
-            parsedResponse.splice(index,1)
-            teacherIndex = index
-        }
-    }
-    return parsedResponse
 }
 
 function addStudents(parsedResponse){
@@ -120,15 +94,24 @@ function addStudentInfo(studentIndex){
         idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Lektier", "Opgaver", "Addition", "Subtraktion", "Multiplikation", "Division", "Rødder", "Potens", "Blandet"]
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        parsedResponse = spliceTeacher(parsedResponse)
+        parsedResponse[studentIndex].AssignedHomework = Math.floor((parsedResponse[studentIndex].AssignedHomework.length/2)-2)
         document.querySelector("#studentinformation").innerHTML = `${parsedResponse[studentIndex].UserName}`
         document.querySelector("#putStudentInfo").innerHTML = ''
         let index = 0
             for (const key in parsedResponse[studentIndex]) {
                 if (Object.hasOwnProperty.call(parsedResponse[studentIndex], key)) {
-                    const element = parsedResponse[studentIndex][key];
-                    if(index > 2 ){
+                    let element = parsedResponse[studentIndex][key];
+                    if(index > 2){
                     document.querySelector("#putStudentInfo").innerHTML += `<p id=${idArray[index]}>${idArray[index]}: ${element}</p>`
+                        if(index === 5){
+                            document.querySelector("#CurrentXp").style.display = "none"
+                        }
+                        else if(index === 6){
+                            document.querySelector("#RequiredXp").style.display = "none"
+                        }
+                        else if(index === 7){
+                            document.querySelector("#Lektier").style.display = "none"
+                        }
                     }
                 }
                 index++
@@ -141,3 +124,5 @@ function addStudentInfo(studentIndex){
         console.log('error receiving async AJAX call');
     }
 }
+
+//current, required, opgaver, lektier        parsedResponse[8].AssignedHomework = Math.floor((parsedResponse[8].AssignedHomework.length/2)-2)

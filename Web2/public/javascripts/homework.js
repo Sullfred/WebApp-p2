@@ -116,9 +116,7 @@ function getHomeworkRequest(homework){
         document.querySelector("#answer").addEventListener('keydown', function(event){
             if (event.keyCode === 13){
                 if(Number(document.querySelector("#answer").value) === parsedResponse[assIndex].Answer){
-                    console.log(Number(document.querySelector("#answer").value))
-                    console.log(parsedResponse[assIndex].Answer)
-
+                    
                     document.querySelector("#answerForm").addEventListener('submit', function(event){
                         event.preventDefault()
                         postRequest()

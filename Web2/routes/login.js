@@ -20,13 +20,16 @@ app.use(express.static('public'));
 
 const path = require('path');
 
-
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
+    sess = req.session
+    if(sess.userType === undefined)
+        res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
+    else if(sess.userType === "Student")
+        res.sendFile(path.join(__dirname, '..', 'public', 'student.html'));
+    else if(sess.userType === "Teacher")
+        res.sendFile(path.join(__dirname, '..', 'public', 'teacher.html'));
 });
-
 
 router.post('/', upload.fields([]), function(req, res, next){
     const { Console } = require('console')
@@ -83,6 +86,11 @@ router.post('/', upload.fields([]), function(req, res, next){
                     }
                 })
             }
+            else{
+                var dataToSendToClient = ["Error on login"]
+                var JSONdata = JSON.stringify(dataToSendToClient)
+                res.send(JSONdata)
+            }
         }
         else{
             var dataToSendToClient = ["Error on login"]
@@ -90,9 +98,6 @@ router.post('/', upload.fields([]), function(req, res, next){
             res.send(JSONdata)
         }
     })
-
-
-
 
     /*https://stackoverflow.com/a/65237583*/
     function sha256(ascii) {
