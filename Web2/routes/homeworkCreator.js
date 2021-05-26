@@ -76,7 +76,6 @@ router.post('/', upload.fields([]), function(req, res, next){
       secondLetter = sess.userName.substring(sess.userName.search(" ")+1, sess.userName.search(" ")+2)
       initials = firstLetter + secondLetter
       let assIdtf  = sess.personId + initials + assAmm
-      con.end
     })
   }
 
@@ -126,6 +125,8 @@ router.post('/', upload.fields([]), function(req, res, next){
     con.query(`SET FOREIGN_KEY_CHECKS = 1`)
     var dataToSendToClient = ["Opgaven er blevet tilføjet"]
     var JSONdata = JSON.stringify(dataToSendToClient)
+    con.end
+    console.log("Disconnected from database")
     res.send(JSONdata)
   }
   putAssignment(assignmentIdentifier, creator, assignmentType, difficulty, xpAmount, task, answer)

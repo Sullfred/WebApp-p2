@@ -49,6 +49,7 @@ router.get('/', function(req, res){
         var dataToSendToClient = result
         var JSONdata = JSON.stringify(dataToSendToClient)
         con.end
+        console.log("Disconnected from database")
         res.send(JSONdata)
       })
     }
@@ -119,12 +120,14 @@ router.post('/', upload.fields([]), function(req, res){
         var dataToSendToClient = 0
         var JSONdata = JSON.stringify(dataToSendToClient)
         con.end
+        console.log("Disconnected from database")
         res.send(JSONdata)
         }
       else{
         var dataToSendToClient = 1
         var JSONdata = JSON.stringify(dataToSendToClient)
         con.end
+        console.log("Disconnected from database")
         res.send(JSONdata)
       }
     })

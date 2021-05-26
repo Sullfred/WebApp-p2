@@ -69,6 +69,8 @@ router.post('/', upload.fields([]), function(req, res, next){
                             if (err) throw err;
                             var dataToSendToClient = ["Elev"]
                             var JSONdata = JSON.stringify(dataToSendToClient)
+                            con.end
+                            console.log("Disconnected from database")
                             res.send(JSONdata)
                         })
                     }
@@ -81,6 +83,8 @@ router.post('/', upload.fields([]), function(req, res, next){
                             if (err) throw err;
                             var dataToSendToClient = ["Lærer"]
                             var JSONdata = JSON.stringify(dataToSendToClient)
+                            con.end
+                            console.log("Disconnected from database")
                             res.send(JSONdata)
                         })
                     }
