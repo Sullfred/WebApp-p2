@@ -19,13 +19,21 @@
         </header>
 
         <nav id="nav-bar">
-            <ul>
-                <li><button class="navbutton"><a id="teacher" href="teacher">Forside</a></button></li>
-                <li><button class="navbutton"><a id="class" href="class">Klasser</a></button></li>
-                <li><button class="navbutton"><a id="homeworkcreator" href="homeworkcreator">Opgaver</a></button></li>
-                <li><button class="navbutton" id="logud"><a href="/">Log-ud</a></button></li>
-            </ul>
-        </nav>
+            <div class="dropdown">
+              <button id="teacher" class="home"><a href="teacher">Forside</a></button>
+              <div class="classes">
+                <button><a href="class">Klasser</a></button>
+              </div>
+              <div class="homework">
+                <button>Opgaver</button>
+                <ul>
+                  <li><a id="homeworkcreator" href="homeworkcreator">Opret opgave</a></li>
+                  <li><a id="assignmentlibrary" href="assignmentlibrary">Tildel Lektier</a></li>
+                </ul>
+              </div>
+              <button class="logout"><a href="index">Log-ud</a></button>
+            </div>
+          </nav>
         <section id="main-section">
             <div class="homework">
                 <form action="./homeworkcreator" method="POST" id="homeworkcreate" name="homeworkcreate">
