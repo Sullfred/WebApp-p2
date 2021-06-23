@@ -202,7 +202,7 @@ function listen () {
                 //console.log("correct");
                 document.querySelector(".notCorrect").innerHTML = "";
 
-                [answer, earnableXp, type] = createExercise(Math.ceil(Math.random()*4));
+                [answer, earnableXp, type] = createExercise(Math.floor(Math.random()*4));
 
                 document.querySelector("#answer").value = "";
             }
