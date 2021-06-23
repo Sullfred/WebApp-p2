@@ -143,16 +143,16 @@ function createExercise(n){
     let problem, answer, earnableXp, type;
 
     switch(n){
-        case 1:
+        case 0:
             [problem, answer, earnableXp, type] = randomAdditionProblem();
             break;
-        case 2:
+        case 1:
             [problem, answer, earnableXp, type] = randomSubtractionProblem();
             break;
-        case 3:
+        case 2:
             [problem, answer, earnableXp, type] = randomMultiplicationProblem();
             break;
-        case 4:
+        case 3:
             [problem, answer, earnableXp, type] = randomDivisionProblem();
             break;
         default:
@@ -178,19 +178,19 @@ function listen () {
     let tries = 0;
 
     document.querySelector("#plus").addEventListener('click', (event) => {
-        [answer, earnableXp, type] = createExercise(1);
+        [answer, earnableXp, type] = createExercise(0);
     });
 
     document.querySelector("#minus").addEventListener('click', (event) => {
-        [answer, earnableXp, type] = createExercise(2);
+        [answer, earnableXp, type] = createExercise(1);
     });
 
     document.querySelector("#gange").addEventListener('click', (event) => {
-        [answer, earnableXp, type] = createExercise(3);
+        [answer, earnableXp, type] = createExercise(2);
     });
 
     document.querySelector("#dividere").addEventListener('click', (event) => {
-        [answer, earnableXp, type] = createExercise(4);
+        [answer, earnableXp, type] = createExercise(3);
     });
 
     document.querySelector("#answer").addEventListener("keyup", function(event) {
