@@ -94,7 +94,7 @@ function addStudentInfo(studentIndex){
         idArray = ["PersonId","UserName", "UserClassroom", "Level", "CurrentXp", "RequiredXp", "Lektier", "Opgaver", "Addition", "Subtraktion", "Multiplikation", "Division", "Rødder", "Potens", "Blandet"]
         var response = this.responseText;
         var parsedResponse = JSON.parse(response);
-        parsedResponse[studentIndex].AssignedHomework = Math.floor((parsedResponse[studentIndex].AssignedHomework.length/2)-2)
+        parsedResponse[studentIndex].AssignedHomework = Math.floor((parsedResponse[studentIndex].AssignedHomework.length/2))
         document.querySelector("#studentinformation").innerHTML = `${parsedResponse[studentIndex].UserName}`
         document.querySelector("#putStudentInfo").innerHTML = ''
         let index = 0
